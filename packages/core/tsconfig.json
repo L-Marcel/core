@@ -1,0 +1,15 @@
+{
+  "types": ["types"],
+  "compilerOptions": {},
+  "extends": [
+    "@lmarcel/ts-config/react.json"
+  ],
+  "exclude": [
+    "node_modules", 
+    "examples"
+  ],
+  "include": [
+    "src",
+    "app"
+  ]
+}

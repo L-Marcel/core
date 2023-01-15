@@ -1,0 +1,56 @@
+{
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "printWidth": 90,
+        "bracketLine": true,
+        "arrowFunctionParentheses": "always",
+        "tabWidth": 2,
+        "tabs": true,
+        "semi": true
+      }
+    ],
+    "arrow-parens": [
+      "warn",
+      "always"
+    ],
+    "no-duplicate-imports": [
+      "warn",
+      { "includeExports": true }
+    ],
+    "arrow-body-style": [
+      "warn",
+      "always"
+    ],
+    "block-spacing": [
+      "warn",
+      "always"
+    ],
+    "jsx-quotes": [
+      "warn", 
+      "prefer-double"
+    ],
+    "space-before-blocks": [
+      "warn",
+      "always"
+    ],
+    "react/react-in-jsx-scope": "off",
+    "array-bracket-newline": "off",
+    "linebreak-style": "off",
+    "quotes": [
+      "warn",
+      "double",
+      { "allowTemplateLiterals": false }
+    ],
+    "semi": [
+      "warn",
+      "always",
+      {
+        "omitLastInOneLineBlock": false
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": "off",
+    "no-empty-pattern": "off"
+  }
+}

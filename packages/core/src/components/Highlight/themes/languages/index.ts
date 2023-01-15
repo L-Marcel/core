@@ -33,5 +33,5 @@ export const languages = [
   "typescript",
   "wasm",
   "yaml",
-  new String()
+  new String(),
 ] as const;

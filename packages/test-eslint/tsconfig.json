@@ -2,7 +2,7 @@
   "types": ["types"],
   "compilerOptions": {},
   "extends": [
-    "@lmarcel/ts-config/react.json"
+    "@lmarcel/ts-config/node"
   ],
   "exclude": [
     "node_modules", 

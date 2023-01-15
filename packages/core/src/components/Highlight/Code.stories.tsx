@@ -1,4 +1,4 @@
-import { Highlight, HighlightProps } from ".";
+import Highlight, { HighlightProps } from ".";
 import { Meta, StoryObj } from "@storybook/react";
 import { __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples";
 import { __markup, __clike, __css } from "./examples/index";
@@ -31,6 +31,14 @@ export const Primary: StoryObj<HighlightProps> = {
   args: {
     language: "tsx",
     children: __tsx
+  }
+};
+
+export const OneLine: StoryObj<HighlightProps> = {
+  name: "One Line",
+  args: {
+    language: "tsx",
+    children: "l-marcel setup"
   }
 };
 

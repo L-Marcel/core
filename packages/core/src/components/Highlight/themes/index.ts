@@ -29,5 +29,5 @@ export {
   synthwave84,
   ultramin,
   vsDark,
-  vsLight
+  vsLight,
 };

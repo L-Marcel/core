@@ -1,6 +1,12 @@
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { Language, PrismTheme, defaultProps } from "prism-react-renderer";
 
-export const CodeBlock = ({ code, language, theme = defaultProps.theme }: any) => {
+interface CodeBlockProps {
+  code: string; 
+  language: Language;
+  theme?: PrismTheme;
+}
+
+export function CodeBlock({ code, language, theme = defaultProps.theme }: CodeBlockProps) {
   return (
     <Highlight {...defaultProps} theme={theme} code={code} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
@@ -28,4 +34,4 @@ export const CodeBlock = ({ code, language, theme = defaultProps.theme }: any) =
       }}
     </Highlight>
   );
-};
+}

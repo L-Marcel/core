@@ -1,8 +1,10 @@
+import { Language } from "prism-react-renderer";
 import { CodeBlock } from "./CodeBlock";
-import { HighlightContainer } from "./styles";
+import { CopyButton, HighlightContainer, HighlightNumber, HighlightNumbers } from "./styles";
 import * as themes from "./themes";
 import "./themes/code.css";
 import { languages } from "./themes/languages";
+import { Copy } from "phosphor-react";
 
 
 type HighlightSupportedLanguages = typeof languages[number];
@@ -14,17 +16,37 @@ export interface HighlightProps {
   language?: HighlightSupportedLanguages;
 }
 
-export function Highlight({ 
+export default function Highlight({ 
   children, 
   theme = "primary", 
   language = "jsx" 
 }: HighlightProps) {
+  const numberOfLines = children.match(/\n/g)?.length;
+
+  const lines = Array.from({
+    length: (numberOfLines? numberOfLines + 1:0)
+  }).map((_,i) => i);
+
   return (
     <HighlightContainer>
+      <CopyButton>
+        <Copy/>
+      </CopyButton>
+      <HighlightNumbers
+        css={{
+          "--number-of-lines-in-code": numberOfLines
+        }}
+      >
+        {lines.map((line) => {
+          return (
+            <HighlightNumber key={line}>{line}</HighlightNumber>
+          );
+        })}
+      </HighlightNumbers>
       <CodeBlock
         code={children}
         theme={themes[theme]}
-        language={language}
+        language={language as Language}
       />
     </HighlightContainer>
   );

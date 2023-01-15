@@ -1,3 +1,7 @@
+const { ESLint } = require("eslint");
+const { rules: defaultRules } = require("./.eslintrc.json");
+
+/** @type {ESLint.ConfigData}*/
 module.exports = {
   env: {
     browser: true,
@@ -5,6 +9,7 @@ module.exports = {
     node: true,
   },
   extends: [
+    "plugin:prettier/recommended",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -21,22 +26,18 @@ module.exports = {
   plugins: [
     "tailwindcss",
     "react",
+    "eslint-plugin-prettier",
     "@typescript-eslint"
   ],
   rules: {
-    "react/react-in-jsx-scope": "off",
-    indent: [
-      "error",
-      2
-    ],
-    "linebreak-style": 0,
-    quotes: [
-      "error",
-      "double"
-    ],
-    semi: [
-      "error",
-      "always"
-    ]
+    ...defaultRules
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    'import/parsers': {
+      [require.resolve('@typescript-eslint/parser')]: ['.ts', '.tsx', '.d.ts'],
+    },
   }
 }

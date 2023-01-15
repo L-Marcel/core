@@ -1,9 +1,10 @@
+import { ComponentProps } from "@stitches/react";
 import { ButtonContainer } from "./styles";
 
-export function Button() {
+export type ButtonProps = ComponentProps<typeof ButtonContainer>;
+
+export function Button({ ...rest }: ButtonProps) {
   return (
-    <ButtonContainer>
-      Test
-    </ButtonContainer>
+    <ButtonContainer {...rest}/>
   );
 }

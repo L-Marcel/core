@@ -1,0 +1,6 @@
+
+{
+  "extends": [
+    "@lmarcel/eslint-config"
+  ]
+}

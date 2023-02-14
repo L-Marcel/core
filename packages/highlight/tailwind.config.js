@@ -1,10 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}", 
+    "./src/**/*.{html,js,jsx,ts,tsx}",
     "!./node_modules",
     "!./turbo",
   ],
@@ -16,13 +13,13 @@ module.exports = {
     extend: {
       screens: {
         xs: {
-          max: "340px"
+          max: "340px",
         },
-        "2lg": "1170px"
+        "2lg": "1170px",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        code: ["Source Code Pro", "monospace"]
+        code: ["Source Code Pro", "monospace"],
       },
       colors: {
         white: {
@@ -35,10 +32,10 @@ module.exports = {
         gray: {
           500: "#3B3937",
           600: "#252322",
-          700: "#1B1816"
+          700: "#1B1816",
         },
         primary: {
-          50:  "#febdb4",
+          50: "#febdb4",
           100: "#faa195",
           200: "#f58678",
           300: "#ee6d5c",
@@ -47,7 +44,7 @@ module.exports = {
           600: "#da3a25",
           700: "#C1412E",
           800: "#ac3a2b",
-          900: "#96382c"
+          900: "#96382c",
         },
         yellow: {
           50: "#ffe3bd",
@@ -59,7 +56,7 @@ module.exports = {
           600: "#e6982a",
           700: "#db8e21",
           800: "#c58224",
-          900: "#af7626"
+          900: "#af7626",
         },
         purple: {
           50: "#e0e1fa",
@@ -78,17 +75,15 @@ module.exports = {
             200: "#333556",
             300: "#292a3f",
             400: "#1d1e2c",
-          }
-        }
-      }
+          },
+        },
+      },
     },
   },
-  plugins: [
-    require("tailwind-scrollbar"),
-  ],
+  plugins: [require("tailwind-scrollbar")],
   variants: {
     extends: {
-      scrollbar: ["dark"]
-    }
-  }
+      scrollbar: ["dark"],
+    },
+  },
 };

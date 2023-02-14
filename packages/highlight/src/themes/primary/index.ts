@@ -2,7 +2,7 @@ import { PrismTheme } from "prism-react-renderer";
 
 const primary: PrismTheme = {
   plain: {
-    color: "#ABB2BF",
+    color: "#d4d7db",
     backgroundColor: "transparent",
   },
   styles: [
@@ -19,7 +19,12 @@ const primary: PrismTheme = {
       },
     },
     {
-      types: ["builtin", "changed", "keyword", "interpolation-punctuation"],
+      types: [
+        "builtin",
+        "changed",
+        "keyword",
+        "interpolation-punctuation",
+      ],
       style: {
         color: "#C678DD",
       },
@@ -43,7 +48,11 @@ const primary: PrismTheme = {
       },
     },
     {
-      types: ["string", "attr-value", "template-punctuation"],
+      types: [
+        "string",
+        "attr-value",
+        "template-punctuation",
+      ],
       style: {
         color: "#98C379",
       },

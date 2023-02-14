@@ -3,7 +3,7 @@
     "prettier/prettier": [
       "warn",
       {
-        "printWidth": 90,
+        "printWidth": 60,
         "bracketLine": true,
         "arrowFunctionParentheses": "always",
         "tabWidth": 2,

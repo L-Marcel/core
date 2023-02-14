@@ -1,11 +1,8 @@
-import React from 'react'
-import { putGlobalStyles } from "../src/styles/global";
-
 export const parameters = {
   actions: { 
     argTypesRegex: '^on[A-Z].*' 
   },
-  layout: 'centered',
+  layout: 'padded',
   /*backgrounds: {
     default: 'electric-ribbon',
     values: [
@@ -22,7 +19,6 @@ export const decorators = [
   story => {
     return (
       <>
-        {putGlobalStyles()}
         {story()}
       </>
     )

@@ -1,0 +1,12 @@
+{
+  "extends": "@lmarcel/ts-config/react",
+  "include": ["stories"],
+  "exclude": [
+    "node_modules", 
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "jsx": "preserve",
+    "target": "ES2020"
+  }
+}

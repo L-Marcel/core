@@ -5,11 +5,7 @@
   "scripts": {
     "dev": "start-storybook -p 6006",
     "build": "build-storybook",
-    "buildCommand": "npm run build-storybook",
-    "devCommand": "npm run storybook",
-    "installCommand": "npm install",
-    "framework": null,
-    "outputDirectory": "./storybook-static"
+    "start": "storybook"
   },
   "dependencies": {
     "@babel/core": "^7.20.12",

@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
-    "changeset": "changeset",
-    "change-versions": "changeset version",
-    "release": "turbo run build && changeset publish"
+    "set:changes": "changeset",
+    "set:versions": "changeset version",
+    "set:publish": "turbo run build && changeset publish"
   },
   "devDependencies": {
+    "changeset": "^0.2.6",
     "tsup": "^6.5.0",
     "turbo": "^1.7.0"
   }

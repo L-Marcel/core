@@ -1,6 +1,6 @@
 {
   "name": "@lmarcel/book",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "start-storybook -p 6006",
@@ -39,6 +39,6 @@
     "webpack": ">=2.0.0"
   },
   "devDependencies": {
-    "@lmarcel/ts-config": "^1.0.0"
+    "@lmarcel/ts-config": "^1.0.1"
   }
 }

@@ -1,12 +1,12 @@
 {
   "name": "@lmarcel/highlight",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "dev": "tsup --watch",
-    "build": "tsup --minify"
+    "build": "tsup"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
-    "@lmarcel/highlight": "*",
+    "@lmarcel/highlight": "^1.2.0",
     "@next/font": "13.1.6",
     "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-actions": "^6.5.15",

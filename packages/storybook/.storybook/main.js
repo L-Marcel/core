@@ -12,5 +12,9 @@ module.exports = {
     "@storybook/addon-actions",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y"
-  ]
+  ],
+  webpackFinal: async (config) => {
+    config.optimization.minimize = false;
+    return config;
+  }
 }

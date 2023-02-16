@@ -1,7 +1,7 @@
 import "./themes/global.css";
 import "./themes/code.css";
 
-import { Language, PrismTheme } from "prism-react-renderer";
+import { Language } from "prism-react-renderer";
 import { CodeBlock } from "./CodeBlock";
 import {
   HighlightContainer,
@@ -34,6 +34,8 @@ export interface HighlightProps
   numbersContainerClassName?: string;
   numbersClassName?: string;
 }
+
+export { themes };
 
 export default function Highlight({
   children,

@@ -5,10 +5,10 @@
   ],
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "build": "turbo run build",
+    "build": "turbo run build --no-daemon",
     "set:changes": "changeset",
     "set:versions": "changeset version",
-    "set:publish": "turbo run build && changeset publish"
+    "set:publish": "turbo run build --no-daemon && changeset publish"
   },
   "devDependencies": {
     "changeset": "^0.2.6",

@@ -5,7 +5,6 @@ export default defineConfig({
   injectStyle: true,
   clean: false,
   dts: true,
-  legacyOutput: true,
   entry: {
     index: "src/index.tsx",
   },

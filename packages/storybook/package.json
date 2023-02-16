@@ -5,10 +5,7 @@
   "scripts": {
     "dev": "start-storybook -p 6006",
     "build": "build-storybook",
-    "start": "storybook",
-    "$schema": "https://openapi.vercel.sh/vercel.json",
-    "framework": null,
-    "outputDirectory": "./storybook-static"
+    "start": "storybook"
   },
   "dependencies": {
     "@babel/core": "^7.20.12",

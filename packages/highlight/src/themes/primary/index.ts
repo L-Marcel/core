@@ -1,6 +1,8 @@
-import { PrismTheme } from "prism-react-renderer";
+import { Language, PrismTheme } from "prism-react-renderer";
+import { tokens } from "../tokens";
 
-export interface HighlightTheme extends PrismTheme {
+export interface HighlightTheme
+  extends Omit<PrismTheme, "styles"> {
   plain: PrismTheme["plain"] & {
     numbersColor?: string;
     numbersBackgroundColor?: string;
@@ -8,6 +10,11 @@ export interface HighlightTheme extends PrismTheme {
     srollbarThumbColor?: string;
     scrollbarTrackColor?: string;
   };
+  styles: {
+    types: (typeof tokens)[number][];
+    style: PrismTheme["styles"][number]["style"];
+    languages?: Language[];
+  }[];
 }
 
 const primary: HighlightTheme = {

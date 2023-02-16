@@ -1,7 +1,7 @@
 import Highlight, { HighlightProps } from "@lmarcel/highlight";
 
 import { Meta, StoryObj } from "@storybook/react";
-import { __markup, __clike, __css , __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
+import { __markup, __latex, __clike, __css , __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
 
 export default {
   title: "Highlight",
@@ -321,5 +321,12 @@ export const yaml: StoryObj<HighlightProps> = {
   args: {
     language: "yaml",
     children: __yaml
+  }
+};
+
+export const latex: StoryObj<HighlightProps> = {
+  args: {
+    language: "latex",
+    children: __latex
   }
 };

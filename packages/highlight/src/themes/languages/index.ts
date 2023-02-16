@@ -36,3 +36,7 @@ export const languages = [
   "yaml",
   new String(),
 ] as const;
+
+export function createLanguagePlugin(object: object) {
+  return object;
+}

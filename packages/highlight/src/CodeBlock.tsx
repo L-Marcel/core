@@ -1,26 +1,32 @@
 import Highlight, {
   Language,
   defaultProps,
+  Prism,
+  PrismTheme,
 } from "prism-react-renderer";
 import { HighlightPreContainer } from "./styles";
 import { HighlightTheme } from "./themes/primary";
+import { HighligthPlugin } from "./themes/plugin";
 
 interface CodeBlockProps {
   code: string;
   language: Language;
   theme?: HighlightTheme;
+  plugins?: HighligthPlugin[];
 }
 
 export function CodeBlock({
   code,
   language,
+  plugins,
   theme = defaultProps.theme,
 }: CodeBlockProps) {
   return (
     <Highlight
       {...defaultProps}
-      theme={theme}
+      theme={theme as PrismTheme}
       code={code}
+      Prism={Prism}
       language={language}
     >
       {({

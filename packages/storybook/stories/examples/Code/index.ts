@@ -482,3 +482,7 @@ export const __yaml = `applications:
   host: my-other-app
   path: .
   buildpack: python_buildpack`;
+
+export const __latex = `
+  x = \frac{5}{4}
+`;

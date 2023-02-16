@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 1.4.1
+
+### Patch Changes
+
+- Updating readme and creating plugins structures
+
 ## 1.4.0
 
 ### Minor Changes

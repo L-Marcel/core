@@ -12,9 +12,13 @@ import {
 
 import themes from "./themes";
 
-import { languages } from "./themes/languages";
+import {
+  createLanguagePlugin,
+  languages,
+} from "./themes/languages";
 import { ComponentProps } from "react";
 import { HighlightTheme } from "./themes/primary";
+import { HighligthPlugin } from "./themes/plugin";
 
 export type HighlightSupportedLanguages =
   (typeof languages)[number];
@@ -33,9 +37,11 @@ export interface HighlightProps
 
   numbersContainerClassName?: string;
   numbersClassName?: string;
+
+  plugins?: HighligthPlugin[];
 }
 
-export { themes };
+export { themes, createLanguagePlugin };
 
 export default function Highlight({
   children,
@@ -45,6 +51,7 @@ export default function Highlight({
   showNumbersBorder = true,
   numbersContainerClassName,
   numbersClassName,
+  plugins,
   ...rest
 }: HighlightProps) {
   const numberOfLines = children.match(/\n/g)?.length;
@@ -109,6 +116,7 @@ export default function Highlight({
           </HighlightNumbers>
         )}
         <CodeBlock
+          plugins={plugins}
           code={children}
           theme={selectedTheme}
           language={language as Language}

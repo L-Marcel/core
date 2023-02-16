@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 1.3.0
+
+### Minor Changes
+
+- Adding readme
+
 ## 1.2.0
 
 ### Minor Changes

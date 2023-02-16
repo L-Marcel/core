@@ -1,5 +1,6 @@
 export const languages = [
   "markup",
+  "html",
   "bash",
   "clike",
   "c",

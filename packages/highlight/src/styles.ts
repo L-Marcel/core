@@ -25,14 +25,23 @@ export const HighlightContainer = tf(
   }
 );
 
-export const HighlightPreContainer = tf(
-  "pre",
+export const HighlightContent = tf(
+  "div",
   `
+  flex
+  relative
   w-full
   overflow-y-hidden
   overflow-x-auto
   scrollbar-thin
   scrollbar-h-[4px]
+`
+);
+
+export const HighlightPreContainer = tf(
+  "pre",
+  `
+  w-full
 
   py-2
   z-10
@@ -58,9 +67,10 @@ export const HighlightNumbers = tf(
   "div",
   `
   grid
-  py-2
+  pt-2
+  pb-3
   gap-0
-  min-w-[1.6rem]
+  min-w-min
   border-solid
 `,
   {
@@ -81,7 +91,6 @@ export const HighlightNumbers = tf(
 export const HighlightNumber = tf(
   "p",
   `
-  text-zinc-500
   font-code
   mx-2
   text-sm

@@ -7,6 +7,7 @@ export function getThemeAdditionalColors(
   switch (theme) {
     case "dracula":
       return {
+        numbersColor: "#86868b",
         numbersBorderColor: "#a47cde",
         numbersBackgroundColor: "#20212b",
         srollbarThumbColor: "#ad88e6",
@@ -14,6 +15,7 @@ export function getThemeAdditionalColors(
       };
     case "duotoneDark":
       return {
+        numbersColor: "#86868b",
         numbersBorderColor: "#fac48e",
         numbersBackgroundColor: "#201d29",
         srollbarThumbColor: "#f8ca9d",
@@ -21,6 +23,7 @@ export function getThemeAdditionalColors(
       };
     case "duotoneLight":
       return {
+        numbersColor: "#4e4e58",
         numbersBorderColor: "#063289",
         numbersBackgroundColor: "#f0ebe4",
         srollbarThumbColor: "#0a317e",
@@ -28,6 +31,7 @@ export function getThemeAdditionalColors(
       };
     case "github":
       return {
+        numbersColor: "#4e4e58",
         numbersBorderColor: "#00008f",
         numbersBackgroundColor: "#ebebeb",
         srollbarThumbColor: "#03037e",
@@ -35,6 +39,7 @@ export function getThemeAdditionalColors(
       };
     case "nightOwl":
       return {
+        numbersColor: "#d4f5ef",
         numbersBorderColor: "#7fdbca",
         numbersBackgroundColor: "#01111f",
         srollbarThumbColor: "#6ecfbe",
@@ -42,6 +47,7 @@ export function getThemeAdditionalColors(
       };
     case "nightOwlLight":
       return {
+        numbersColor: "#3a4745",
         numbersBorderColor: "#0c969b",
         numbersBackgroundColor: "#f1f1f1",
         srollbarThumbColor: "#149ea3",
@@ -49,6 +55,7 @@ export function getThemeAdditionalColors(
       };
     case "oceanicNext":
       return {
+        numbersColor: "#d3bbd3",
         numbersBorderColor: "#b098b0",
         numbersBackgroundColor: "#21252e",
         srollbarThumbColor: "#a38ca3",
@@ -56,6 +63,7 @@ export function getThemeAdditionalColors(
       };
     case "palenight":
       return {
+        numbersColor: "#b8bfbd",
         numbersBorderColor: "#b8bfbd",
         numbersBackgroundColor: "#202333",
         srollbarThumbColor: "#a6afac",
@@ -63,6 +71,7 @@ export function getThemeAdditionalColors(
       };
     case "okaidia":
       return {
+        numbersColor: "#8c8c92",
         numbersBorderColor: "#4fc2df",
         numbersBackgroundColor: "#1c1d18",
         srollbarThumbColor: "#44b1cc",
@@ -70,6 +79,7 @@ export function getThemeAdditionalColors(
       };
     case "shadesOfPurple":
       return {
+        numbersColor: "#ffac3e",
         numbersBorderColor: "#fc9819",
         numbersBackgroundColor: "#252349",
         srollbarThumbColor: "#eb8f16",
@@ -77,6 +87,7 @@ export function getThemeAdditionalColors(
       };
     case "synthwave84":
       return {
+        numbersColor: "#d4ccc0",
         numbersBorderColor: "#d4ccc0",
         numbersBackgroundColor: "#251c33",
         srollbarThumbColor: "#c9c1b6",
@@ -84,6 +95,7 @@ export function getThemeAdditionalColors(
       };
     case "ultramin":
       return {
+        numbersColor: "#343338",
         numbersBorderColor: "#747377",
         numbersBackgroundColor: "#fafafa",
         srollbarThumbColor: "#6d6c72",
@@ -91,6 +103,7 @@ export function getThemeAdditionalColors(
       };
     case "vsDark":
       return {
+        numbersColor: "#71717A",
         numbersBorderColor: "#5095ca",
         numbersBackgroundColor: "#161616",
         srollbarThumbColor: "#438ac0",
@@ -98,6 +111,7 @@ export function getThemeAdditionalColors(
       };
     case "vsLight":
       return {
+        numbersColor: "#494957",
         numbersBorderColor: "#5290ff",
         numbersBackgroundColor: "#f7f7f7",
         srollbarThumbColor: "#4986f0",
@@ -105,6 +119,7 @@ export function getThemeAdditionalColors(
       };
     default:
       return {
+        numbersColor: "#71717A",
         numbersBackgroundColor: "#1b1816",
         numbersBorderColor: "#9d25ba",
         srollbarThumbColor: "#ac38c9",

@@ -33,16 +33,7 @@ export function CodeBlock({
         return (
           <HighlightPreContainer
             className={className}
-            style={
-              {
-                ...style,
-                "--scrollbar-thumb":
-                  theme?.plain?.srollbarThumbColor,
-                "--scrollbar-track":
-                  theme?.plain?.scrollbarTrackColor,
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              } as any
-            }
+            style={style}
           >
             <code>
               {tokens.map((line, idx) => {

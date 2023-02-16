@@ -5,6 +5,7 @@ import { Language, PrismTheme } from "prism-react-renderer";
 import { CodeBlock } from "./CodeBlock";
 import {
   HighlightContainer,
+  HighlightContent,
   HighlightNumber,
   HighlightNumbers,
 } from "./styles";
@@ -60,39 +61,57 @@ export default function Highlight({
       {...rest}
       style={{
         backgroundColor:
-          selectedTheme.plain.backgroundColor,
+          selectedTheme?.plain?.backgroundColor,
         ...rest.style,
       }}
     >
-      {showNumbers && (
-        <HighlightNumbers
-          className={numbersContainerClassName}
-          showBorder={showNumbersBorder}
-          style={{
-            gridTemplateRows: `repeat(${numberOfLines},24px)`,
-            backgroundColor:
-              selectedTheme.plain.numbersBackgroundColor,
-            borderColor:
-              selectedTheme.plain.numbersBorderColor,
-          }}
-        >
-          {lines.map((line) => {
-            return (
-              <HighlightNumber
-                className={numbersClassName}
-                key={line}
-              >
-                {line}
-              </HighlightNumber>
-            );
-          })}
-        </HighlightNumbers>
-      )}
-      <CodeBlock
-        code={children}
-        theme={selectedTheme}
-        language={language as Language}
-      />
+      <HighlightContent
+        style={
+          {
+            "--scrollbar-thumb":
+              selectedTheme?.plain?.srollbarThumbColor,
+            "--scrollbar-track":
+              selectedTheme?.plain?.scrollbarTrackColor,
+          } as React.CSSProperties & {
+            [key: string]: string;
+          }
+        }
+      >
+        {showNumbers && (
+          <HighlightNumbers
+            className={numbersContainerClassName}
+            showBorder={showNumbersBorder}
+            style={{
+              gridTemplateRows: `repeat(${numberOfLines},24px)`,
+              backgroundColor:
+                selectedTheme?.plain
+                  ?.numbersBackgroundColor,
+              borderColor:
+                selectedTheme?.plain?.numbersBorderColor,
+            }}
+          >
+            {lines.map((line) => {
+              return (
+                <HighlightNumber
+                  style={{
+                    color:
+                      selectedTheme?.plain?.numbersColor,
+                  }}
+                  className={numbersClassName}
+                  key={line}
+                >
+                  {line}
+                </HighlightNumber>
+              );
+            })}
+          </HighlightNumbers>
+        )}
+        <CodeBlock
+          code={children}
+          theme={selectedTheme}
+          language={language as Language}
+        />
+      </HighlightContent>
     </HighlightContainer>
   );
 }

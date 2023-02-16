@@ -48,6 +48,7 @@ export default {
     },
     language: {
       options: [
+        "html",
         "markup",
         "bash",
         "clike",
@@ -155,8 +156,9 @@ export const jsx: StoryObj<HighlightProps> = {
 };
 
 export const markup: StoryObj<HighlightProps> = {
+  name: "Html/Markup",
   args: {
-    language: "markup",
+    language: "html",
     children: __markup
   }
 };

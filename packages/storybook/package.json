@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "start-storybook -p 6006",
     "build": "build-storybook",
-    "$schema": "https://openapi.vercel.sh/vercel.json",
     "buildCommand": "npm run build-storybook",
     "devCommand": "npm run storybook",
     "installCommand": "npm install",

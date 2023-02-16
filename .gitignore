@@ -2,3 +2,5 @@ node_modules
 dist
 .turbo
 .yarn
+pnpm-lock.yml
+pnpm-workspace.yml

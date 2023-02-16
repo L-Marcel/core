@@ -33,6 +33,6 @@
     "webpack": ">=2.0.0"
   },
   "devDependencies": {
-    "@lmarcel/ts-config": "workspace:*"
+    "@lmarcel/ts-config": "^1.0.0"
   }
 }

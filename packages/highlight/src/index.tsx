@@ -9,22 +9,26 @@ import {
   HighlightNumbers,
 } from "./styles";
 
-import * as themes from "./themes";
+import themes from "./themes";
 
 import { languages } from "./themes/languages";
 import { ComponentProps } from "react";
+import { HighlightTheme } from "./themes/primary";
 
-type HighlightSupportedLanguages =
+export type HighlightSupportedLanguages =
   (typeof languages)[number];
 
-type HighlightTheme = keyof typeof themes;
+export type DefaultHighlightTheme = keyof typeof themes;
+export type { HighlightTheme };
 
 export interface HighlightProps
   extends ComponentProps<typeof HighlightContainer> {
   children: string;
-  theme?: HighlightTheme | PrismTheme;
+  theme?: DefaultHighlightTheme | HighlightTheme;
   language?: HighlightSupportedLanguages;
+
   showNumbers?: boolean;
+  showNumbersBorder?: boolean;
 
   numbersContainerClassName?: string;
   numbersClassName?: string;
@@ -34,7 +38,8 @@ export default function Highlight({
   children,
   theme = "primary",
   language = "jsx",
-  showNumbers = false,
+  showNumbers = true,
+  showNumbersBorder = true,
   numbersContainerClassName,
   numbersClassName,
   ...rest
@@ -47,13 +52,28 @@ export default function Highlight({
     return i + 1;
   });
 
+  const selectedTheme =
+    typeof theme === "string" ? themes[theme] : theme;
+
   return (
-    <HighlightContainer {...rest}>
+    <HighlightContainer
+      {...rest}
+      style={{
+        backgroundColor:
+          selectedTheme.plain.backgroundColor,
+        ...rest.style,
+      }}
+    >
       {showNumbers && (
         <HighlightNumbers
           className={numbersContainerClassName}
+          showBorder={showNumbersBorder}
           style={{
             gridTemplateRows: `repeat(${numberOfLines},24px)`,
+            backgroundColor:
+              selectedTheme.plain.numbersBackgroundColor,
+            borderColor:
+              selectedTheme.plain.numbersBorderColor,
           }}
         >
           {lines.map((line) => {
@@ -70,9 +90,7 @@ export default function Highlight({
       )}
       <CodeBlock
         code={children}
-        theme={
-          typeof theme === "string" ? themes[theme] : theme
-        }
+        theme={selectedTheme}
         language={language as Language}
       />
     </HighlightContainer>

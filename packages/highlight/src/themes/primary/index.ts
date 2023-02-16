@@ -1,9 +1,22 @@
 import { PrismTheme } from "prism-react-renderer";
 
-const primary: PrismTheme = {
+export interface HighlightTheme extends PrismTheme {
+  plain: PrismTheme["plain"] & {
+    numbersBackgroundColor?: string;
+    numbersBorderColor?: string;
+    srollbarThumbColor?: string;
+    scrollbarTrackColor?: string;
+  };
+}
+
+const primary: HighlightTheme = {
   plain: {
     color: "#d4d7db",
-    backgroundColor: "transparent",
+    backgroundColor: "#252322",
+    numbersBackgroundColor: "#1b1816",
+    numbersBorderColor: "#9d25ba",
+    srollbarThumbColor: "#ac38c9",
+    scrollbarTrackColor: "#201d1b",
   },
   styles: [
     {

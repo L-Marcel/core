@@ -105,12 +105,22 @@ export const Full: StoryObj<HighlightProps> = {
   }
 };
 
-
-export const WithNumbers: StoryObj<HighlightProps> = {
-  name: "With Numbers",
+export const WithScroll: StoryObj<HighlightProps> = {
+  name: "With Scroll",
   args: {
     language: "tsx",
-    showNumbers: true,
+    children: __tsx,
+    style: {
+      maxWidth: 450
+    }
+  }
+};
+
+export const WithoutNumbers: StoryObj<HighlightProps> = {
+  name: "Without Numbers",
+  args: {
+    language: "tsx",
+    showNumbers: false,
     children: __tsx
   }
 };

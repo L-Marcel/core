@@ -3,7 +3,6 @@ import { tf } from "tailwind-factory";
 export const HighlightContainer = tf(
   "div",
   `
-  bg-gray-600
   rounded-lg
   flex
   relative
@@ -29,6 +28,12 @@ export const HighlightContainer = tf(
 export const HighlightPreContainer = tf(
   "pre",
   `
+  w-full
+  overflow-y-hidden
+  overflow-x-auto
+  scrollbar-thin
+  scrollbar-h-[4px]
+
   py-2
   z-10
   
@@ -55,13 +60,22 @@ export const HighlightNumbers = tf(
   grid
   py-2
   gap-0
-  rounded-l-lg
   min-w-[1.6rem]
-  border-r-[3px]
   border-solid
-  border-primary-500
-  bg-gray-700/70
-`
+`,
+  {
+    variants: {
+      showBorder: {
+        true: `
+        border-r-[3px]
+      `,
+        false: "",
+      },
+    },
+    defaultVariants: {
+      showBorder: true,
+    },
+  }
 );
 
 export const HighlightNumber = tf(
@@ -69,7 +83,7 @@ export const HighlightNumber = tf(
   `
   text-zinc-500
   font-code
-  px-2
+  mx-2
   text-sm
   pt-[2.5px]
   h-[24px]

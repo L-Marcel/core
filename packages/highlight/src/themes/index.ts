@@ -12,10 +12,27 @@ import synthwave84 from "prism-react-renderer/themes/synthwave84";
 import ultramin from "prism-react-renderer/themes/ultramin";
 import vsDark from "prism-react-renderer/themes/vsDark";
 import vsLight from "prism-react-renderer/themes/vsLight";
-import primary from "./primary";
+import primary, { HighlightTheme } from "./primary";
+import { getThemeAdditionalColors } from "../utils/getThemeAdditionalColors";
 
-export {
-  primary,
+export interface DefaultThemes {
+  dracula: HighlightTheme;
+  duotoneDark: HighlightTheme;
+  duotoneLight: HighlightTheme;
+  github: HighlightTheme;
+  nightOwl: HighlightTheme;
+  nightOwlLight: HighlightTheme;
+  oceanicNext: HighlightTheme;
+  palenight: HighlightTheme;
+  okaidia: HighlightTheme;
+  shadesOfPurple: HighlightTheme;
+  synthwave84: HighlightTheme;
+  ultramin: HighlightTheme;
+  vsDark: HighlightTheme;
+  vsLight: HighlightTheme;
+}
+
+const defaultThemes: DefaultThemes = {
   dracula,
   duotoneDark,
   duotoneLight,
@@ -31,3 +48,27 @@ export {
   vsDark,
   vsLight,
 };
+
+const newdefaultThemes = Object.entries(
+  defaultThemes
+).reduce((prev, [key, theme]) => {
+  const _key = key as keyof DefaultThemes;
+
+  const someColorsOfPlain = getThemeAdditionalColors(_key);
+  prev[_key] = {
+    ...theme,
+    plain: {
+      ...theme?.plain,
+      ...someColorsOfPlain,
+    },
+  } as HighlightTheme;
+
+  return prev;
+}, defaultThemes);
+
+const themes = {
+  ...newdefaultThemes,
+  primary,
+};
+
+export default themes;

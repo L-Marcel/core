@@ -1,14 +1,14 @@
 import Highlight, {
   Language,
-  PrismTheme,
   defaultProps,
 } from "prism-react-renderer";
 import { HighlightPreContainer } from "./styles";
+import { HighlightTheme } from "./themes/primary";
 
 interface CodeBlockProps {
   code: string;
   language: Language;
-  theme?: PrismTheme;
+  theme?: HighlightTheme;
 }
 
 export function CodeBlock({
@@ -33,7 +33,16 @@ export function CodeBlock({
         return (
           <HighlightPreContainer
             className={className}
-            style={style}
+            style={
+              {
+                ...style,
+                "--scrollbar-thumb":
+                  theme?.plain?.srollbarThumbColor,
+                "--scrollbar-track":
+                  theme?.plain?.scrollbarTrackColor,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              } as any
+            }
           >
             <code>
               {tokens.map((line, idx) => {

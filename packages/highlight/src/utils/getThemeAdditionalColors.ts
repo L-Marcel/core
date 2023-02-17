@@ -1,5 +1,5 @@
 import { DefaultThemes } from "../themes";
-import { HighlightTheme } from "../themes/primary";
+import { HighlightTheme } from "../themes/custom";
 
 export function getThemeAdditionalColors(
   theme: keyof DefaultThemes
@@ -120,10 +120,10 @@ export function getThemeAdditionalColors(
     default:
       return {
         numbersColor: "#71717A",
-        numbersBackgroundColor: "#1b1816",
+        numbersBackgroundColor: "hsl(218, 14%, 15%)",
         numbersBorderColor: "#9d25ba",
         srollbarThumbColor: "#ac38c9",
-        scrollbarTrackColor: "#201d1b",
+        scrollbarTrackColor: "hsl(218, 15%, 11%)",
       };
   }
 }

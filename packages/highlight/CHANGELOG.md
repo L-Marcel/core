@@ -1,5 +1,17 @@
 # @lmarcel/highlight
 
+## 1.5.1
+
+### Patch Changes
+
+- Changing build
+
+## 1.5.0
+
+### Minor Changes
+
+- Changing primary theme, adding tokens and creating custom theme class
+
 ## 1.4.1
 
 ### Patch Changes

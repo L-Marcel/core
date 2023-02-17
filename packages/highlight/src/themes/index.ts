@@ -12,9 +12,9 @@ import synthwave84 from "prism-react-renderer/themes/synthwave84";
 import ultramin from "prism-react-renderer/themes/ultramin";
 import vsDark from "prism-react-renderer/themes/vsDark";
 import vsLight from "prism-react-renderer/themes/vsLight";
-import primary, { HighlightTheme } from "./primary";
+import { HighlightTheme } from "./custom";
 import { getThemeAdditionalColors } from "../utils/getThemeAdditionalColors";
-
+import oneDark from "./custom/oneDark/dark";
 export interface DefaultThemes {
   dracula: HighlightTheme;
   duotoneDark: HighlightTheme;
@@ -68,7 +68,7 @@ const newdefaultThemes = Object.entries(
 
 const themes = {
   ...newdefaultThemes,
-  primary,
+  oneDark,
 };
 
 export default themes;

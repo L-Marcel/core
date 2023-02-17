@@ -37,6 +37,5 @@ export const languages = [
   new String(),
 ] as const;
 
-export function createLanguagePlugin(object: object) {
-  return object;
-}
+export type HighlightSupportedLanguages =
+  (typeof languages)[number];

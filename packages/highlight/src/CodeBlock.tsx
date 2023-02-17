@@ -5,7 +5,7 @@ import Highlight, {
   PrismTheme,
 } from "prism-react-renderer";
 import { HighlightPreContainer } from "./styles";
-import { HighlightTheme } from "./themes/primary";
+import { HighlightTheme } from "./themes/custom";
 import { HighligthPlugin } from "./themes/plugin";
 
 interface CodeBlockProps {

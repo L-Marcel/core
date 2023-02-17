@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "build": "turbo run build --no-daemon",
+    "build": "turbo run build --no-daemon --output-logs=errors-only",
     "set:changes": "changeset",
     "set:versions": "changeset version",
     "set:publish": "changeset publish"

@@ -8,7 +8,7 @@ export default {
   component: Highlight,
   args: {
     full: false,
-    theme: "primary",
+    theme: "oneDark",
     language: "tsx",
     children: `export function Highlight({ 
   children, 
@@ -28,7 +28,7 @@ export default {
   argTypes: {
     theme: {
       options: [
-        "primary",
+        "oneDark",
         "dracula",
         "duotoneDark",
         "duotoneLight",

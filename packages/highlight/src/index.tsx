@@ -9,27 +9,41 @@ import {
   HighlightNumber,
   HighlightNumbers,
 } from "./styles";
-
 import themes from "./themes";
-
-import {
-  createLanguagePlugin,
-  languages,
-} from "./themes/languages";
+import { HighlightSupportedLanguages } from "./themes/languages";
 import { ComponentProps } from "react";
-import { HighlightTheme } from "./themes/primary";
-import { HighligthPlugin } from "./themes/plugin";
+import {
+  HighlightCustomTheme,
+  HighlightTheme,
+  HighlightThemePlain,
+  HighlightThemeStyle,
+} from "./themes/custom";
+import {
+  HighligthPlugin,
+  HighligthPluginDetails,
+  HighligthPluginKitData,
+  HighligthPluginLanguageData,
+  HighligthPluginThemeData,
+} from "./themes/plugin";
 
-export type HighlightSupportedLanguages =
-  (typeof languages)[number];
+type HighlightDefaultTheme = keyof typeof themes;
 
-export type DefaultHighlightTheme = keyof typeof themes;
-export type { HighlightTheme };
+export type {
+  HighlightTheme,
+  HighlightThemePlain,
+  HighlightThemeStyle,
+  HighlightDefaultTheme,
+  HighligthPluginDetails,
+  HighligthPluginKitData,
+  HighligthPluginThemeData,
+  HighligthPluginLanguageData,
+};
 
 export interface HighlightProps
   extends ComponentProps<typeof HighlightContainer> {
   children: string;
-  theme?: DefaultHighlightTheme | HighlightTheme;
+
+  theme?: HighlightDefaultTheme | HighlightTheme;
   language?: HighlightSupportedLanguages;
 
   showNumbers?: boolean;
@@ -41,11 +55,11 @@ export interface HighlightProps
   plugins?: HighligthPlugin[];
 }
 
-export { themes, createLanguagePlugin };
+export { themes, HighlightCustomTheme };
 
 export default function Highlight({
   children,
-  theme = "primary",
+  theme = "oneDark",
   language = "jsx",
   showNumbers = true,
   showNumbersBorder = true,

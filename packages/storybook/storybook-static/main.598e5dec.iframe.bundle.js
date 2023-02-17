@@ -74,12 +74,12 @@ var __objectivec = "#import <Foundation/Foundation.h>\n\nint main(int argc, cons
 var __ocaml = "let rec factorial n =\nif n = 0 then 1\nelse n * factorial (n - 1)\n\nlet () =\nlet n = 5 in\nlet result = factorial n in\nPrintf.printf \"The factorial of %d is %d\\n\" n result";
 var __python = "def factorial(n):\nif n == 0:\n    return 1\nelse:\n    return n * factorial(n - 1)\n\nn = 5\nresult = factorial(n)\nprintf(\"The factorial of {n} is {result}\")";
 var __reason = "let factorial = (n: int) => {\n  if (n == 0) {\n    1\n  } else {\n    n * factorial(n - 1)\n  }\n};\n\nlet n = 5;\nlet result = factorial(n);\nprint_endline(string_of_int(result));";
-var __sass = "body {\n  font: 100% $font-stack;\n  color: $primary-color;\n}\n\na {\n  color: darken($primary-color, 10%);\n  &:hover {\n    color: darken($primary-color, 20%);\n  }\n  &:active {\n    color: darken($primary-color, 30%);\n  }\n}\n\nh1 {\n  font-size: 2em;\n  margin: 0.5em 0;\n}\n\np {\n  font-size: 1.5em;\n  margin: 0.5em 0;\n}";
+var __sass = "$font-stack: Helvetica, sans-serif\n$primary-color: #333\n\nbody\n  font: 100% $font-stack\n  color: $primary-color\n";
 var __scss = "body {\n  font: 100% $font-stack;\n  color: $primary-color;\n}\n\na {\n  color: darken($primary-color, 10%);\n  &:hover {\n    color: darken($primary-color, 20%);\n  }\n  &:active {\n    color: darken($primary-color, 30%);\n  }\n}\n\nh1 {\n  font-size: 2em;\n  margin: 0.5em 0;\n}\n\np {\n  font-size: 1.5em;\n  margin: 0.5em 0;\n}";
 var __sql = "CREATE TABLE users (\n  id INTEGER PRIMARY KEY,\n  name TEXT NOT NULL,\n  age INTEGER NOT NULL,\n  email TEXT NOT NULL UNIQUE\n);\n\nINSERT INTO users (name, age, email)\nVALUES ('John', 30, 'john@example.com'),\n       ('Jane', 25, 'jane@example.com');\n\nSELECT * FROM users;";
 var __stylus = "body\nfont: 100% font-stack\ncolor: primary-color\n\na\ncolor: darken(primary-color, 10%)\n&:hover\n  color: darken(primary-color, 20%)\n&:active\n  color: darken(primary-color, 30%)\n\nh1\nfont-size: 2em\nmargin: 0.5em 0\n\np\nfont-size: 1.5em\nmargin: 0.5em 0";
 var __yaml = "applications:\n- name: my-app\n  memory: 128M\n  instances: 1\n  domain: example.com\n  host: my-app\n  path: .\n  buildpack: nodejs_buildpack\n- name: my-other-app\n  memory: 256M\n  instances: 2\n  domain: example.com\n  host: my-other-app\n  path: .\n  buildpack: python_buildpack";
-var __latex = "\n  x = \frac{5}{4}\n";
+var __latex = "x = \\frac{5}{4}";
 ;// CONCATENATED MODULE: ./stories/Highlight.stories.tsx
 
 
@@ -88,13 +88,13 @@ var __latex = "\n  x = \frac{5}{4}\n";
   component: (dist_default()),
   args: {
     full: false,
-    theme: "primary",
+    theme: "oneDark",
     language: "tsx",
     children: "export function Highlight({ \n  children, \n  theme = \"default\" \n}: HighlightProps, test: string) {\n  type HighlightTheme = keyof typeof themes;\n\n  return (\n    <CodeBlock\n      code={children}\n      theme={themes[theme]}\n      languageuage=\"tsx\"\n    />\n  );\n}"
   },
   argTypes: {
     theme: {
-      options: ["primary", "dracula", "duotoneDark", "duotoneLight", "github", "nightOwl", "nightOwlLight", "oceanicNext", "palenight", "okaidia", "shadesOfPurple", "synthwave84", "ultramin", "vsDark", "vsLight"],
+      options: ["oneDark", "dracula", "duotoneDark", "duotoneLight", "github", "nightOwl", "nightOwlLight", "oceanicNext", "palenight", "okaidia", "shadesOfPurple", "synthwave84", "ultramin", "vsDark", "vsLight"],
       control: {
         type: 'select'
       }
@@ -1577,8 +1577,8 @@ var require_tailwind_factory = __commonJS({
 // src/index.tsx
 var src_exports = {};
 __export(src_exports, {
-  createLanguagePlugin: function createLanguagePlugin() {
-    return _createLanguagePlugin;
+  HighlightCustomTheme: function HighlightCustomTheme() {
+    return _HighlightCustomTheme;
   },
   "default": function _default() {
     return Highlight2;
@@ -1614,7 +1614,7 @@ function styleInject(css) {
 }
 
 // src/themes/global.css
-styleInject('*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-width: 0;\n  border-style: solid;\n  border-color: #e5e7eb;\n}\n::before,\n::after {\n  --tw-content: "";\n}\nhtml {\n  line-height: 1.5;\n  -webkit-text-size-adjust: 100%;\n  -moz-tab-size: 4;\n  -o-tab-size: 4;\n  tab-size: 4;\n  font-family:\n    ui-sans-serif,\n    system-ui,\n    -apple-system,\n    BlinkMacSystemFont,\n    "Segoe UI",\n    Roboto,\n    "Helvetica Neue",\n    Arial,\n    "Noto Sans",\n    sans-serif,\n    "Apple Color Emoji",\n    "Segoe UI Emoji",\n    "Segoe UI Symbol",\n    "Noto Color Emoji";\n  font-feature-settings: normal;\n}\nbody {\n  margin: 0;\n  line-height: inherit;\n}\nhr {\n  height: 0;\n  color: inherit;\n  border-top-width: 1px;\n}\nabbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n  text-decoration: underline dotted;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\na {\n  color: inherit;\n  text-decoration: inherit;\n}\nb,\nstrong {\n  font-weight: bolder;\n}\ncode,\nkbd,\nsamp,\npre {\n  font-family:\n    ui-monospace,\n    SFMono-Regular,\n    Menlo,\n    Monaco,\n    Consolas,\n    "Liberation Mono",\n    "Courier New",\n    monospace;\n  font-size: 1em;\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsub {\n  bottom: -0.25em;\n}\nsup {\n  top: -0.5em;\n}\ntable {\n  text-indent: 0;\n  border-color: inherit;\n  border-collapse: collapse;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  line-height: inherit;\n  color: inherit;\n  margin: 0;\n  padding: 0;\n}\nbutton,\nselect {\n  text-transform: none;\n}\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  -webkit-appearance: button;\n  background-color: transparent;\n  background-image: none;\n}\n:-moz-focusring {\n  outline: auto;\n}\n:-moz-ui-invalid {\n  box-shadow: none;\n}\nprogress {\n  vertical-align: baseline;\n}\n::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}\n[type=search] {\n  -webkit-appearance: textfield;\n  outline-offset: -2px;\n}\n::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  font: inherit;\n}\nsummary {\n  display: list-item;\n}\nblockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}\nfieldset {\n  margin: 0;\n  padding: 0;\n}\nlegend {\n  padding: 0;\n}\nol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\ntextarea {\n  resize: vertical;\n}\ninput::-moz-placeholder,\ntextarea::-moz-placeholder {\n  opacity: 1;\n  color: #9ca3af;\n}\ninput::placeholder,\ntextarea::placeholder {\n  opacity: 1;\n  color: #9ca3af;\n}\nbutton,\n[role=button] {\n  cursor: pointer;\n}\n:disabled {\n  cursor: default;\n}\nimg,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block;\n  vertical-align: middle;\n}\nimg,\nvideo {\n  max-width: 100%;\n  height: auto;\n}\n[hidden] {\n  display: none;\n}\n* {\n  scrollbar-color: initial;\n  scrollbar-width: initial;\n}\n*,\n::before,\n::after {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x: ;\n  --tw-pan-y: ;\n  --tw-pinch-zoom: ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal: ;\n  --tw-slashed-zero: ;\n  --tw-numeric-figure: ;\n  --tw-numeric-spacing: ;\n  --tw-numeric-fraction: ;\n  --tw-ring-inset: ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur: ;\n  --tw-brightness: ;\n  --tw-contrast: ;\n  --tw-grayscale: ;\n  --tw-hue-rotate: ;\n  --tw-invert: ;\n  --tw-saturate: ;\n  --tw-sepia: ;\n  --tw-drop-shadow: ;\n  --tw-backdrop-blur: ;\n  --tw-backdrop-brightness: ;\n  --tw-backdrop-contrast: ;\n  --tw-backdrop-grayscale: ;\n  --tw-backdrop-hue-rotate: ;\n  --tw-backdrop-invert: ;\n  --tw-backdrop-opacity: ;\n  --tw-backdrop-saturate: ;\n  --tw-backdrop-sepia: ;\n}\n::backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x: ;\n  --tw-pan-y: ;\n  --tw-pinch-zoom: ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal: ;\n  --tw-slashed-zero: ;\n  --tw-numeric-figure: ;\n  --tw-numeric-spacing: ;\n  --tw-numeric-fraction: ;\n  --tw-ring-inset: ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur: ;\n  --tw-brightness: ;\n  --tw-contrast: ;\n  --tw-grayscale: ;\n  --tw-hue-rotate: ;\n  --tw-invert: ;\n  --tw-saturate: ;\n  --tw-sepia: ;\n  --tw-drop-shadow: ;\n  --tw-backdrop-blur: ;\n  --tw-backdrop-brightness: ;\n  --tw-backdrop-contrast: ;\n  --tw-backdrop-grayscale: ;\n  --tw-backdrop-hue-rotate: ;\n  --tw-backdrop-invert: ;\n  --tw-backdrop-opacity: ;\n  --tw-backdrop-saturate: ;\n  --tw-backdrop-sepia: ;\n}\n.highlight-tokens .token-line:has(.deleted:not(:empty)) {\n  background-color: rgb(209, 105, 105, .2) !important;\n}\n.highlight-tokens .token-line:has(.deleted:not(:empty)) .deleted:not(:empty) {\n  color: rgb(209, 154, 102) !important;\n}\n.highlight-tokens .token-line:has(.inserted:not(:empty)) {\n  background-color: rgb(181, 206, 168, .2) !important;\n}\n.highlight-tokens .token-line:has(.inserted:not(:empty)) .inserted:not(:empty) {\n  color: rgb(152, 195, 121) !important;\n}\n.relative {\n  position: relative;\n}\n.z-10 {\n  z-index: 10;\n}\n.mx-2 {\n  margin-left: 0.5rem;\n  margin-right: 0.5rem;\n}\n.flex {\n  display: flex;\n}\n.grid {\n  display: grid;\n}\n.h-\\[24px\\] {\n  height: 24px;\n}\n.w-full {\n  width: 100%;\n}\n.w-min {\n  width: -moz-min-content;\n  width: min-content;\n}\n.min-w-min {\n  min-width: -moz-min-content;\n  min-width: min-content;\n}\n.select-none {\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  user-select: none;\n}\n.gap-0 {\n  gap: 0px;\n}\n.overflow-hidden {\n  overflow: hidden;\n}\n.overflow-x-auto {\n  overflow-x: auto;\n}\n.overflow-y-hidden {\n  overflow-y: hidden;\n}\n.rounded-lg {\n  border-radius: 0.5rem;\n}\n.border-r-\\[3px\\] {\n  border-right-width: 3px;\n}\n.border-solid {\n  border-style: solid;\n}\n.py-2 {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.pr-10 {\n  padding-right: 2.5rem;\n}\n.pl-3 {\n  padding-left: 0.75rem;\n}\n.pt-2 {\n  padding-top: 0.5rem;\n}\n.pb-3 {\n  padding-bottom: 0.75rem;\n}\n.pt-\\[2\\.5px\\] {\n  padding-top: 2.5px;\n}\n.font-code {\n  font-family: Source Code Pro, monospace;\n}\n.text-sm {\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n}\n.scrollbar.overflow-y-hidden {\n  overflow-y: hidden;\n}\n.scrollbar-thin {\n  --scrollbar-track: initial;\n  --scrollbar-thumb: initial;\n  --scrollbar-corner: initial;\n  --scrollbar-track-hover: var(--scrollbar-track);\n  --scrollbar-thumb-hover: var(--scrollbar-thumb);\n  --scrollbar-corner-hover: var(--scrollbar-corner);\n  --scrollbar-track-active: var(--scrollbar-track-hover);\n  --scrollbar-thumb-active: var(--scrollbar-thumb-hover);\n  --scrollbar-corner-active: var(--scrollbar-corner-hover);\n  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);\n  overflow: overlay;\n}\n.scrollbar-thin.overflow-x-hidden {\n  overflow-x: hidden;\n}\n.scrollbar-thin.overflow-y-hidden {\n  overflow-y: hidden;\n}\n.scrollbar-thin::-webkit-scrollbar-track {\n  background-color: var(--scrollbar-track);\n}\n.scrollbar-thin::-webkit-scrollbar-thumb {\n  background-color: var(--scrollbar-thumb);\n}\n.scrollbar-thin::-webkit-scrollbar-corner {\n  background-color: var(--scrollbar-corner);\n}\n.scrollbar-thin::-webkit-scrollbar-track:hover {\n  background-color: var(--scrollbar-track-hover);\n}\n.scrollbar-thin::-webkit-scrollbar-thumb:hover {\n  background-color: var(--scrollbar-thumb-hover);\n}\n.scrollbar-thin::-webkit-scrollbar-corner:hover {\n  background-color: var(--scrollbar-corner-hover);\n}\n.scrollbar-thin::-webkit-scrollbar-track:active {\n  background-color: var(--scrollbar-track-active);\n}\n.scrollbar-thin::-webkit-scrollbar-thumb:active {\n  background-color: var(--scrollbar-thumb-active);\n}\n.scrollbar-thin::-webkit-scrollbar-corner:active {\n  background-color: var(--scrollbar-corner-active);\n}\n.scrollbar-thin {\n  scrollbar-width: thin;\n}\n.scrollbar-thin::-webkit-scrollbar {\n  width: 8px;\n  height: 8px;\n}\n');
+styleInject('*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-width: 0;\n  border-style: solid;\n  border-color: #e5e7eb;\n}\n::before,\n::after {\n  --tw-content: "";\n}\nhtml {\n  line-height: 1.5;\n  -webkit-text-size-adjust: 100%;\n  -moz-tab-size: 4;\n  -o-tab-size: 4;\n  tab-size: 4;\n  font-family:\n    ui-sans-serif,\n    system-ui,\n    -apple-system,\n    BlinkMacSystemFont,\n    "Segoe UI",\n    Roboto,\n    "Helvetica Neue",\n    Arial,\n    "Noto Sans",\n    sans-serif,\n    "Apple Color Emoji",\n    "Segoe UI Emoji",\n    "Segoe UI Symbol",\n    "Noto Color Emoji";\n  font-feature-settings: normal;\n}\nbody {\n  margin: 0;\n  line-height: inherit;\n}\nhr {\n  height: 0;\n  color: inherit;\n  border-top-width: 1px;\n}\nabbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n  text-decoration: underline dotted;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\na {\n  color: inherit;\n  text-decoration: inherit;\n}\nb,\nstrong {\n  font-weight: bolder;\n}\ncode,\nkbd,\nsamp,\npre {\n  font-family:\n    ui-monospace,\n    SFMono-Regular,\n    Menlo,\n    Monaco,\n    Consolas,\n    "Liberation Mono",\n    "Courier New",\n    monospace;\n  font-size: 1em;\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsub {\n  bottom: -0.25em;\n}\nsup {\n  top: -0.5em;\n}\ntable {\n  text-indent: 0;\n  border-color: inherit;\n  border-collapse: collapse;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  line-height: inherit;\n  color: inherit;\n  margin: 0;\n  padding: 0;\n}\nbutton,\nselect {\n  text-transform: none;\n}\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  -webkit-appearance: button;\n  background-color: transparent;\n  background-image: none;\n}\n:-moz-focusring {\n  outline: auto;\n}\n:-moz-ui-invalid {\n  box-shadow: none;\n}\nprogress {\n  vertical-align: baseline;\n}\n::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}\n[type=search] {\n  -webkit-appearance: textfield;\n  outline-offset: -2px;\n}\n::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  font: inherit;\n}\nsummary {\n  display: list-item;\n}\nblockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}\nfieldset {\n  margin: 0;\n  padding: 0;\n}\nlegend {\n  padding: 0;\n}\nol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\ntextarea {\n  resize: vertical;\n}\ninput::-moz-placeholder,\ntextarea::-moz-placeholder {\n  opacity: 1;\n  color: #9ca3af;\n}\ninput::placeholder,\ntextarea::placeholder {\n  opacity: 1;\n  color: #9ca3af;\n}\nbutton,\n[role=button] {\n  cursor: pointer;\n}\n:disabled {\n  cursor: default;\n}\nimg,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block;\n  vertical-align: middle;\n}\nimg,\nvideo {\n  max-width: 100%;\n  height: auto;\n}\n[hidden] {\n  display: none;\n}\n* {\n  scrollbar-color: initial;\n  scrollbar-width: initial;\n}\n*,\n::before,\n::after {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x: ;\n  --tw-pan-y: ;\n  --tw-pinch-zoom: ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal: ;\n  --tw-slashed-zero: ;\n  --tw-numeric-figure: ;\n  --tw-numeric-spacing: ;\n  --tw-numeric-fraction: ;\n  --tw-ring-inset: ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur: ;\n  --tw-brightness: ;\n  --tw-contrast: ;\n  --tw-grayscale: ;\n  --tw-hue-rotate: ;\n  --tw-invert: ;\n  --tw-saturate: ;\n  --tw-sepia: ;\n  --tw-drop-shadow: ;\n  --tw-backdrop-blur: ;\n  --tw-backdrop-brightness: ;\n  --tw-backdrop-contrast: ;\n  --tw-backdrop-grayscale: ;\n  --tw-backdrop-hue-rotate: ;\n  --tw-backdrop-invert: ;\n  --tw-backdrop-opacity: ;\n  --tw-backdrop-saturate: ;\n  --tw-backdrop-sepia: ;\n}\n::backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x: ;\n  --tw-pan-y: ;\n  --tw-pinch-zoom: ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal: ;\n  --tw-slashed-zero: ;\n  --tw-numeric-figure: ;\n  --tw-numeric-spacing: ;\n  --tw-numeric-fraction: ;\n  --tw-ring-inset: ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur: ;\n  --tw-brightness: ;\n  --tw-contrast: ;\n  --tw-grayscale: ;\n  --tw-hue-rotate: ;\n  --tw-invert: ;\n  --tw-saturate: ;\n  --tw-sepia: ;\n  --tw-drop-shadow: ;\n  --tw-backdrop-blur: ;\n  --tw-backdrop-brightness: ;\n  --tw-backdrop-contrast: ;\n  --tw-backdrop-grayscale: ;\n  --tw-backdrop-hue-rotate: ;\n  --tw-backdrop-invert: ;\n  --tw-backdrop-opacity: ;\n  --tw-backdrop-saturate: ;\n  --tw-backdrop-sepia: ;\n}\n.highlight-tokens .token-line:has(.deleted:not(:empty)) {\n  background-color: rgb(209, 105, 105, .2) !important;\n}\n.highlight-tokens .token-line:has(.deleted:not(:empty)) .deleted:not(:empty) {\n  color: rgb(209, 154, 102) !important;\n}\n.highlight-tokens .token-line:has(.inserted:not(:empty)) {\n  background-color: rgb(181, 206, 168, .2) !important;\n}\n.highlight-tokens .token-line:has(.inserted:not(:empty)) .inserted:not(:empty) {\n  color: rgb(152, 195, 121) !important;\n}\n.static {\n  position: static;\n}\n.relative {\n  position: relative;\n}\n.z-10 {\n  z-index: 10;\n}\n.mx-2 {\n  margin-left: 0.5rem;\n  margin-right: 0.5rem;\n}\n.flex {\n  display: flex;\n}\n.grid {\n  display: grid;\n}\n.h-\\[24px\\] {\n  height: 24px;\n}\n.w-full {\n  width: 100%;\n}\n.w-min {\n  width: -moz-min-content;\n  width: min-content;\n}\n.min-w-min {\n  min-width: -moz-min-content;\n  min-width: min-content;\n}\n.select-none {\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  user-select: none;\n}\n.gap-0 {\n  gap: 0px;\n}\n.overflow-hidden {\n  overflow: hidden;\n}\n.overflow-x-auto {\n  overflow-x: auto;\n}\n.overflow-y-hidden {\n  overflow-y: hidden;\n}\n.rounded-lg {\n  border-radius: 0.5rem;\n}\n.border-r-\\[3px\\] {\n  border-right-width: 3px;\n}\n.border-solid {\n  border-style: solid;\n}\n.py-2 {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.pr-10 {\n  padding-right: 2.5rem;\n}\n.pl-3 {\n  padding-left: 0.75rem;\n}\n.pt-2 {\n  padding-top: 0.5rem;\n}\n.pb-3 {\n  padding-bottom: 0.75rem;\n}\n.pt-\\[2\\.5px\\] {\n  padding-top: 2.5px;\n}\n.font-code {\n  font-family: Source Code Pro, monospace;\n}\n.text-sm {\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n}\n.italic {\n  font-style: italic;\n}\n.scrollbar.overflow-y-hidden {\n  overflow-y: hidden;\n}\n.scrollbar-thin {\n  --scrollbar-track: initial;\n  --scrollbar-thumb: initial;\n  --scrollbar-corner: initial;\n  --scrollbar-track-hover: var(--scrollbar-track);\n  --scrollbar-thumb-hover: var(--scrollbar-thumb);\n  --scrollbar-corner-hover: var(--scrollbar-corner);\n  --scrollbar-track-active: var(--scrollbar-track-hover);\n  --scrollbar-thumb-active: var(--scrollbar-thumb-hover);\n  --scrollbar-corner-active: var(--scrollbar-corner-hover);\n  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);\n  overflow: overlay;\n}\n.scrollbar-thin.overflow-x-hidden {\n  overflow-x: hidden;\n}\n.scrollbar-thin.overflow-y-hidden {\n  overflow-y: hidden;\n}\n.scrollbar-thin::-webkit-scrollbar-track {\n  background-color: var(--scrollbar-track);\n}\n.scrollbar-thin::-webkit-scrollbar-thumb {\n  background-color: var(--scrollbar-thumb);\n}\n.scrollbar-thin::-webkit-scrollbar-corner {\n  background-color: var(--scrollbar-corner);\n}\n.scrollbar-thin::-webkit-scrollbar-track:hover {\n  background-color: var(--scrollbar-track-hover);\n}\n.scrollbar-thin::-webkit-scrollbar-thumb:hover {\n  background-color: var(--scrollbar-thumb-hover);\n}\n.scrollbar-thin::-webkit-scrollbar-corner:hover {\n  background-color: var(--scrollbar-corner-hover);\n}\n.scrollbar-thin::-webkit-scrollbar-track:active {\n  background-color: var(--scrollbar-track-active);\n}\n.scrollbar-thin::-webkit-scrollbar-thumb:active {\n  background-color: var(--scrollbar-thumb-active);\n}\n.scrollbar-thin::-webkit-scrollbar-corner:active {\n  background-color: var(--scrollbar-corner-active);\n}\n.scrollbar-thin {\n  scrollbar-width: thin;\n}\n.scrollbar-thin::-webkit-scrollbar {\n  width: 8px;\n  height: 8px;\n}\n');
 
 // src/themes/code.css
 styleInject('@import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Code+Pro&display=swap";\n');
@@ -4620,9 +4620,9 @@ var themeToDict = function themeToDict(theme15, language) {
   var plain = theme15.plain;
   var base = /* @__PURE__ */Object.create(null);
   var themeDict = theme15.styles.reduce(function (acc, themeEntry) {
-    var languages3 = themeEntry.languages;
+    var languages = themeEntry.languages;
     var style = themeEntry.style;
-    if (languages3 && !languages3.includes(language)) {
+    if (languages && !languages.includes(language)) {
       return acc;
     }
     themeEntry.types.forEach(function (type) {
@@ -5842,98 +5842,6 @@ var theme14 = {
 };
 var vsLight_default = theme14;
 
-// src/themes/primary/index.ts
-var primary = {
-  plain: {
-    color: "#d4d7db",
-    numbersColor: "#71717A",
-    backgroundColor: "#252322",
-    numbersBackgroundColor: "#1b1816",
-    numbersBorderColor: "#9d25ba",
-    srollbarThumbColor: "#ac38c9",
-    scrollbarTrackColor: "#201d1b"
-  },
-  styles: [{
-    types: ["prolog"],
-    style: {
-      color: "rgb(0, 0, 128)"
-    }
-  }, {
-    types: ["comment", "inserted"],
-    style: {
-      color: "#7F848E"
-    }
-  }, {
-    types: ["builtin", "changed", "keyword", "interpolation-punctuation"],
-    style: {
-      color: "#C678DD"
-    }
-  }, {
-    types: ["number"],
-    style: {
-      color: "#D19A66"
-    }
-  }, {
-    types: ["constant"],
-    style: {
-      color: "rgb(100, 102, 149)"
-    }
-  }, {
-    types: [],
-    style: {
-      color: "#D19A66"
-    }
-  }, {
-    types: ["string", "attr-value", "template-punctuation"],
-    style: {
-      color: "#98C379"
-    }
-  }, {
-    types: ["selector"],
-    style: {
-      color: "rgb(215, 186, 125)"
-    }
-  }, {
-    types: ["tag", "atrule", "deleted"],
-    style: {
-      color: "#E06C75"
-    }
-  }, {
-    types: ["tag"],
-    languages: ["markup"],
-    style: {
-      color: "#E06C75"
-    }
-  }, {
-    types: ["punctuation", "operator"],
-    style: {
-      color: "rgb(212, 212, 212)"
-    }
-  }, {
-    types: ["punctuation"],
-    languages: ["markup"],
-    style: {
-      color: "#808080"
-    }
-  }, {
-    types: ["function"],
-    style: {
-      color: "#D19A66"
-    }
-  }, {
-    types: ["class-name", "function", "mayble-class-name", "method", "function-variable", "variable", "attr-name", "constant"],
-    style: {
-      color: "#E5C07B"
-    }
-  }, {
-    types: ["char"],
-    style: {
-      color: "rgb(209, 105, 105)"
-    }
-  }]
-};
-var primary_default = primary;
-
 // src/utils/getThemeAdditionalColors.ts
 function getThemeAdditionalColors(theme15) {
   switch (theme15) {
@@ -6052,13 +5960,231 @@ function getThemeAdditionalColors(theme15) {
     default:
       return {
         numbersColor: "#71717A",
-        numbersBackgroundColor: "#1b1816",
+        numbersBackgroundColor: "hsl(218, 14%, 15%)",
         numbersBorderColor: "#9d25ba",
         srollbarThumbColor: "#ac38c9",
-        scrollbarTrackColor: "#201d1b"
+        scrollbarTrackColor: "hsl(218, 15%, 11%)"
       };
   }
 }
+
+// src/themes/custom/index.ts
+var _HighlightCustomTheme = /*#__PURE__*/function () {
+  function _HighlightCustomTheme(plain) {
+    var styles = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+    _classCallCheck(this, _HighlightCustomTheme);
+    this.plain = plain;
+    this.styles = styles;
+  }
+  _createClass(_HighlightCustomTheme, null, [{
+    key: "extends",
+    value: function _extends(theme15, plain) {
+      var styles = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+      var finalPlain = theme15.plain;
+      var finalStyles = theme15.styles;
+      finalPlain = Object.assign({}, theme15.plain, plain);
+      finalStyles = [].concat(_toConsumableArray(theme15.styles), _toConsumableArray(styles));
+      return new _HighlightCustomTheme(finalPlain, finalStyles);
+    }
+  }]);
+  return _HighlightCustomTheme;
+}();
+
+// src/themes/custom/oneDark/dark.ts
+var oneDark = new _HighlightCustomTheme({
+  color: "hsl(220, 14%, 71%)",
+  numbersColor: "#71717A",
+  backgroundColor: "hsl(220, 13%, 18%)",
+  numbersBackgroundColor: "hsl(218, 14%, 15%)",
+  numbersBorderColor: "#9d25ba",
+  srollbarThumbColor: "#ac38c9",
+  scrollbarTrackColor: "hsl(218, 15%, 11%)"
+}, [{
+  types: ["bold"],
+  style: {
+    fontWeight: "bold"
+  }
+}, {
+  types: ["italic"],
+  style: {
+    fontStyle: "italic"
+  }
+}, {
+  types: ["comment", "prolog", "cdata"],
+  style: {
+    color: "hsl(220, 10%, 40%)"
+  }
+}, {
+  types: ["doctype", "punctuation", "entity"],
+  style: {
+    color: "hsl(220, 14%, 71%)"
+  }
+}, {
+  types: ["attr-name", "class-name", "boolean", "constant", "number", "atrule"],
+  style: {
+    color: "hsl(29, 54%, 61%)"
+  }
+}, {
+  types: ["unit"],
+  style: {
+    color: "hsl(29, 45%, 52%)",
+    fontStyle: "italic"
+  }
+}, {
+  types: ["keyword"],
+  style: {
+    color: "hsl(286, 60%, 67%)"
+  }
+}, {
+  types: ["property", "tag", "symbol", "deleted", "important"],
+  style: {
+    color: "hsl(355, 65%, 65%)"
+  }
+}, {
+  types: ["selector", "string", "char", "builtin", "inserted", "regex", "attr-value"],
+  style: {
+    color: "hsl(95, 38%, 62%)"
+  }
+}, {
+  types: ["variable", "operator", "function", "mayble-class-name"],
+  style: {
+    color: "hsl(207, 82%, 66%)"
+  }
+}, {
+  types: ["url"],
+  style: {
+    color: "hsl(187, 47%, 55%)"
+  }
+}, {
+  languages: ["css"],
+  types: ["selector"],
+  style: {
+    color: "hsl(355, 65%, 65%)"
+  }
+}, {
+  languages: ["css"],
+  types: ["property"],
+  style: {
+    color: "hsl(220, 14%, 71%)"
+  }
+}, {
+  languages: ["css"],
+  types: ["function"],
+  style: {
+    color: "hsl(187, 47%, 55%)"
+  }
+}, {
+  languages: ["css"],
+  types: ["hexcode"],
+  style: {
+    color: "hsl(187, 45%, 49%)",
+    fontStyle: "italic"
+  }
+}, {
+  languages: ["css"],
+  types: ["string"],
+  style: {
+    color: "hsl(95, 38%, 62%)"
+  }
+}, {
+  languages: ["css"],
+  types: ["important", "atrule"],
+  style: {
+    color: "hsl(286, 60%, 67%)"
+  }
+}, {
+  languages: ["javascript"],
+  types: ["operator"],
+  style: {
+    color: "hsl(286, 60%, 67%)"
+  }
+}, {
+  languages: ["javascript"],
+  types: ["interpolation-punctuation"],
+  style: {
+    color: "hsl(5, 48%, 51%)"
+  }
+}, {
+  languages: ["json"],
+  types: ["operator"],
+  style: {
+    color: "hsl(220, 14%, 71%)"
+  }
+}, {
+  languages: ["json"],
+  types: ["null"],
+  style: {
+    color: "hsl(29, 54%, 61%)"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["url", "operator", "string"],
+  style: {
+    color: "hsl(220, 14%, 71%)"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["content"],
+  style: {
+    color: "hsl(207, 82%, 66%)"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["url-reference"],
+  style: {
+    color: "hsl(187, 47%, 55%)"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["url-reference"],
+  style: {
+    color: "hsl(187, 47%, 55%)"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["blockquote", "hr"],
+  style: {
+    color: "hsl(220, 10%, 40%)",
+    fontStyle: "italic"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["code-snippet"],
+  style: {
+    color: "hsl(187, 47%, 55%)"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["bold"],
+  style: {
+    color: "hsl(29, 54%, 61%)",
+    fontWeight: "bold"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["italic"],
+  style: {
+    color: "hsl(286, 60%, 67%)",
+    fontStyle: "italic"
+  }
+}, {
+  languages: ["markdown"],
+  types: ["strike", "list", "title", "punctuation"],
+  style: {
+    color: "hsl(355, 65%, 65%)"
+  }
+}, {
+  types: ["macro", "directive-hash"],
+  style: {
+    color: "hsl(286, 56%, 62%)"
+  }
+}, {
+  types: ["comment"],
+  style: {
+    fontStyle: "italic"
+  }
+}]);
+var dark_default = oneDark;
 
 // src/themes/index.ts
 var defaultThemes = {
@@ -6089,22 +6215,16 @@ var newdefaultThemes = Object.entries(defaultThemes).reduce(function (prev, _ref
   return prev;
 }, defaultThemes);
 var themes = Object.assign({}, newdefaultThemes, {
-  primary: primary_default
+  oneDark: dark_default
 });
 var themes_default = themes;
-
-// src/themes/languages/index.ts
-var languages = ["markup", "html", "bash", "clike", "c", "cpp", "css", "css-extras", "javascript", "jsx", "js-extras", "js-templates", "coffeescript", "diff", "git", "go", "graphql", "markup-templating", "handlebars", "json", "less", "makefile", "markdown", "objectivec", "ocaml", "python", "reason", "sass", "scss", "sql", "stylus", "tsx", "typescript", "wasm", "yaml", new String()];
-function _createLanguagePlugin(object) {
-  return object;
-}
 
 // src/index.tsx
 function Highlight2(_ref18) {
   var _children$match, _selectedTheme$plain, _selectedTheme$plain2, _selectedTheme$plain3, _selectedTheme$plain4, _selectedTheme$plain5;
   var children = _ref18.children,
     _ref18$theme = _ref18.theme,
-    theme15 = _ref18$theme === void 0 ? "primary" : _ref18$theme,
+    theme15 = _ref18$theme === void 0 ? "oneDark" : _ref18$theme,
     _ref18$language = _ref18.language,
     language = _ref18$language === void 0 ? "jsx" : _ref18$language,
     _ref18$showNumbers = _ref18.showNumbers,
@@ -6449,4 +6569,4 @@ var _frameworkImportPath = __webpack_require__("../../node_modules/.pnpm/@storyb
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.fb255890.iframe.bundle.js.map
+//# sourceMappingURL=main.598e5dec.iframe.bundle.js.map

@@ -385,30 +385,13 @@ let n = 5;
 let result = factorial(n);
 print_endline(string_of_int(result));`;
 
-export const __sass = `body {
-  font: 100% $font-stack;
-  color: $primary-color;
-}
+export const __sass = `$font-stack: Helvetica, sans-serif
+$primary-color: #333
 
-a {
-  color: darken($primary-color, 10%);
-  &:hover {
-    color: darken($primary-color, 20%);
-  }
-  &:active {
-    color: darken($primary-color, 30%);
-  }
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0.5em 0;
-}
-
-p {
-  font-size: 1.5em;
-  margin: 0.5em 0;
-}`;
+body
+  font: 100% $font-stack
+  color: $primary-color
+`;
 
 export const __scss = `body {
   font: 100% $font-stack;
@@ -483,6 +466,4 @@ export const __yaml = `applications:
   path: .
   buildpack: python_buildpack`;
 
-export const __latex = `
-  x = \frac{5}{4}
-`;
+export const __latex = `x = \\frac{5}{4}`;

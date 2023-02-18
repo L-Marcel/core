@@ -7,5 +7,6 @@ export default defineConfig({
   dts: true,
   entry: {
     index: "src/index.tsx",
+    languages: "src/private/languages.ts",
   },
 });

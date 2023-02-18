@@ -1,3 +1,5 @@
+import type { HighlightLanguage } from "../../../languages";
+
 export const languages = [
   "markup",
   "html",
@@ -38,4 +40,5 @@ export const languages = [
 ] as const;
 
 export type HighlightSupportedLanguages =
-  (typeof languages)[number];
+  | (typeof languages)[number]
+  | HighlightLanguage;

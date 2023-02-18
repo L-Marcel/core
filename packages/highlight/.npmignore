@@ -8,3 +8,6 @@ tsconfig.json
 tsup.config.ts
 src
 node_modules
+
+dist/languages.js
+dist/languages.d.ts

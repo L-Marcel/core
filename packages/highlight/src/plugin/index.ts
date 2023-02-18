@@ -1,5 +1,5 @@
-import { HighlightSupportedLanguages } from "../languages";
-import { HighlightTheme } from "../custom";
+import { HighlightLanguageComponent } from "../../languages";
+import { HighlightTheme } from "../themes/custom";
 
 export type HighligthPluginDetails = {
   author: string;
@@ -11,7 +11,7 @@ export type HighligthPluginDetails = {
 export type HighligthPluginKitData = {
   type: "kit";
   details: HighligthPluginDetails;
-  language: HighlightSupportedLanguages;
+  language: HighlightLanguageComponent;
   theme: HighlightTheme;
 };
 
@@ -24,7 +24,7 @@ export type HighligthPluginThemeData = {
 export type HighligthPluginLanguageData = {
   type: "language";
   details: HighligthPluginDetails;
-  language: HighlightSupportedLanguages;
+  language: HighlightLanguageComponent;
 };
 
 export type HighligthPluginData =

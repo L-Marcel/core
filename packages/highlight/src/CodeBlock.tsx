@@ -6,7 +6,7 @@ import Highlight, {
 } from "prism-react-renderer";
 import { HighlightPreContainer } from "./styles";
 import { HighlightTheme } from "./themes/custom";
-import { HighligthPlugin } from "./themes/plugin";
+import { HighligthPlugin } from "./plugin";
 
 interface CodeBlockProps {
   code: string;

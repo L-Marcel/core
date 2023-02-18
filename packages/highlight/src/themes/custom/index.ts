@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { PrismTheme } from "prism-react-renderer";
 import { tokens } from "../tokens";
-import { HighlightSupportedLanguages } from "../languages";
+import { HighlightLanguageComponent } from "../../../languages";
 
 export type HighlightThemePlain = PrismTheme["plain"] & {
   numbersColor?: string;
@@ -13,7 +14,7 @@ export type HighlightThemePlain = PrismTheme["plain"] & {
 export type HighlightThemeStyle = {
   types: (typeof tokens)[number][];
   style: PrismTheme["styles"][number]["style"];
-  languages?: HighlightSupportedLanguages[];
+  languages?: (HighlightLanguageComponent | String)[];
 };
 
 export interface HighlightTheme

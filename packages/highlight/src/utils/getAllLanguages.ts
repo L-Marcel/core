@@ -1,6 +1,6 @@
 import components from "prismjs/components.json";
 
-export function getAllLanguages() {
+export function getAllLanguagesInputs() {
   return Object.entries(components.languages).reduce(
     (prev, [language, data]) => {
       if (language === "meta") {
@@ -34,6 +34,20 @@ export function getAllLanguages() {
         }
       });
 
+      return prev;
+    },
+    [] as string[]
+  );
+}
+
+export function getAllLanguagesComponents() {
+  return Object.entries(components.languages).reduce(
+    (prev, [language]) => {
+      if (language === "meta") {
+        return prev;
+      }
+
+      prev.push(language);
       return prev;
     },
     [] as string[]

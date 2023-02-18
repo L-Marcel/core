@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import "./themes/global.css";
 import "./themes/code.css";
 
@@ -10,7 +11,6 @@ import {
   HighlightNumbers,
 } from "./styles";
 import themes from "./themes";
-import { HighlightSupportedLanguages } from "./themes/languages";
 import { ComponentProps } from "react";
 import {
   HighlightCustomTheme,
@@ -24,7 +24,12 @@ import {
   HighligthPluginKitData,
   HighligthPluginLanguageData,
   HighligthPluginThemeData,
-} from "./themes/plugin";
+} from "./plugin";
+import { HighlightLanguageInput } from "../languages";
+
+type HighlightDefaultLanguage =
+  | HighlightLanguageInput
+  | String;
 
 type HighlightDefaultTheme = keyof typeof themes;
 
@@ -37,6 +42,7 @@ export type {
   HighligthPluginKitData,
   HighligthPluginThemeData,
   HighligthPluginLanguageData,
+  HighlightLanguageInput,
 };
 
 export interface HighlightProps
@@ -44,7 +50,7 @@ export interface HighlightProps
   children: string;
 
   theme?: HighlightDefaultTheme | HighlightTheme;
-  language?: HighlightSupportedLanguages;
+  language?: HighlightDefaultLanguage;
 
   showNumbers?: boolean;
   showNumbersBorder?: boolean;

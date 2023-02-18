@@ -53,7 +53,7 @@ export function HighlightAvailableInputs() {
 
                     return (
                       <ListItem key={`${key}-${currentAlias}`}>
-                        <code>{currentAlias}</code>{aliasTitle !== "a"? ` / ${aliasTitle}`:""}
+                        <code>{currentAlias}</code>{aliasTitle !== "None"? ` / ${aliasTitle}`:""}
                       </ListItem>
                     );
                   })}

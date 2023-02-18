@@ -1,5 +1,13 @@
 # @lmarcel/book
 
+## 0.2.2
+
+### Patch Changes
+
+- Updating documentation and oneDark theme
+- Updated dependencies
+  - @lmarcel/highlight@1.6.2
+
 ## 0.2.1
 
 ### Patch Changes

@@ -45,7 +45,7 @@ export function HighlightAvailableInputs() {
 
           return (
             <ListItem key={key}>
-              <code>{key}</code>{title !== "None"? ` / ${title}`:""}
+              <strong><code>{key}</code></strong>{title !== "None"? ` / ${title}`:""}
               { alias.length > 0 &&
                 <List>
                   {alias.map((currentAlias, index) => {
@@ -53,7 +53,7 @@ export function HighlightAvailableInputs() {
 
                     return (
                       <ListItem key={`${key}-${currentAlias}`}>
-                        <code>{currentAlias}</code>{aliasTitle !== "None"? ` / ${aliasTitle}`:""}
+                        <strong><code>{currentAlias}</code></strong>{aliasTitle !== "None"? ` / ${aliasTitle}`:""}
                       </ListItem>
                     );
                   })}

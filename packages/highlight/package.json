@@ -1,8 +1,15 @@
 {
   "name": "@lmarcel/highlight",
-  "version": "1.6.0",
+  "version": "1.6.2",
   "license": "MIT",
   "main": "dist/index.js",
+  "description": "Highlight component for react with support for many languages ​​and custom themes.",
+  "keywords": [
+    "react",
+    "highlight",
+    "prismjs",
+    "prism-react-renderer"
+  ],
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "dev": "tsup --watch",

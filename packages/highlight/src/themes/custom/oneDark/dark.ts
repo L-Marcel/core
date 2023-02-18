@@ -249,6 +249,21 @@ const oneDark = new HighlightCustomTheme(
       },
     },
     {
+      types: ["class-name"],
+      languages: ["tsx", "jsx"],
+      style: {
+        color: "#E5C07B",
+      },
+    },
+    {
+      types: ["attr-name"],
+      languages: ["tsx", "jsx"],
+      style: {
+        color: "#D19A66",
+        fontStyle: "italic",
+      },
+    },
+    {
       types: ["comment"],
       style: {
         fontStyle: "italic",

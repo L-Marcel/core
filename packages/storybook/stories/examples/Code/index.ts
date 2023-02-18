@@ -1,5 +1,6 @@
 /* eslint-disable quotes */
 export const __tsx = `import React from 'react';
+import { Button } from "./components/Button";
 
 type Props = {
   name: string;
@@ -16,9 +17,9 @@ const MyComponent: React.FC<Props> = ({ name, age }) => {
       <p>Nome: {name}</p>
       <p>Idade: {age}</p>
       <p>Você clicou {count} vezes</p>
-      <button onClick={handleClick}>
+      <Button onClick={handleClick}>
         Clique aqui
-      </button>
+      </Button>
     </div>
   );
 };

@@ -1,5 +1,17 @@
 # @lmarcel/highlight
 
+## 1.6.2
+
+### Patch Changes
+
+- Updating documentation and oneDark theme
+
+## 1.6.1
+
+### Patch Changes
+
+- Updating readme, keywords and description
+
 ## 1.6.0
 
 ### Minor Changes

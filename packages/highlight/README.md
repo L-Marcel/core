@@ -44,7 +44,7 @@ console.log(path.resolve(__dirname, "test"));`}
 - __`vsDark`__
 - __`vsLight`__
 
-### Extending Themes
+### Extending themes
 You can also edit existing themes in a very simple way.
 ```tsx
 import { HighlightCustomTheme, themes } from "@lmarcel/highlight";

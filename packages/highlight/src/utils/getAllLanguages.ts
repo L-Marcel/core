@@ -19,7 +19,7 @@ export function getAllLanguagesInputs() {
             if (typeof value === "string") {
               languageAlias.push(value);
               prev.push(value);
-            } else {
+            } else if (Array.isArray(value)) {
               languageAlias = value;
               prev = [...prev, ...value];
             }

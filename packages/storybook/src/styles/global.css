@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  #docs-root {
+    @apply
+      font-inter
+      text-slate-100;
+  }
+
+  #docs-root > div {
+    @apply
+      font-inter
+      text-slate-100
+      justify-start
+      p-6
+      lg:p-10;
+  }
+
+  #docs-root > div > div h1,
+  #docs-root > div > div h2,
+  #docs-root > div > div h3 {
+    @apply
+      mt-6
+      mb-1;
+  }
+
+  #docs-root > div > div p {
+    @apply
+      mt-2;
+  }
+  
+  #docs-root > div > div *:first-child {
+    @apply
+      mt-0;
+  }
+
+  #docs-root code {
+    @apply
+      text-inherit
+      font-inter
+      bg-zinc-600/40
+      px-2
+      py-1
+      font-bold
+      rounded-md;
+  }
+
+  #docs-root ul {
+    @apply
+      font-inter
+      flex
+      flex-col
+      gap-4;
+  }
+
+  #docs-root li {
+    @apply
+      font-inter
+      first:pt-3;
+  }
+}

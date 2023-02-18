@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 1.6.0
+
+### Minor Changes
+
+- Adding support for all languages, removing preflight, updating styles and improving documentation
+
 ## 1.5.1
 
 ### Patch Changes

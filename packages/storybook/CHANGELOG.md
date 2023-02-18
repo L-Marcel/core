@@ -1,5 +1,13 @@
 # @lmarcel/book
 
+## 0.2.1
+
+### Patch Changes
+
+- Adding support for all languages, removing preflight, updating styles and improving documentation
+- Updated dependencies
+  - @lmarcel/highlight@1.6.0
+
 ## 0.2.0
 
 ### Minor Changes

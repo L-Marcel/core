@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
 import "./themes/global.css";
 import "./themes/code.css";
 
-import { Language } from "prism-react-renderer";
 import { CodeBlock } from "./CodeBlock";
 import {
   HighlightContainer,
@@ -26,6 +26,11 @@ import {
   HighligthPluginThemeData,
 } from "./plugin";
 import { HighlightLanguageInput } from "../languages";
+import {
+  getAllLanguagesComponents,
+  getAllLanguagesInputs,
+} from "./utils/getAllLanguages";
+import { getComponents } from "./utils/getComponents";
 
 type HighlightDefaultLanguage =
   | HighlightLanguageInput
@@ -61,7 +66,13 @@ export interface HighlightProps
   plugins?: HighligthPlugin[];
 }
 
-export { themes, HighlightCustomTheme };
+export {
+  themes,
+  HighlightCustomTheme,
+  getAllLanguagesInputs,
+  getAllLanguagesComponents,
+  getComponents,
+};
 
 export default function Highlight({
   children,
@@ -88,6 +99,9 @@ export default function Highlight({
   return (
     <HighlightContainer
       {...rest}
+      className={`tailwind-preflight${
+        rest?.className ? ` ${rest.className}` : ""
+      }`}
       style={{
         backgroundColor:
           selectedTheme?.plain?.backgroundColor,
@@ -139,7 +153,7 @@ export default function Highlight({
           plugins={plugins}
           code={children}
           theme={selectedTheme}
-          language={language as Language}
+          language={language as any}
         />
       </HighlightContent>
     </HighlightContainer>

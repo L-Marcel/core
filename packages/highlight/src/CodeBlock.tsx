@@ -1,16 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Highlight, {
-  Language,
   defaultProps,
-  Prism,
   PrismTheme,
 } from "prism-react-renderer";
+
 import { HighlightPreContainer } from "./styles";
 import { HighlightTheme } from "./themes/custom";
 import { HighligthPlugin } from "./plugin";
+import { HighlightLanguageInput } from "../languages";
+import { loadComponents } from "./utils/loadComponents";
 
 interface CodeBlockProps {
   code: string;
-  language: Language;
+  language: HighlightLanguageInput;
   theme?: HighlightTheme;
   plugins?: HighligthPlugin[];
 }
@@ -21,13 +23,14 @@ export function CodeBlock({
   plugins,
   theme = defaultProps.theme,
 }: CodeBlockProps) {
+  loadComponents(language);
+
   return (
     <Highlight
       {...defaultProps}
       theme={theme as PrismTheme}
       code={code}
-      Prism={Prism}
-      language={language}
+      language={language as any}
     >
       {({
         className,

@@ -11,12 +11,6 @@ module.exports = {
   },
   theme: {
     extend: {
-      screens: {
-        xs: {
-          max: "340px",
-        },
-        "2lg": "1170px",
-      },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         code: ["Source Code Pro", "monospace"],
@@ -81,6 +75,9 @@ module.exports = {
     },
   },
   plugins: [require("tailwind-scrollbar")],
+  corePlugins: {
+    preflight: false,
+  },
   variants: {
     extends: {
       scrollbar: ["dark"],

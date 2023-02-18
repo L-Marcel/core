@@ -11,3 +11,5 @@ node_modules
 
 dist/languages.js
 dist/languages.d.ts
+dist/preflight.js
+dist/preflight.d.ts

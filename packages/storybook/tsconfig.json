@@ -1,6 +1,6 @@
 {
   "extends": "@lmarcel/ts-config/react",
-  "include": ["stories"],
+  "include": ["stories", "src"],
   "exclude": [
     "node_modules", 
   ],

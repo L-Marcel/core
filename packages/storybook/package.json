@@ -1,6 +1,6 @@
 {
   "name": "@lmarcel/book",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "start-storybook -p 6006",
@@ -9,10 +9,11 @@
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
-    "@lmarcel/highlight": "workspace:^1.5.1",
+    "@lmarcel/highlight": "workspace:^1.6.0",
     "@next/font": "13.1.6",
     "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-docs": "^6.5.16",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-interactions": "^6.5.15",
     "@storybook/addon-links": "^6.3.12",
@@ -29,10 +30,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "require-from-string": "^2.0.2",
+    "tailwind-factory": "^2.3.6",
     "typescript": ">=4.3.0",
     "webpack": ">=2.0.0"
   },
   "devDependencies": {
-    "@lmarcel/ts-config": "*"
+    "@lmarcel/ts-config": "*",
+    "@storybook/mdx2-csf": "^0.0.4",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "postcss-loader": "^7.0.2"
   }
 }

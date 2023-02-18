@@ -1,10 +1,10 @@
-import Highlight, { HighlightProps } from "@lmarcel/highlight";
+import Highlight, { HighlightProps, getAllLanguagesInputs } from "@lmarcel/highlight";
 
 import { Meta, StoryObj } from "@storybook/react";
 import { __markup, __latex, __clike, __css , __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
 
 export default {
-  title: "Highlight",
+  title: "Highlight/Examples",
   component: Highlight,
   args: {
     full: false,
@@ -47,43 +47,7 @@ export default {
       control: { type: 'select' },
     },
     language: {
-      options: [
-        "html",
-        "markup",
-        "bash",
-        "clike",
-        "c",
-        "cpp",
-        "css",
-        "css-extras",
-        "javascript",
-        "jsx",
-        "js-extras",
-        "js-templates",
-        "coffeescript",
-        "diff",
-        "git",
-        "go",
-        "graphql",
-        "markup-templating",
-        "handlebars",
-        "json",
-        "less",
-        "makefile",
-        "markdown",
-        "objectivec",
-        "ocaml",
-        "python",
-        "reason",
-        "sass",
-        "scss",
-        "sql",
-        "stylus",
-        "tsx",
-        "typescript",
-        "wasm",
-        "yaml"
-      ],
+      options: getAllLanguagesInputs(),
       control: { type: 'select' },
     }
   }

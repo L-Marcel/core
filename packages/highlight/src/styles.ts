@@ -41,6 +41,7 @@ export const HighlightContent = tf(
 export const HighlightPreContainer = tf(
   "pre",
   `
+  m-0
   w-full
 
   py-2
@@ -68,10 +69,11 @@ export const HighlightNumbers = tf(
   `
   grid
   pt-2
-  pb-3
+  pb-[0.6rem]
   gap-0
   min-w-min
   border-solid
+  border-0
 `,
   {
     variants: {
@@ -92,8 +94,10 @@ export const HighlightNumber = tf(
   "p",
   `
   font-code
+  leading-[1.5]
   mx-2
   text-sm
+  my-0
   pt-[2.5px]
   h-[24px]
   select-none

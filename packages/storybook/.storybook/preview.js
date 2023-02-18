@@ -1,6 +1,19 @@
+// .storybook/preview.js
+import { themes } from '@storybook/theming';
+import '../src/styles/global.css';
+
 export const parameters = {
+  docs: {
+    theme: themes.dark,
+  },
   actions: { 
     argTypesRegex: '^on[A-Z].*' 
+  },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: ["Highlight", ["Documentation", "Examples"]], 
+    },
   },
   layout: 'padded',
   /*backgrounds: {
@@ -12,7 +25,7 @@ export const parameters = {
       },
     ],
   },*/
-  controls: { expanded: true },
+  controls: { expanded: true }
 }
 
 export const decorators = [

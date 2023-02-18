@@ -1,7 +1,8 @@
+const path = require("path");
+
 module.exports = {
   stories: [
-    '../stories/**/*.stories.mdx',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
+    '../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
   core: {
     builder: 'webpack5',
@@ -13,8 +14,23 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/addon-a11y"
   ],
+  framework: "@storybook/react",
+  features: {
+    previewMdx2: true,
+    storyStoreV7: true
+  },
   webpackFinal: async (config) => {
-    config.optimization.minimize = false;
+    config.module.rules.push({
+      test: /\.css$/i,
+      use: [
+        {
+          loader: "postcss-loader",
+          options: { implementation: require.resolve("postcss") },
+        },
+      ],
+      include: path.resolve(__dirname, "../"),
+    });
+
     return config;
   }
 }

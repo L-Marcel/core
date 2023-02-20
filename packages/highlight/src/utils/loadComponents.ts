@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Prism from "prism-react-renderer/prism";
 import { HighlightLanguageInput } from "../../languages";
 import { getComponents } from "./getComponents";
 import { defaultProps } from "prism-react-renderer";
+import { HighlightCustomLanguage } from "../language/custom";
 
 const defaultLoadedComponents = Object.entries(
   defaultProps.Prism.languages
@@ -13,13 +15,22 @@ const defaultLoadedComponents = Object.entries(
 function loadComponentIfLanguagesIsEqual(
   language: string,
   alias: string,
-  compareTo: string
+  compareTo: string,
+  load?: () => void
 ) {
   if (
     alias === compareTo &&
-    !defaultLoadedComponents.includes(language)
+    !defaultLoadedComponents.includes(language) &&
+    !load
   ) {
     require(`prismjs/components/prism-${language}`);
+    return true;
+  } else if (
+    alias === compareTo &&
+    load &&
+    typeof load === "function"
+  ) {
+    //load();
     return true;
   } else if (alias === compareTo) {
     return true;
@@ -29,13 +40,28 @@ function loadComponentIfLanguagesIsEqual(
 }
 
 export function loadComponents(
-  language: HighlightLanguageInput
+  language: HighlightLanguageInput,
+  externalLanguages: HighlightCustomLanguage<any, any>[]
 ) {
   (typeof global !== "undefined" ? global : window).Prism =
     Prism;
 
+  const externalComponents = externalLanguages.reduce(
+    (prev, language) => {
+      prev[language.name] = language;
+
+      return prev;
+    },
+    {} as {
+      [key: string]: HighlightCustomLanguage<any, any>;
+    }
+  );
+
   const components = getComponents();
-  const availableLanguages = components.languages;
+  const availableLanguages = {
+    ...components.languages,
+    ...externalComponents,
+  };
 
   Object.entries(availableLanguages).forEach(
     ([availableLanguage, availableLanguageData]) => {
@@ -43,10 +69,19 @@ export function loadComponents(
         return;
       }
 
+      const isCustom = Object.getOwnPropertyNames(
+        availableLanguageData
+      ).includes("__type");
+
+      const load = isCustom
+        ? undefined //(availableLanguageData as any).load
+        : undefined;
+
       const isLoaded = loadComponentIfLanguagesIsEqual(
         availableLanguage,
         availableLanguage,
-        language
+        language,
+        load
       );
 
       if (!isLoaded) {
@@ -54,25 +89,30 @@ export function loadComponents(
           ([key, value]) => {
             switch (key) {
               case "title":
-                loadComponentIfLanguagesIsEqual(
-                  availableLanguage,
-                  value,
-                  language
-                );
+                if (typeof value === "string") {
+                  loadComponentIfLanguagesIsEqual(
+                    availableLanguage,
+                    value,
+                    language,
+                    load
+                  );
+                }
                 break;
               case "alias":
                 if (typeof value === "string") {
                   loadComponentIfLanguagesIsEqual(
                     availableLanguage,
                     value,
-                    language
+                    language,
+                    load
                   );
                 } else if (Array.isArray(value)) {
                   value.forEach((alias) => {
                     loadComponentIfLanguagesIsEqual(
                       availableLanguage,
                       alias,
-                      language
+                      language,
+                      load
                     );
                   });
                 }
@@ -83,7 +123,8 @@ export function loadComponents(
                     loadComponentIfLanguagesIsEqual(
                       availableLanguage,
                       title,
-                      language
+                      language,
+                      load
                     );
                   }
                 );

@@ -1,4 +1,4 @@
-export const tokens = [
+export const definedTokens = [
   "char",
   "cdata",
   "doctype",
@@ -39,6 +39,7 @@ export const tokens = [
   "hr",
   "code-snippet",
   "italic",
+  "style",
   "bold",
   "strike",
   "list",
@@ -49,5 +50,14 @@ export const tokens = [
   "unit",
   "macro",
   "directive-hash",
+] as const;
+
+export const tokens = [
+  ...definedTokens,
   new String(),
 ] as const;
+
+export type DefinedGrammarTokens =
+  (typeof definedTokens)[number];
+
+export type GrammarTokens = (typeof tokens)[number];

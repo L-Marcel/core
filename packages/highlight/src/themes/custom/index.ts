@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { PrismTheme } from "prism-react-renderer";
-import { tokens } from "../tokens";
+import { GrammarTokens } from "../tokens";
 import { HighlightLanguageComponent } from "../../../languages";
 
 export type HighlightThemePlain = PrismTheme["plain"] & {
@@ -12,7 +12,7 @@ export type HighlightThemePlain = PrismTheme["plain"] & {
 };
 
 export type HighlightThemeStyle = {
-  types: (typeof tokens)[number][];
+  types: GrammarTokens[];
   style: PrismTheme["styles"][number]["style"];
   languages?: (HighlightLanguageComponent | String)[];
 };

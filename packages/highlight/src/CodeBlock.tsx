@@ -9,21 +9,24 @@ import { HighlightTheme } from "./themes/custom";
 import { HighligthPlugin } from "./plugin";
 import { HighlightLanguageInput } from "../languages";
 import { loadComponents } from "./utils/loadComponents";
+import { HighlightCustomLanguage } from "./language/custom";
 
 interface CodeBlockProps {
   code: string;
   language: HighlightLanguageInput;
   theme?: HighlightTheme;
   plugins?: HighligthPlugin[];
+  externalLanguages: HighlightCustomLanguage<any, any>[];
 }
 
 export function CodeBlock({
   code,
   language,
+  externalLanguages,
   plugins,
   theme = defaultProps.theme,
 }: CodeBlockProps) {
-  loadComponents(language);
+  loadComponents(language, externalLanguages);
 
   return (
     <Highlight

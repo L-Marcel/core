@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
 import "./themes/global.css";
@@ -18,19 +19,15 @@ import {
   HighlightThemePlain,
   HighlightThemeStyle,
 } from "./themes/custom";
-import {
-  HighligthPlugin,
-  HighligthPluginDetails,
-  HighligthPluginKitData,
-  HighligthPluginLanguageData,
-  HighligthPluginThemeData,
-} from "./plugin";
+import { HighligthPlugin } from "./plugin";
 import { HighlightLanguageInput } from "../languages";
 import {
   getAllLanguagesComponents,
   getAllLanguagesInputs,
 } from "./utils/getAllLanguages";
 import { getComponents } from "./utils/getComponents";
+import { HighlightCustomLanguage } from "./language/custom";
+import { javascript } from "./language/custom/javascript";
 
 type HighlightDefaultLanguage =
   | HighlightLanguageInput
@@ -43,10 +40,6 @@ export type {
   HighlightThemePlain,
   HighlightThemeStyle,
   HighlightDefaultTheme,
-  HighligthPluginDetails,
-  HighligthPluginKitData,
-  HighligthPluginThemeData,
-  HighligthPluginLanguageData,
   HighlightLanguageInput,
 };
 
@@ -56,6 +49,7 @@ export interface HighlightProps
 
   theme?: HighlightDefaultTheme | HighlightTheme;
   language?: HighlightDefaultLanguage;
+  externalLanguages?: HighlightCustomLanguage<any, any>[];
 
   showNumbers?: boolean;
   showNumbersBorder?: boolean;
@@ -81,6 +75,7 @@ export default function Highlight({
   showNumbers = true,
   showNumbersBorder = true,
   numbersContainerClassName,
+  externalLanguages = [javascript], //for test
   numbersClassName,
   plugins,
   ...rest
@@ -99,7 +94,7 @@ export default function Highlight({
   return (
     <HighlightContainer
       {...rest}
-      className={`tailwind-preflight${
+      className={`lmarcel-highlight${
         rest?.className ? ` ${rest.className}` : ""
       }`}
       style={{
@@ -154,6 +149,7 @@ export default function Highlight({
           code={children}
           theme={selectedTheme}
           language={language as any}
+          externalLanguages={externalLanguages}
         />
       </HighlightContent>
     </HighlightContainer>

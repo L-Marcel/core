@@ -1,249 +1,81 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Prism from "prism-react-renderer/prism";
-import { TokenObject } from "prismjs";
 import type { HighlightLanguageComponent } from "../../../languages";
 import {
-  DefinedGrammarTokens,
-  GrammarTokens,
+  DefinedGrammarToken,
+  GrammarToken,
 } from "../../themes/tokens";
+import { getComponents } from "../../utils/getComponents";
 
-type GrammarRest = {
-  [Key in DefinedGrammarTokens]?: TokenRules;
-} & {
-  [key: string]: TokenRule;
-};
+export type TokenObject = {
+  pattern: RegExp;
 
-type Grammar = GrammarRest | Record<string, TokenRules>;
-
-type Flags = {
-  global?: boolean;
-  insensitive?: boolean;
-  multiline?: boolean;
-  dotall?: boolean;
-  unicode?: boolean;
-  sticky?: boolean;
-};
-
-type TokenRuleOptions = {
-  lookbehind?: boolean;
-  greedy?: boolean;
-  alias?: string | string[];
-  inside?: Grammar;
-  flags?: Flags;
-};
-
-export class TokenRule implements TokenObject {
+  /**
+   * If `true`, then the first capturing group of `pattern` will (effectively) behave as a lookbehind
+   * group meaning that the captured text will not be part of the matched text of the new token.
+   */
   lookbehind?: boolean | undefined;
+
+  /**
+   * Whether the token is greedy.
+   *
+   * @default false
+   */
   greedy?: boolean | undefined;
+
+  /**
+   * An optional alias or list of aliases.
+   */
   alias?: string | string[] | undefined;
-  inside: Grammar = {};
 
-  constructor(
-    public pattern: RegExp,
-    {
-      flags,
-      alias,
-      greedy,
-      inside,
-      lookbehind,
-    }: TokenRuleOptions = {}
-  ) {
-    const allFlags: string[] = [];
+  /**
+   * The nested tokens of this token.
+   *
+   * This can be used for recursive language definitions.
+   *
+   * Note that this can cause infinite recursion.
+   */
+  inside?: Grammar | undefined;
+};
 
-    if (flags) {
-      Object.entries(flags).forEach(([flag, inUse]) => {
-        if (inUse) {
-          switch (flag) {
-            case "global":
-              allFlags.push("g");
-              break;
-            case "insensitive":
-              allFlags.push("i");
-              break;
-            case "multiline":
-              allFlags.push("m");
-              break;
-            case "dotall":
-              allFlags.push("s");
-              break;
-            case "unicode":
-              allFlags.push("u");
-              break;
-            case "sticky":
-              allFlags.push("y");
-              break;
-            default:
-              break;
-          }
-        }
-      });
-    }
+export type TokenRule = RegExp | TokenObject;
 
-    //super(pattern, allFlags.join());
+export type Grammar = {
+  [Key in DefinedGrammarToken]?: TokenRule[];
+} & {
+  [key: string]: TokenRule[];
+};
 
-    this.pattern = pattern;
-    this.alias = alias;
-    this.greedy = greedy;
-    this.inside = inside ?? {};
-    this.lookbehind = lookbehind;
-  }
-
-  addTokenInside(
-    token: GrammarTokens,
-    format: (rules: TokenRules) => TokenRules
-  ) {
-    const tokenRules = this.inside[token as keyof Grammar];
-
-    let rules: TokenRules;
-    if (!Array.isArray(tokenRules)) {
-      rules = new TokenRules([tokenRules as TokenRule]);
-    } else if (tokenRules) {
-      rules = new TokenRules(tokenRules as TokenRule[]);
-    } else {
-      rules = new TokenRules([]);
-    }
-
-    this.inside[token as keyof Grammar] = format(
-      rules
-    ) as any;
-  }
-}
-
-export class TokenRules extends Array<TokenRule> {
-  constructor(rules: TokenRule[]) {
-    super(rules.length);
-
-    console.log(rules);
-    rules.forEach((rule) => {
-      this.push(rule);
-    });
-  }
-
-  addRuleBefore(
-    newRule: TokenRule,
-    aliasOrIndex: string | number = -1
-  ) {
-    let index = aliasOrIndex;
-
-    if (aliasOrIndex === -1) {
-      this.unshift(newRule);
-    } else if (typeof aliasOrIndex === "string") {
-      index = this.findIndex((rule) => {
-        return (
-          rule.alias === aliasOrIndex ||
-          (Array.isArray(rule.alias) &&
-            rule.alias.includes(aliasOrIndex))
-        );
-      });
-    }
-
-    const oldRules = [...this];
-    let ruleIndex = 0;
-    oldRules.forEach((rule) => {
-      if (ruleIndex === index) {
-        this[ruleIndex] = newRule;
-        ruleIndex++;
-      }
-
-      const isTheEnd = ruleIndex >= this.length;
-      if (isTheEnd) {
-        this.push(rule);
-      } else {
-        this[ruleIndex] = rule;
-      }
-
-      ruleIndex++;
-    });
-  }
-
-  addRuleAfter(
-    newRule: TokenRule,
-    aliasOrIndex: string | number = -1
-  ) {
-    let index = aliasOrIndex;
-
-    if (aliasOrIndex === -1) {
-      this.push(newRule);
-    } else if (typeof aliasOrIndex === "string") {
-      index = this.findIndex((rule) => {
-        return (
-          rule.alias === aliasOrIndex ||
-          (Array.isArray(rule.alias) &&
-            rule.alias.includes(aliasOrIndex))
-        );
-      });
-    }
-
-    const oldRules = [...this];
-    let ruleIndex = 0;
-    oldRules.forEach((rule) => {
-      let isTheEnd = ruleIndex >= this.length;
-      if (isTheEnd) {
-        this.push(rule);
-      } else {
-        this[ruleIndex] = rule;
-      }
-
-      ruleIndex++;
-      isTheEnd = ruleIndex >= this.length;
-      const isTheTarget = ruleIndex - 1 === index;
-
-      if (isTheEnd && isTheTarget) {
-        this.push(newRule);
-        ruleIndex++;
-      } else if (isTheTarget) {
-        this[ruleIndex] = newRule;
-        ruleIndex++;
-      }
-    });
-  }
-
-  addTokenInsideRule(
-    aliasOrIndex: string | number,
-    token: GrammarTokens,
-    format: (rules: TokenRules) => TokenRules
-  ) {
-    this.forEach((rule, index) => {
-      const searchByAlias =
-        typeof aliasOrIndex === "string";
-      const isTheTarget = searchByAlias
-        ? rule.alias === aliasOrIndex ||
-          (Array.isArray(rule.alias) &&
-            rule.alias.includes(aliasOrIndex))
-        : index === aliasOrIndex;
-
-      if (isTheTarget) {
-        rule.addTokenInside(token, format);
-        this[index] = rule;
-      }
-    });
-  }
-
-  replaceRule(
-    aliasOrIndex: string | number,
-    newRule: TokenRule
-  ) {
-    this.forEach((rule, index) => {
-      const searchByAlias =
-        typeof aliasOrIndex === "string";
-      const isTheTarget = searchByAlias
-        ? rule.alias === aliasOrIndex ||
-          (Array.isArray(rule.alias) &&
-            rule.alias.includes(aliasOrIndex))
-        : index === aliasOrIndex;
-
-      if (isTheTarget) {
-        this[index] = newRule;
-      }
-    });
-  }
-}
-
-type HighlightCustomLanguageOptions<
+export type HighlightCustomLanguageOptions<
   AllAlias extends string
 > = {
-  init?: Grammar | HighlightLanguageComponent;
+  /**
+   * The initial definitions of the language.
+   *
+   * It can be a `string` referencing a language that already exists,
+   * an instance of `HighlightCustomLanguage` or an object of type `grammar`.
+   */
+  grammar?:
+    | Grammar
+    | HighlightCustomLanguage<any, any>
+    | HighlightLanguageComponent;
+
+  /**
+   * the language's title, if `replaceAliasOrTitles` is `false`
+   * it will not replace the extended language' alias.
+   */
   title?: string;
+
+  /**
+   * indicates whether the `alias`, `title` and `aliasTitles`
+   * from the extended definition should be kept.
+   */
+  replaceAliasOrTitles?: boolean;
+
+  /**
+   * The language's alias titles, if `replaceAliasOrTitles` is `false` it will
+   * just complement the extended language' alias titles.
+   */
   aliasTitles?: {
     [Key in AllAlias]?: string;
   };
@@ -253,77 +85,160 @@ export class HighlightCustomLanguage<
   Name extends string,
   Alias extends string
 > {
-  public readonly __type = "custom";
-  public name: Name;
-  public title?: string;
-  public alias: Alias[] = [];
-  public aliasTitles?: {
+  name: Name;
+  title?: string;
+  alias: Alias[] = [];
+  aliasTitles?: {
     [Key in Alias]?: string;
   };
 
-  public grammar: Grammar = {};
+  grammar: Grammar = {};
 
+  /**
+   * Create a new language definition
+   *
+   * @param {string} languageName - the language's name, if it already exists it will replace the default settings.
+   * @param {string[]} alias - the language's alias, if `replaceAliasOrTitles` is `false` it will just complement the extended language' alias.
+   *
+   * @param {Grammar | HighlightCustomLanguage<any, any> | HighlightLanguageComponent} options.grammar - the initial definitions of the language. It can be a `string` referencing a language that already exists, an instance of `HighlightCustomLanguage` or an object of type `grammar`.
+   * @param {boolean} [options.replaceAliasOrTitles=false] - a `boolean` that indicates whether the `alias`, `title` and `aliasTitles` from the extended definition should be kept.
+   * @param {string} options.title - the language's title, if `replaceAliasOrTitles` is `false` it will not replace the extended language' alias.
+   * @param {Object} options.aliasTitles - the language's alias titles, if `replaceAliasOrTitles` is `false` it will just complement the extended language' alias titles.
+   */
   constructor(
     languageName: Name,
     alias: Alias[],
     {
-      init,
+      grammar,
       aliasTitles,
       title,
+      replaceAliasOrTitles,
     }: HighlightCustomLanguageOptions<Alias> = {}
   ) {
     this.name = languageName;
-    this.alias = alias ?? [];
-    this.aliasTitles = aliasTitles ?? {};
-    this.title = title;
 
-    if (typeof init === "string") {
+    if (typeof grammar === "string") {
       this.grammar = Prism.languages.extend(
-        init,
+        grammar,
         {}
       ) as Grammar;
-    } else if (typeof init === "object") {
-      this.grammar = init;
-    }
-  }
 
-  token(
-    token: GrammarTokens,
-    format: (rules: TokenRules) => TokenRules
-  ) {
-    const tokenRules = this.grammar[token as keyof Grammar];
+      if (replaceAliasOrTitles) {
+        this.alias = alias ?? [];
+        this.aliasTitles = aliasTitles ?? {};
+        this.title = title;
+      } else {
+        const components = getComponents();
+        const defaultConfig = components.languages[
+          grammar
+        ] as any;
 
-    let rules: TokenRules;
-    if (!Array.isArray(tokenRules)) {
-      rules = new TokenRules([tokenRules as TokenRule]);
-    } else if (tokenRules) {
-      rules = new TokenRules(tokenRules as TokenRule[]);
-    } else {
-      rules = new TokenRules([]);
-    }
+        const keys = Object.keys(defaultConfig);
+        const newTitle = defaultConfig.title ?? title;
+        const newAlias = new Set(
+          keys.includes("alias")
+            ? Array.isArray(defaultConfig.alias)
+              ? [...alias, ...defaultConfig.alias]
+              : [...alias, defaultConfig.alias]
+            : alias
+        );
 
-    this.grammar[token as keyof Grammar] = format(
-      rules
-    ) as any;
-  }
+        const newAliasTitles = keys.includes("aliasTitles")
+          ? {
+              ...(aliasTitles ?? {}),
+              ...defaultConfig.aliasTitles,
+            }
+          : aliasTitles ?? {};
 
-  private cleanObject(object: any) {
-    Object.keys(object).forEach((key) => {
-      if (object[key] === undefined) {
-        delete object[key];
-      } else if (Array.isArray(object[key])) {
-        object[key] = [...object[key]].map((value: any) => {
-          return value;
-        });
+        this.alias = [...newAlias] ?? [];
+        this.aliasTitles = newAliasTitles ?? {};
+        this.title = newTitle;
       }
-    });
+    } else if (grammar instanceof HighlightCustomLanguage) {
+      const parent = grammar;
+      this.grammar = parent.grammar;
 
-    return object;
+      if (replaceAliasOrTitles) {
+        this.alias = alias ?? [];
+        this.aliasTitles = aliasTitles ?? {};
+        this.title = title;
+      } else {
+        const newTitle = parent.title ?? title;
+        const newAlias = new Set(
+          Array.isArray(parent.alias)
+            ? [...alias, ...parent.alias]
+            : [...alias, parent.alias]
+        );
+
+        const newAliasTitles = {
+          ...(aliasTitles ?? {}),
+          ...parent.aliasTitles,
+        };
+
+        this.alias = [...newAlias] ?? [];
+        this.aliasTitles = newAliasTitles ?? {};
+        this.title = newTitle;
+      }
+    } else if (typeof grammar === "object") {
+      this.grammar = grammar;
+      this.alias = alias ?? [];
+      this.aliasTitles = aliasTitles ?? {};
+      this.title = title;
+    }
   }
 
-  getGrammar() {
-    const gramar = { ...this.grammar };
-    return this.cleanObject(gramar);
+  /**
+   * Looks up a token within language definitions and replaces a
+   * rule from its list.
+   *
+   * If the token is not a list (in this case, it will be a regex,
+   * which is possible in Prism.js default definitions) this function
+   * will transform it into a list since the established standard of this
+   * library is that the value of tokens it must be a list.
+   *
+   * Transforming the value into a list does not change its operation s
+   * ince its settings are passed to index `0` of the list.
+   *
+   * @param {GrammarToken} key - the target token
+   * @param {GrammarToken | number} aliasOrIndex - the index of your rules, if it is not a list you can pass the value `0`. It also accepts an alias in case it is a list.
+   * @param {Function} newToken - function that need to return the new token rule
+   */
+  replaceToken(
+    key: GrammarToken,
+    aliasOrIndex: GrammarToken | number,
+    format: (oldToken: TokenRule) => TokenRule
+  ) {
+    const grammarKey = key as DefinedGrammarToken;
+
+    if (aliasOrIndex !== -1 && this.grammar[grammarKey]) {
+      const list = this.grammar[grammarKey]
+        ? Array.isArray(this.grammar[grammarKey])
+          ? this.grammar[grammarKey] ?? []
+          : this.grammar[grammarKey]
+          ? ([
+              this.grammar[grammarKey] as any,
+            ] as TokenRule[])
+          : []
+        : [];
+
+      this.grammar[grammarKey] = list.map(
+        (tokenRule, index) => {
+          if (
+            typeof aliasOrIndex === "string" &&
+            Object.keys(tokenRule).includes("alias") &&
+            (tokenRule as TokenObject).alias?.includes(
+              aliasOrIndex
+            )
+          ) {
+            return format(tokenRule);
+          } else if (index === aliasOrIndex) {
+            return format(tokenRule);
+          }
+
+          return tokenRule;
+        }
+      );
+    }
   }
 
   load() {
@@ -332,14 +247,10 @@ export class HighlightCustomLanguage<
       : window
     ).Prism = Prism;
 
-    console.log(this.grammar);
-    //console.log(this.getGrammar());
     if (typeof global !== "undefined") {
-      //global.Prism.languages[this.name] = this.getGrammar();
+      global.Prism.languages[this.name] = this.grammar;
     } else {
-      //window.Prism.languages[this.name] = this.getGrammar();
+      window.Prism.languages[this.name] = this.grammar;
     }
-
-    console.log("called", this.grammar.keyword);
   }
 }

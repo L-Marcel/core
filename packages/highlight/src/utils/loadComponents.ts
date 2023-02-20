@@ -5,6 +5,7 @@ import { HighlightLanguageInput } from "../../languages";
 import { getComponents } from "./getComponents";
 import { defaultProps } from "prism-react-renderer";
 import { HighlightCustomLanguage } from "../language/custom";
+import { isCustomLanguage } from "./isCustomLanguage";
 
 const defaultLoadedComponents = Object.entries(
   defaultProps.Prism.languages
@@ -16,21 +17,17 @@ function loadComponentIfLanguagesIsEqual(
   language: string,
   alias: string,
   compareTo: string,
-  load?: () => void
+  custom?: HighlightCustomLanguage<any, any>
 ) {
   if (
     alias === compareTo &&
     !defaultLoadedComponents.includes(language) &&
-    !load
+    !custom
   ) {
     require(`prismjs/components/prism-${language}`);
     return true;
-  } else if (
-    alias === compareTo &&
-    load &&
-    typeof load === "function"
-  ) {
-    //load();
+  } else if (alias === compareTo && custom) {
+    custom.load();
     return true;
   } else if (alias === compareTo) {
     return true;
@@ -69,19 +66,15 @@ export function loadComponents(
         return;
       }
 
-      const isCustom = Object.getOwnPropertyNames(
-        availableLanguageData
-      ).includes("__type");
-
-      const load = isCustom
-        ? undefined //(availableLanguageData as any).load
+      const custom = isCustomLanguage(availableLanguageData)
+        ? availableLanguageData
         : undefined;
 
       const isLoaded = loadComponentIfLanguagesIsEqual(
         availableLanguage,
         availableLanguage,
         language,
-        load
+        custom
       );
 
       if (!isLoaded) {
@@ -94,7 +87,7 @@ export function loadComponents(
                     availableLanguage,
                     value,
                     language,
-                    load
+                    custom
                   );
                 }
                 break;
@@ -104,7 +97,7 @@ export function loadComponents(
                     availableLanguage,
                     value,
                     language,
-                    load
+                    custom
                   );
                 } else if (Array.isArray(value)) {
                   value.forEach((alias) => {
@@ -112,7 +105,7 @@ export function loadComponents(
                       availableLanguage,
                       alias,
                       language,
-                      load
+                      custom
                     );
                   });
                 }
@@ -124,7 +117,7 @@ export function loadComponents(
                       availableLanguage,
                       title,
                       language,
-                      load
+                      custom
                     );
                   }
                 );

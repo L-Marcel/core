@@ -163,12 +163,21 @@ const oneDark = new HighlightCustomTheme(
       },
     },
     {
+      languages: ["latex"],
+      types: ["operator"],
+      style: {
+        color: "rgb(152, 195, 121)",
+        fontStyle: "italic",
+      },
+    },
+    {
       languages: ["json"],
       types: ["operator"],
       style: {
         color: "hsl(220, 14%, 71%)",
       },
     },
+
     {
       languages: ["json"],
       types: ["null"],

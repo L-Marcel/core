@@ -14,6 +14,7 @@ export const definedTokens = [
   "attr-name",
   "punctuation",
   "operator",
+  "control-flow",
   "markup",
   "tag",
   "atrule",
@@ -57,7 +58,7 @@ export const tokens = [
   new String(),
 ] as const;
 
-export type DefinedGrammarTokens =
+export type DefinedGrammarToken =
   (typeof definedTokens)[number];
 
-export type GrammarTokens = (typeof tokens)[number];
+export type GrammarToken = (typeof tokens)[number];

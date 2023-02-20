@@ -26,8 +26,24 @@ import {
   getAllLanguagesInputs,
 } from "./utils/getAllLanguages";
 import { getComponents } from "./utils/getComponents";
-import { HighlightCustomLanguage } from "./language/custom";
-import { javascript } from "./language/custom/javascript";
+import {
+  HighlightCustomLanguage,
+  TokenObject,
+  TokenRule,
+  Grammar,
+  HighlightCustomLanguageOptions,
+} from "./language/custom";
+import {
+  DefinedGrammarToken,
+  GrammarToken,
+} from "./themes/tokens";
+import {
+  javascript,
+  jsx,
+} from "./language/custom/javascript";
+import { objectToArray } from "./utils/objectToArray";
+import { isCustomLanguage } from "./utils/isCustomLanguage";
+import { loadComponents } from "./utils/loadComponents";
 
 type HighlightDefaultLanguage =
   | HighlightLanguageInput
@@ -41,14 +57,54 @@ export type {
   HighlightThemeStyle,
   HighlightDefaultTheme,
   HighlightLanguageInput,
+  HighlightCustomLanguageOptions,
+  TokenObject,
+  TokenRule,
+  Grammar,
+  DefinedGrammarToken,
+  GrammarToken,
 };
 
 export interface HighlightProps
   extends ComponentProps<typeof HighlightContainer> {
+  /**
+   * The code
+   */
   children: string;
 
+  /**
+   * If `true` the library will not load the standard definitions of languages
+   * established by the author.
+   *
+   * In that case the library will use the default Prism.js settings.
+   *
+   * This property does not disable custom definitions passed in `externalLanguages´
+   *
+   * @default false
+   */
+  disableDefaultCustomLanguages?: boolean;
+
+  /**
+   * Theme used on render the code.
+   * Can be a `string` or a `HighlightTheme` object.
+   *
+   * @default "oneDark"
+   */
   theme?: HighlightDefaultTheme | HighlightTheme;
-  language?: HighlightDefaultLanguage;
+
+  /**
+   * language used on render the code.
+   * Can be the language's `aliases` or `titles`.
+   */
+  language: HighlightDefaultLanguage;
+
+  /**
+   * Custom languages that can be used to render the code.
+   * You still need to set the language.
+   *
+   * It currently does not support definitions of languages
+   * not listed.
+   */
   externalLanguages?: HighlightCustomLanguage<any, any>[];
 
   showNumbers?: boolean;
@@ -57,14 +113,25 @@ export interface HighlightProps
   numbersContainerClassName?: string;
   numbersClassName?: string;
 
+  /**
+   * In work...
+   */
   plugins?: HighligthPlugin[];
 }
+
+export const highlightCustomLanguages = {
+  javascript,
+  jsx,
+};
 
 export {
   themes,
   HighlightCustomTheme,
   getAllLanguagesInputs,
   getAllLanguagesComponents,
+  isCustomLanguage,
+  loadComponents,
+  objectToArray,
   getComponents,
 };
 
@@ -75,7 +142,8 @@ export default function Highlight({
   showNumbers = true,
   showNumbersBorder = true,
   numbersContainerClassName,
-  externalLanguages = [javascript], //for test
+  disableDefaultCustomLanguages = false,
+  externalLanguages = [],
   numbersClassName,
   plugins,
   ...rest
@@ -149,7 +217,16 @@ export default function Highlight({
           code={children}
           theme={selectedTheme}
           language={language as any}
-          externalLanguages={externalLanguages}
+          externalLanguages={
+            disableDefaultCustomLanguages
+              ? externalLanguages
+              : [
+                  ...objectToArray(
+                    highlightCustomLanguages
+                  ),
+                  ...externalLanguages,
+                ]
+          }
         />
       </HighlightContent>
     </HighlightContainer>

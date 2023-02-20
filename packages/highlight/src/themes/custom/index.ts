@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { PrismTheme } from "prism-react-renderer";
-import { GrammarTokens } from "../tokens";
+import { GrammarToken } from "../tokens";
 import { HighlightLanguageComponent } from "../../../languages";
 
 export type HighlightThemePlain = PrismTheme["plain"] & {
@@ -12,7 +12,7 @@ export type HighlightThemePlain = PrismTheme["plain"] & {
 };
 
 export type HighlightThemeStyle = {
-  types: GrammarTokens[];
+  types: GrammarToken[];
   style: PrismTheme["styles"][number]["style"];
   languages?: (HighlightLanguageComponent | String)[];
 };
@@ -26,11 +26,23 @@ export interface HighlightTheme
 export class HighlightCustomTheme
   implements HighlightTheme
 {
+  /**
+   * Create a new theme
+   *
+   * @param plain - code's contianer styles
+   * @param styles - code's line styles
+   */
   constructor(
     public plain: HighlightThemePlain,
     public styles: HighlightThemeStyle[] = []
   ) {}
 
+  /**
+   *
+   * @param theme - theme to extends
+   * @param plain - new code's contianer styles
+   * @param styles - new code's line styles
+   */
   static extends(
     theme: HighlightTheme,
     plain: HighlightThemePlain,

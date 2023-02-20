@@ -1,24 +1,37 @@
-import { HighlightCustomLanguage, TokenRule } from "..";
+import { HighlightCustomLanguage } from "..";
 
 const javascript = new HighlightCustomLanguage(
   "javascript",
-  ["js"],
+  [],
   {
-    init: "javascript",
+    grammar: "javascript",
   }
 );
 
-javascript.token("keyword", (rules) => {
-  const newControlFlowRule = new TokenRule(
-    /\b(?<!\.)(?:await |break\b|catch[\s]*\(|continue\b|do\b|else\b|finally\b|for\b|if\b|return\b|switch\b|throw\b|try\b|while\b|yield\b)/,
-    {
-      alias: "control-flow",
-    }
-  );
-
-  rules.replaceRule("control-flow", newControlFlowRule);
-
-  return rules;
+const jsx = new HighlightCustomLanguage("jsx", [], {
+  grammar: "jsx",
 });
 
-export { javascript };
+javascript.replaceToken(
+  "keyword",
+  "control-flow",
+  (oldToken) => {
+    return {
+      ...oldToken,
+      pattern:
+        /\b(?<!\.)(?:(await(?= |\()|break(?=\b)|catch(?=[\s]*\()|continue(?=\b)|do(?=\b)|else(?=\b)|finally(?=\b)|for(?=\b)|if(?=\b)|return(?=\b)|switch(?=\b)|throw(?=\b)|try(?=\b)|while(?=\b)|yield(?=\b)))/,
+      alias: "control-flow",
+    };
+  }
+);
+
+jsx.replaceToken("keyword", "control-flow", (oldToken) => {
+  return {
+    ...oldToken,
+    pattern:
+      /\b(?<!\.)(?:(await(?= |\()|break(?=\b)|catch(?=[\s]*\()|continue(?=\b)|do(?=\b)|else(?=\b)|finally(?=\b)|for(?=\b)|if(?=\b)|return(?=\b)|switch(?=\b)|throw(?=\b)|try(?=\b)|while(?=\b)|yield(?=\b)))/,
+    alias: "control-flow",
+  };
+});
+
+export { javascript, jsx };

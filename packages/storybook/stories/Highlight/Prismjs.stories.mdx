@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/addon-docs";
+import { Highlight } from "@lmarcel/highlight";
+import { languageDefinitions, customLanguage, tokenRule } from "../constant/documentation/highlight";
+import { storybookTheme } from "../constant/theme/highlight";
+
+<Meta title="Highlight/Prismjs"/>
+
+# Prismjs
+This library uses __Prism.js__ to generate the tokens for each language component, to avoid ambiguity I call these components __languages definitions__.
+
+## Custom languages __definitions__
+It is possible, but quite complex, to edit language definitions using the library, but this is only available for the [available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page) (it inevitably requires extensive knowledge of regex):
+<Highlight
+  theme={storybookTheme}
+  language="ts"
+  full={true}
+  style={{
+    marginBottom: "1rem"
+  }}
+  code={languageDefinitions}
+/>
+
+The definitions are available in the __grammar__ property of the new language __instance__.
+
+When creating a new instance it is possible to pass the raw value of this property, another instance of the class or even the name (but not an alias) of a pre-existing language (__inheriting__ the language definitions).
+
+This is what happens in this section:
+<Highlight
+  theme={storybookTheme}
+  language="ts"
+  full={true}
+  style={{
+    marginBottom: "1rem"
+  }}
+  code={customLanguage}
+/>
+
+Within __grammar__, the mapping of __tokens__ is done, each token has one or more __rules__ within it.
+
+These rules can have an __alias__, which is the value that can be passed after the token to be used in styling.
+
+I left some functions available in the instance to __manipulate__ these tokens. But it is a very complex resource and I may have missed something.
+<Highlight
+  theme={storybookTheme}
+  language="ts"
+  full={true}
+  style={{
+    marginBottom: "1rem"
+  }}
+  code={tokenRule}
+/>

@@ -28,8 +28,26 @@
       mb-1;
   }
 
+  #docs-root > div > div h1 {
+    @apply
+      text-4xl;
+  }
+
+  #docs-root > div > div h2 {
+    @apply
+      text-3xl
+      leading-9;
+  }
+
+  #docs-root > div > div h3 {
+    @apply
+      text-2xl
+      leading-6;
+  }
+
   #docs-root > div > div > p {
     @apply
+      text-lg
       mt-2;
   }
   
@@ -38,9 +56,14 @@
       mt-0;
   }
 
+  #docs-root strong {
+    @apply
+    text-[#1ea7fd];
+  }
+
   #docs-root strong > code {
     @apply
-      text-inherit
+      text-slate-100
       font-inter
       bg-zinc-600/40
       px-2
@@ -53,7 +76,8 @@
       font-inter
       flex
       flex-col
-      gap-4;
+      gap-4
+      mt-0;
   }
 
   #docs-root li {

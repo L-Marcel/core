@@ -3,6 +3,8 @@ import { HighlightCustomTheme, themes } from "@lmarcel/highlight";
 export const storybookTheme = HighlightCustomTheme.extends(themes.oneDark, {
   numbersBorderColor: "#1ea7fd",
   backgroundColor: "#272727",
-  numbersBackgroundColor: "#2b2a2a",
+  scrollbarTrackColor: "#242323",
+  srollbarThumbColor: "#1ea7fd",
+  numbersBackgroundColor: "#242323",
   numbersColor: "#cfcfcf"
 });

@@ -1,7 +1,8 @@
-import { Highlight, HighlightProps, getAllLanguagesInputs } from "@lmarcel/highlight";
-
-import { Meta, StoryObj } from "@storybook/react";
+import { EditEvent, Highlight, HighlightProps, getAllLanguagesInputs } from "@lmarcel/highlight";
+import { Meta, StoryObj, ComponentStory } from "@storybook/react";
+import { EditableHighlightHelp } from "../../src/components/EditableHighlightHelp";
 import { __markup, __latex, __clike, __css , __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
+import { useState } from "react";
 
 export default {
   title: "Highlight/Examples",
@@ -53,32 +54,61 @@ export default {
   }
 } as Meta<HighlightProps>;
 
-export const Primary: StoryObj<HighlightProps> = {
-  name: "Tsx",
-  args: {
-    language: "tsx",
-    code: __tsx
-  }
+const EditableHightlight: ComponentStory<typeof Highlight> = (props) => {
+  const [code, setCode] = useState(props.code);
+  const [inEditMode, setInEditMode] = useState(false);
+
+  function handleOnEdit(e: EditEvent) {
+    setCode(e.currentTarget.value);
+  };
+
+  const modes = ["static", "editable", "edit"];
+  const messages = [
+    "Editable property is disabled, you cannot edit", 
+    "Click or focus and press enter to edit", 
+    "Click outside or press esc to exit"
+  ]; 
+
+  return (
+    <main>
+      <EditableHighlightHelp
+        mode={props.editable? inEditMode? modes[2]:modes[1]:modes[0]}
+        help={props.editable? inEditMode? messages[2]:messages[1]:messages[0]}
+      />
+      <Highlight
+        {...props}
+        onEnterEditMode={() => {
+          setInEditMode(true);
+        }}
+        onExitEditMode={() => {
+          setInEditMode(false);
+        }}
+        onEdit={handleOnEdit}
+        code={code}
+      />
+    </main>
+  );
 };
 
-export const Full: StoryObj<HighlightProps> = {
-  name: "Full Width",
-  args: {
-    language: "tsx",
-    full: true,
-    code: __tsx
+export const Editable = EditableHightlight.bind({});
+Editable.argTypes = {
+  full: {
+    table: {
+      disable: true,
+    },
+  },
+  code: {
+    table: {
+      disable: true,
+    },
   }
 };
-
-export const WithScroll: StoryObj<HighlightProps> = {
-  name: "With Scroll",
-  args: {
-    language: "tsx",
-    code: __tsx,
-    style: {
-      maxWidth: 450
-    }
-  }
+Editable.args = {
+  placeholder: "Put your code here...",
+  full: true,
+  language: "tsx",
+  editable: true,
+  code: __tsx
 };
 
 export const WithoutNumbers: StoryObj<HighlightProps> = {
@@ -95,6 +125,27 @@ export const OneLine: StoryObj<HighlightProps> = {
   args: {
     language: "tsx",
     code: "l-marcel setup"
+  }
+};
+
+
+export const WithScroll: StoryObj<HighlightProps> = {
+  name: "With Scroll",
+  args: {
+    language: "tsx",
+    code: __tsx,
+    style: {
+      maxWidth: 450
+    }
+  }
+};
+
+export const Full: StoryObj<HighlightProps> = {
+  name: "Full Width",
+  args: {
+    language: "tsx",
+    full: true,
+    code: __tsx
   }
 };
 

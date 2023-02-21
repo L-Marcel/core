@@ -3,19 +3,19 @@
 - [Installation](#installation)
 - [Basic usage](#basic-usage)
 - [Advanced usage](#advanced-usage)
-- [Demos](#demos)
+- [Demonstrations](#demonstrations)
 - [Edit mode](#edit-mode)
   - [Tab navigation](#tab-navigation)
 - [Theming](#theming)
-  - [List of available themes](#list-of-available-themes)
+  - [Available themes](#available-themes)
   - [Custom themes](#custom-themes)
 - [Languages](#languages)
   - [Custom languages definitions](#custom-languages-definitions)
-  - [ist of available languages](#list-of-available-languages)
+  - [Available languages](#available-languages)
 - [Roadmap](#roadmap)
 
 # Features
-- Support for [many languages](https://core-l-marcel.vercel.app/?path=/story/highlight-documentation--page#languages)
+- Support for [many languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page)
 - Editable content support
 - Customizable language definitions
 - Customizable theming
@@ -24,8 +24,6 @@
 - With built-in line number viewer
 - Deep integration with TypeScript
 - Plug and play! You don't need an external configuration to use it
-
-> It is already possible to edit the definitions of languages ​​used to change colors, but only for predefined languages: ([available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-documentation--page#languages)).
 
 # Installation
 To install you need to run in your project:
@@ -41,6 +39,7 @@ yarn add @lmarcel/highlight
 ```
 
 # Basic usage
+It's very simple to use!
 ```tsx
 <Highlight
   theme="oneDark"
@@ -51,7 +50,7 @@ console.log(path.resolve(__dirname, "test"));`}
 ```
 
 # Advanced usage
-You can edit! That's right, like a normal textarea!
+You can edit! That's right, like a normal textarea! See the [demo](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--editable).
 ```tsx
 import { useState } from "react";
 import { Highlight, EditEvent } from "@lmarcel/highlight";
@@ -78,10 +77,9 @@ export default function Home() {
 };
 ```
 
-# Demos
-See some demos at [storybook](https://core-l-marcel.vercel.app/)!
-
-> However, I'm still going to update the documentation in the Storybook as I want to make an example with editable content available within it. 
+# Demonstrations
+See some demos at [storybook](https://core-l-marcel.vercel.app/).
+It has an [editable demonstration](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--editable)!
 
 # Edit mode
 If the __`editable`__ property is __`true`__, the user will be able to enter the __`edit mode`__, where it is possible to change the content inside the component. 
@@ -100,7 +98,7 @@ I left two functions that can be passed for this purpose: __`onEnterEditMode`__ 
 # Theming
 You can define pre-existing or custom themes for the component.
 
-## List of available themes
+## Available themes
 I left some predefined themes, I think I'll add more soon, but for now it's just these:
 
 - __`oneDark`__
@@ -141,7 +139,7 @@ export const storybookTheme = HighlightCustomTheme.extends(themes.oneDark, {
 This library uses __`Prism.js`__ to generate the tokens for each language component, to avoid ambiguity I call these components __`languages definitions`__.
 
 ## Custom languages definitions
-It is possible, but quite complex, to edit language definitions using the library (it inevitably requires extensive knowledge of regex):
+It is possible, but quite complex, to edit language definitions using the library, but this is only available for the __available languages__ (it inevitably requires extensive knowledge of regex):
 ```ts
 const javascript = new HighlightCustomLanguage(
   "javascript",
@@ -194,16 +192,20 @@ javascript.replaceTokenRule(
   (oldToken) => { //function to return the new token rule
     return {
       ...oldToken,
-      pattern:
-        /\b(?<!\.)(?:(await(?= |\()|break(?=\b)|catch(?=[\s]*\()|continue(?=\b)|do(?=\b)|else(?=\b)|finally(?=\b)|for(?=\b)|if(?=\b)|return(?=\b)|switch(?=\b)|throw(?=\b)|try(?=\b)|while(?=\b)|yield(?=\b)))/, //regex
-      alias: "control-flow", //token rule alias
+
+      //regex
+      pattern: 
+        /\b(?<!\.)(?:(await(?= |\()|break(?=\b)|catch(?=[\s]*\()|continue(?=\b)|do(?=\b)|else(?=\b)|finally(?=\b)|for(?=\b)|if(?=\b)|return(?=\b)|switch(?=\b)|throw(?=\b)|try(?=\b)|while(?=\b)|yield(?=\b)))/,
+
+      //token rule alias
+      alias: "control-flow", 
     };
   }
 );
 ```
 
-## List of available languages
-This library currently supports ALL __`Prism.js`__ languages __`​​dynamically`__. Because it was too big and not feasible to do manually, I migrated this list to [storybook](https://core-l-marcel.vercel.app/) in [available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-documentation--page#languages).
+## Available languages
+This library currently supports ALL __`Prism.js`__ languages __`​​dynamically`__. Because it was too big and not feasible to do manually, I migrated this list to [storybook](https://core-l-marcel.vercel.app/) in [available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page).
 
 # Roadmap
 - [] Update storybook documentation

@@ -55,9 +55,12 @@ import { loadComponents } from "./utils/loadComponents";
 
 type HighlightDefaultTheme = keyof typeof themes;
 
-type EditEvent =
-  | KeyboardEvent<HTMLTextAreaElement>
-  | ChangeEvent<HTMLTextAreaElement>;
+type EditEvent<Type extends "change" | "focus" = "change"> =
+  Type extends "change"
+    ?
+        | KeyboardEvent<HTMLTextAreaElement>
+        | ChangeEvent<HTMLTextAreaElement>
+    : FocusEvent<HTMLTextAreaElement>;
 
 export type {
   HighlightTheme,
@@ -137,9 +140,9 @@ export interface HighlightProps
   /**
    * Function called when editing content
    */
-  onEdit?: (e: EditEvent) => void;
-  onEnterEditMode?: () => void;
-  onExitEditMode?: () => void;
+  onEdit?: (e: EditEvent<"change">) => void;
+  onEnterEditMode?: (e: EditEvent<"focus">) => void;
+  onExitEditMode?: (e: EditEvent<"focus">) => void;
 
   /**
    * Textarea placeholder.
@@ -246,7 +249,6 @@ export function Highlight({
           " focused-lmarcel-highlight",
           ""
         );
-      onExitEditMode && onExitEditMode();
     }
 
     rest?.onBlur && rest?.onBlur(e);
@@ -271,7 +273,6 @@ export function Highlight({
       if (textarea.length > 0) {
         textarea[0].selectionStart = 0;
         textarea[0].selectionEnd = 0;
-        onEnterEditMode && onEnterEditMode();
         textarea[0].focus();
         e.currentTarget.role = "";
       }
@@ -306,7 +307,6 @@ export function Highlight({
 
       if (parents.length > 0) {
         parents[0].role = "focused";
-        onExitEditMode && onExitEditMode();
         parents[0].focus();
       }
     }
@@ -384,6 +384,7 @@ export function Highlight({
                   : ""
               }`}
               onFocus={onEnterEditMode}
+              onBlur={onExitEditMode}
               onKeyDown={handleOnKeyDownHightlightTextArea}
               style={{
                 caretColor: selectedTheme?.plain?.color,

@@ -1,0 +1,17 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Highlight/Edit Mode"/>
+
+# Edit __mode__
+If the __editable__ property is __true__, the user will be able to enter the __edit mode__, where it is possible to change the content inside the component. 
+
+## Tab __navigation__
+In edit mode, the __tab key__ inserts a __tab space__ (as in a normal editor). To exit edit mode, just press __esc key__ or click outside the component (triggering a __blur event__).
+
+However, if the user chooses to leave using the __esc key__, a __focus event__ will be triggered in the component, so that the component does not harm navigation by tab navigation.
+
+When the component is __focused__, it is possible to enter __edit mode__ by pressing the __enter key__.
+
+I thought of showing the available keys in a kind of menu, but this could harm your design and the current structure makes it __very difficult__ to do this within the component itself, so I left it free for you to choose how you want to indicate the navigation possibilities to the user.
+
+I left two functions that can be passed for this purpose: __onEnterEditMode__ and __onExitEditMode__.

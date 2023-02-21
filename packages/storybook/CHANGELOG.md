@@ -1,5 +1,16 @@
 # @lmarcel/book
 
+## 1.0.0
+
+### Major Changes
+
+- Fixing bug on call edit mode functions and improving storybook documentation
+
+### Patch Changes
+
+- Updated dependencies
+  - @lmarcel/highlight@2.1.1
+
 ## 0.3.0
 
 ### Minor Changes

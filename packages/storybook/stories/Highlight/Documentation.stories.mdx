@@ -1,0 +1,56 @@
+import { Meta, Story } from "@storybook/addon-docs";
+import { Highlight } from "@lmarcel/highlight";
+import { instalation, basicUsage, advancedUsage } from "../constant/documentation/highlight";
+import { storybookTheme } from "../constant/theme/highlight";
+
+<Meta title="Highlight/Documentation"/>
+
+# @lmarcel / __Highlight__
+A broader version of the standard documentation made available in [npm](https://www.npmjs.com/package/@lmarcel/highlight).
+
+## Features
+- Support for [many languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page)
+- Editable content support
+- Customizable language definitions
+- Customizable theming
+- Tab navigation support
+- Included styles
+- With built-in line number viewer
+- Deep integration with TypeScript
+- Plug and play! You don't need an external configuration to use it
+
+## Installation
+To install you need to run in your project:
+<Highlight
+  theme={storybookTheme}
+  language="bash"
+  full={true}
+  style={{
+    marginBottom: "1rem"
+  }}
+  code={instalation}
+/>
+
+## Basic __usage__
+It's very simple to use!
+<Highlight
+  theme={storybookTheme}
+  language="tsx"
+  full={true}
+  style={{
+    marginBottom: "1rem"
+  }}
+  code={basicUsage}
+/>
+
+## Advanced __usage__
+You can edit! That's right, like a normal textarea! See the [demo](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--editable).
+<Highlight
+  theme={storybookTheme}
+  language="tsx"
+  full={true}
+  style={{
+    marginBottom: "1rem"
+  }}
+  code={advancedUsage}
+/>

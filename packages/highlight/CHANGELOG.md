@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.1.2
+
+### Patch Changes
+
+- Changing readme sections order
+
 ## 2.1.1
 
 ### Patch Changes

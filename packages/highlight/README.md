@@ -10,8 +10,8 @@
   - [Available themes](#available-themes)
   - [Custom themes](#custom-themes)
 - [Languages](#languages)
-  - [Custom languages definitions](#custom-languages-definitions)
   - [Available languages](#available-languages)
+  - [Custom languages definitions](#custom-languages-definitions)
 - [Roadmap](#roadmap)
 
 # Features
@@ -138,6 +138,9 @@ export const storybookTheme = HighlightCustomTheme.extends(themes.oneDark, {
 # Languages
 This library uses __`Prism.js`__ to generate the tokens for each language component, to avoid ambiguity I call these components __`languages definitions`__.
 
+## Available languages
+This library currently supports ALL __`Prism.js`__ languages __`​​dynamically`__. Because it was too big and not feasible to do manually, I migrated this list to [storybook](https://core-l-marcel.vercel.app/) in [available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page).
+
 ## Custom languages definitions
 It is possible, but quite complex, to edit language definitions using the library, but this is only available for the __available languages__ (it inevitably requires extensive knowledge of regex):
 ```ts
@@ -203,9 +206,6 @@ javascript.replaceTokenRule(
   }
 );
 ```
-
-## Available languages
-This library currently supports ALL __`Prism.js`__ languages __`​​dynamically`__. Because it was too big and not feasible to do manually, I migrated this list to [storybook](https://core-l-marcel.vercel.app/) in [available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page).
 
 # Roadmap
 - [] Update storybook documentation

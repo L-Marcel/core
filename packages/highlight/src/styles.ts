@@ -41,6 +41,8 @@ export const HighlightContent = tf(
 export const HighlightPreContainer = tf(
   "pre",
   `
+  flex
+  h-min
   m-0
   w-full
 
@@ -102,4 +104,43 @@ export const HighlightNumber = tf(
   h-[24px]
   select-none
 `
+);
+
+export const Content = tf(
+  "div",
+  `
+  relative
+  flex
+`,
+  {
+    variants: {},
+    defaultVariants: {},
+  }
+);
+
+export const Textarea = tf(
+  "textarea",
+  `
+  absolute
+  text-base
+  text-transparent
+  left-0
+  h-[calc(100%-1rem)]
+  min-h-[1.5rem]
+  min-w-[calc(100%-2.5rem-0.75rem)]
+  overflow-hidden
+  bg-transparent
+  !outline-none
+  !border-none
+  m-0
+  font-code
+  py-2
+  z-[11]
+  pr-10
+  pl-3
+`,
+  {
+    variants: {},
+    defaultVariants: {},
+  }
 );

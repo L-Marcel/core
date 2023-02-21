@@ -1,4 +1,4 @@
-import Highlight, { HighlightProps, getAllLanguagesInputs } from "@lmarcel/highlight";
+import { Highlight, HighlightProps, getAllLanguagesInputs } from "@lmarcel/highlight";
 
 import { Meta, StoryObj } from "@storybook/react";
 import { __markup, __latex, __clike, __css , __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
@@ -10,7 +10,7 @@ export default {
     full: false,
     theme: "oneDark",
     language: "tsx",
-    children: `export function Highlight({ 
+    code: `export function Highlight({ 
   children, 
   theme = "default" 
 }: HighlightProps, test: string) {
@@ -57,7 +57,7 @@ export const Primary: StoryObj<HighlightProps> = {
   name: "Tsx",
   args: {
     language: "tsx",
-    children: __tsx
+    code: __tsx
   }
 };
 
@@ -66,7 +66,7 @@ export const Full: StoryObj<HighlightProps> = {
   args: {
     language: "tsx",
     full: true,
-    children: __tsx
+    code: __tsx
   }
 };
 
@@ -74,7 +74,7 @@ export const WithScroll: StoryObj<HighlightProps> = {
   name: "With Scroll",
   args: {
     language: "tsx",
-    children: __tsx,
+    code: __tsx,
     style: {
       maxWidth: 450
     }
@@ -86,7 +86,7 @@ export const WithoutNumbers: StoryObj<HighlightProps> = {
   args: {
     language: "tsx",
     showNumbers: false,
-    children: __tsx
+    code: __tsx
   }
 };
 
@@ -94,28 +94,28 @@ export const OneLine: StoryObj<HighlightProps> = {
   name: "One Line",
   args: {
     language: "tsx",
-    children: "l-marcel setup"
+    code: "l-marcel setup"
   }
 };
 
 export const typescript: StoryObj<HighlightProps> = {
   args: {
     language: "typescript",
-    children: __typescript
+    code: __typescript
   }
 };
 
 export const javascript: StoryObj<HighlightProps> = {
   args: {
     language: "javascript",
-    children: __javascript
+    code: __javascript
   }
 };
 
 export const jsx: StoryObj<HighlightProps> = {
   args: {
     language: "jsx",
-    children: __jsx
+    code: __jsx
   }
 };
 
@@ -123,174 +123,174 @@ export const markup: StoryObj<HighlightProps> = {
   name: "Html/Markup",
   args: {
     language: "html",
-    children: __markup
+    code: __markup
   }
 };
 
 export const bash: StoryObj<HighlightProps> = {
   args: {
     language: "bash",
-    children: __bash
+    code: __bash
   }
 };
 
 export const clike: StoryObj<HighlightProps> = {
   args: {
     language: "clike",
-    children: __clike
+    code: __clike
   }
 };
 
 export const c: StoryObj<HighlightProps> = {
   args: {
     language: "c",
-    children: __c
+    code: __c
   }
 };
 
 export const cpp: StoryObj<HighlightProps> = {
   args: {
     language: "cpp",
-    children: __cpp
+    code: __cpp
   }
 };
 
 export const css: StoryObj<HighlightProps> = {
   args: {
     language: "css",
-    children: __css
+    code: __css
   }
 };
 
 export const diff: StoryObj<HighlightProps> = {
   args: {
     language: "diff",
-    children: __diff
+    code: __diff
   }
 };
 
 export const git: StoryObj<HighlightProps> = {
   args: {
     language: "git",
-    children: __git
+    code: __git
   }
 };
 
 export const go: StoryObj<HighlightProps> = {
   args: {
     language: "go",
-    children: __go
+    code: __go
   }
 };
 
 export const graphql: StoryObj<HighlightProps> = {
   args: {
     language: "graphql",
-    children: __graphql
+    code: __graphql
   }
 };
 
 export const handlebars: StoryObj<HighlightProps> = {
   args: {
     language: "handlebars",
-    children: __handlebars
+    code: __handlebars
   }
 };
 
 export const json: StoryObj<HighlightProps> = {
   args: {
     language: "json",
-    children: __json
+    code: __json
   }
 };
 
 export const less: StoryObj<HighlightProps> = {
   args: {
     language: "less",
-    children: __less
+    code: __less
   }
 };
 
 export const makefile: StoryObj<HighlightProps> = {
   args: {
     language: "makefile",
-    children: __makeFile
+    code: __makeFile
   }
 };
 
 export const markdown: StoryObj<HighlightProps> = {
   args: {
     language: "markdown",
-    children: __markdown
+    code: __markdown
   }
 };
 
 export const objectivec: StoryObj<HighlightProps> = {
   args: {
     language: "objectivec",
-    children: __objectivec
+    code: __objectivec
   }
 };
 
 export const ocaml: StoryObj<HighlightProps> = {
   args: {
     language: "ocaml",
-    children: __ocaml
+    code: __ocaml
   }
 };
 
 export const python: StoryObj<HighlightProps> = {
   args: {
     language: "python",
-    children: __python
+    code: __python
   }
 };
 
 export const reason: StoryObj<HighlightProps> = {
   args: {
     language: "reason",
-    children: __reason
+    code: __reason
   }
 };
 
 export const sass: StoryObj<HighlightProps> = {
   args: {
     language: "sass",
-    children: __sass
+    code: __sass
   }
 };
 
 export const scss: StoryObj<HighlightProps> = {
   args: {
     language: "scss",
-    children: __scss
+    code: __scss
   }
 };
 
 export const sql: StoryObj<HighlightProps> = {
   args: {
     language: "sql",
-    children: __sql
+    code: __sql
   }
 };
 
 export const stylus: StoryObj<HighlightProps> = {
   args: {
     language: "stylus",
-    children: __stylus
+    code: __stylus
   }
 };
 
 export const yaml: StoryObj<HighlightProps> = {
   args: {
     language: "yaml",
-    children: __yaml
+    code: __yaml
   }
 };
 
 export const latex: StoryObj<HighlightProps> = {
   args: {
     language: "latex",
-    children: __latex
+    code: __latex
   }
 };

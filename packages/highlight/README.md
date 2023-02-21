@@ -1,8 +1,10 @@
 It will still take a while for a complete documentation to come out, but I left some predefined themes and several demos in [storybook](https://core-l-marcel.vercel.app/)! 
 
-> Notice that I'm using the library itself in the documentation in the storybook.
+> Bundle error fixed, now you won't have problem rendering.
 
-Does not yet support custom languages ([available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-documentation--page#languages)). The idea is to allow this through customizable plugins. Already supports custom themes. Some theme tokens still don't appear in the options, in the future I'm thinking of leaving something dynamic.
+It is already possible to edit the definitions of languages ​​used to change colors, but only for predefined languages: ([available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-documentation--page#languages)). I am also very happy because I was able to enable changing the code inside the component on the fly. I left an example of use in [Advanced Usage](#advanced-usage).
+
+> I added support for tabs inside the textarea. At the moment this can interfere with tab browsing. I will resolve this as soon as possible. You can also use the version where the tab is disabled (__`2.0.2`__)
 
 ## Installation
 To install you need to run in your project:
@@ -25,6 +27,36 @@ yarn add @lmarcel/highlight
   children={`import path from "path";
 console.log(path.resolve(__dirname, "test"));`}
 />
+```
+
+## Advanced usage
+You can edit! That's right, like a normal textarea!
+```tsx
+import { useState } from "react";
+import { Highlight, EditEvent } from "@lmarcel/highlight";
+
+export default function Home() {
+  const [code, setCode] = useState(`const a = red;\nconsole.log(a);`);
+
+  function handleOnEdit(e: EditEvent) {
+    setCode(e.currentTarget.value);
+  };
+
+  return (
+    <main>
+      <Highlight
+        placeholder="Put your code here..."
+        style={{
+          minWidth: 800
+        }}
+        editable={true}
+        onEdit={handleOnEdit}
+        code={code}
+        language="javascript"
+      />
+    </main>
+  );
+};
 ```
 
 ### List of available themes

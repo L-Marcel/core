@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/addon-docs";
 import { HighlightAvailableInputs } from "../src/components/HighlightAvailableInputs";
-import Highlight from "@lmarcel/highlight";
+import { Highlight } from "@lmarcel/highlight";
 import { documentationHighlightExtendingThemes, documentationHighlightInstalationCode, documentationHighlightBasicUsageExample } from "./constant/documentation/codes";
 import { storybookTheme } from "./constant/theme/highlight";
 
@@ -16,7 +16,7 @@ To install you need to run in your project:
 <Highlight
   theme={storybookTheme}
   language="bash"
-  children={documentationHighlightInstalationCode}
+  code={documentationHighlightInstalationCode}
 />
 
 ## Basic usage
@@ -24,7 +24,7 @@ It's very simple to use!
 <Highlight
   theme={storybookTheme}
   language="tsx"
-  children={documentationHighlightBasicUsageExample}
+  code={documentationHighlightBasicUsageExample}
 />
 
 <span id="themes" className="anchor-link"/>
@@ -50,7 +50,7 @@ You can also edit existing themes in a very simple way.
 <Highlight
   theme={storybookTheme}
   language="ts"
-  children={documentationHighlightExtendingThemes}
+  code={documentationHighlightExtendingThemes}
 />
 
 <span id="languages" className="anchor-link"/>

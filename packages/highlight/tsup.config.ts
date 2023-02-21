@@ -1,10 +1,12 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  splitting: false,
   injectStyle: true,
+  bundle: true,
+  sourcemap: false,
   clean: false,
   dts: true,
+  external: ["react-dom/server"],
   entry: {
     index: "src/index.tsx",
     languages: "src/private/languages.ts",

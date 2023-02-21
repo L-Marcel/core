@@ -164,7 +164,7 @@ const oneDark = new HighlightCustomTheme(
     },
     {
       languages: ["latex"],
-      types: ["operator"],
+      types: ["selector"],
       style: {
         color: "rgb(152, 195, 121)",
         fontStyle: "italic",

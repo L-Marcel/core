@@ -6,13 +6,20 @@ import "./themes/code.css";
 
 import { CodeBlock } from "./CodeBlock";
 import {
+  Content,
   HighlightContainer,
   HighlightContent,
   HighlightNumber,
   HighlightNumbers,
+  Textarea,
 } from "./styles";
 import themes from "./themes";
-import { ComponentProps } from "react";
+import {
+  ChangeEvent,
+  ComponentProps,
+  FormEventHandler,
+  KeyboardEvent,
+} from "react";
 import {
   HighlightCustomTheme,
   HighlightTheme,
@@ -45,14 +52,15 @@ import { objectToArray } from "./utils/objectToArray";
 import { isCustomLanguage } from "./utils/isCustomLanguage";
 import { loadComponents } from "./utils/loadComponents";
 
-type HighlightDefaultLanguage =
-  | HighlightLanguageInput
-  | String;
-
 type HighlightDefaultTheme = keyof typeof themes;
+
+type EditEvent =
+  | KeyboardEvent<HTMLTextAreaElement>
+  | ChangeEvent<HTMLTextAreaElement>;
 
 export type {
   HighlightTheme,
+  EditEvent,
   HighlightThemePlain,
   HighlightThemeStyle,
   HighlightDefaultTheme,
@@ -70,7 +78,7 @@ export interface HighlightProps
   /**
    * The code
    */
-  children: string;
+  code: string;
 
   /**
    * If `true` the library will not load the standard definitions of languages
@@ -96,7 +104,7 @@ export interface HighlightProps
    * language used on render the code.
    * Can be the language's `aliases` or `titles`.
    */
-  language: HighlightDefaultLanguage;
+  language: HighlightLanguageInput;
 
   /**
    * Custom languages that can be used to render the code.
@@ -110,6 +118,7 @@ export interface HighlightProps
   showNumbers?: boolean;
   showNumbersBorder?: boolean;
 
+  textareaClassName?: string;
   numbersContainerClassName?: string;
   numbersClassName?: string;
 
@@ -117,6 +126,32 @@ export interface HighlightProps
    * In work...
    */
   plugins?: HighligthPlugin[];
+
+  /**
+   * If `true` the content can be edited
+   * @default false
+   */
+  editable?: boolean;
+
+  /**
+   * Function called when editing content
+   */
+  onEdit?: (e: EditEvent) => void;
+
+  /**
+   * Textarea placeholder.
+   *
+   * The textarea will not set the size inside the component, so you may need
+   * to set a minimum size for the component to display the placeholder properly.
+   */
+  placeholder?: string;
+
+  /**
+   * Number of spaces in a tab
+   *
+   * @default 2
+   */
+  tabSize?: number;
 }
 
 export const highlightCustomLanguages = {
@@ -135,12 +170,17 @@ export {
   getComponents,
 };
 
-export default function Highlight({
-  children,
+export function Highlight({
+  code,
   theme = "oneDark",
   language = "jsx",
   showNumbers = true,
+  tabSize = 2,
+  placeholder,
+  onEdit,
+  editable = false,
   showNumbersBorder = true,
+  textareaClassName,
   numbersContainerClassName,
   disableDefaultCustomLanguages = false,
   externalLanguages = [],
@@ -148,7 +188,7 @@ export default function Highlight({
   plugins,
   ...rest
 }: HighlightProps) {
-  const numberOfLines = children.match(/\n/g)?.length;
+  const numberOfLines = code.match(/\n/g)?.length;
 
   const lines = Array.from({
     length: numberOfLines ? numberOfLines + 1 : 1,
@@ -158,6 +198,16 @@ export default function Highlight({
 
   const selectedTheme =
     typeof theme === "string" ? themes[theme] : theme;
+
+  loadComponents(
+    language as any,
+    disableDefaultCustomLanguages
+      ? externalLanguages
+      : [
+          ...objectToArray(highlightCustomLanguages),
+          ...externalLanguages,
+        ]
+  );
 
   return (
     <HighlightContainer
@@ -212,22 +262,56 @@ export default function Highlight({
             })}
           </HighlightNumbers>
         )}
-        <CodeBlock
-          plugins={plugins}
-          code={children}
-          theme={selectedTheme}
-          language={language as any}
-          externalLanguages={
-            disableDefaultCustomLanguages
-              ? externalLanguages
-              : [
-                  ...objectToArray(
-                    highlightCustomLanguages
-                  ),
-                  ...externalLanguages,
-                ]
-          }
-        />
+        <Content>
+          {editable && onEdit && (
+            <Textarea
+              placeholder={placeholder}
+              spellCheck={false}
+              draggable={false}
+              value={code}
+              className={textareaClassName}
+              onKeyDown={(e) => {
+                if (e.key == "Tab") {
+                  e.preventDefault();
+                  const start =
+                    e.currentTarget.selectionStart;
+                  const end = e.currentTarget.selectionEnd;
+
+                  e.currentTarget.value =
+                    e.currentTarget.value.substring(
+                      0,
+                      start
+                    ) +
+                    "\t" +
+                    e.currentTarget.value.substring(end);
+
+                  e.currentTarget.selectionStart =
+                    e.currentTarget.selectionEnd =
+                      start + 1;
+
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onEdit(e);
+                }
+              }}
+              style={{
+                caretColor: selectedTheme?.plain?.color,
+                resize: "none",
+                tabSize,
+              }}
+              onChange={
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
+                onEdit
+              }
+            />
+          )}
+          <CodeBlock
+            plugins={plugins}
+            tabSize={tabSize}
+            code={code}
+            theme={selectedTheme}
+            language={language as any}
+          />
+        </Content>
       </HighlightContent>
     </HighlightContainer>
   );

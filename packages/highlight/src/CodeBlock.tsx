@@ -8,26 +8,22 @@ import { HighlightPreContainer } from "./styles";
 import { HighlightTheme } from "./themes/custom";
 import { HighligthPlugin } from "./plugin";
 import { HighlightLanguageInput } from "../languages";
-import { loadComponents } from "./utils/loadComponents";
-import { HighlightCustomLanguage } from "./language/custom";
 
 interface CodeBlockProps {
   code: string;
   language: HighlightLanguageInput;
   theme?: HighlightTheme;
   plugins?: HighligthPlugin[];
-  externalLanguages: HighlightCustomLanguage<any, any>[];
+  tabSize?: number;
 }
 
 export function CodeBlock({
   code,
   language,
-  externalLanguages,
+  tabSize = 2,
   plugins,
   theme = defaultProps.theme,
 }: CodeBlockProps) {
-  loadComponents(language, externalLanguages);
-
   return (
     <Highlight
       {...defaultProps}
@@ -44,10 +40,15 @@ export function CodeBlock({
       }) => {
         return (
           <HighlightPreContainer
+            suppressContentEditableWarning
             className={className}
             style={style}
           >
-            <code>
+            <code
+              style={{
+                tabSize,
+              }}
+            >
               {tokens.map((line, idx) => {
                 return (
                   // eslint-disable-next-line react/jsx-key

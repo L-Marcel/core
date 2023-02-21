@@ -6,8 +6,13 @@
   ],
   "compilerOptions": {
     "outDir": "dist",
-    "jsx": "preserve",
-    "target": "ES2020",
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "strict": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
     "resolveJsonModule": true
   }
 }

@@ -1,5 +1,35 @@
 # @lmarcel/highlight
 
+## 2.0.4
+
+### Patch Changes
+
+- Changing readme
+
+## 2.0.3
+
+### Patch Changes
+
+- Adding tab support
+
+## 2.0.2
+
+### Patch Changes
+
+- Adding placeholder and removing bug with textarea width
+
+## 2.0.1
+
+### Patch Changes
+
+- Improving textarea
+
+## 2.0.0
+
+### Major Changes
+
+- Removing bug in bundle, adding custom language's definition support and adding content edition support
+
 ## 1.6.2
 
 ### Patch Changes

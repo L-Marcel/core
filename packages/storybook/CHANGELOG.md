@@ -1,5 +1,16 @@
 # @lmarcel/book
 
+## 0.3.0
+
+### Minor Changes
+
+- Removing bug in bundle, adding custom language's definition support and adding content edition support
+
+### Patch Changes
+
+- Updated dependencies
+  - @lmarcel/highlight@2.0.0
+
 ## 0.2.2
 
 ### Patch Changes

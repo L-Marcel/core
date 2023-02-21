@@ -61,13 +61,13 @@ export type HighlightCustomLanguageOptions<
     | HighlightLanguageComponent;
 
   /**
-   * the language's title, if `replaceAliasOrTitles` is `false`
+   * The language's title, if `replaceAliasOrTitles` is `false`
    * it will not replace the extended language' alias.
    */
   title?: string;
 
   /**
-   * indicates whether the `alias`, `title` and `aliasTitles`
+   * Indicates whether the `alias`, `title` and `aliasTitles`
    * from the extended definition should be kept.
    */
   replaceAliasOrTitles?: boolean;
@@ -188,6 +188,37 @@ export class HighlightCustomLanguage<
   }
 
   /**
+   * Creates a new token within language definitions
+   *
+   * @param {GrammarToken} key - the token's name
+   * @param {TokenRule[]} rules - the token's rules
+   */
+  createToken(key: GrammarToken, rules: TokenRule[]) {
+    const grammarKey = key as DefinedGrammarToken;
+    this.grammar[grammarKey] = rules;
+  }
+
+  /**
+   * Delete a token within language definitions
+   *
+   * @param {GrammarToken} key - the token's name
+   */
+  deleteToken(key: GrammarToken) {
+    const grammarKey = key as DefinedGrammarToken;
+    delete this.grammar[grammarKey];
+  }
+
+  /**
+   * Get a token from language definitions
+   *
+   * @param {GrammarToken} key - the token's name
+   */
+  getToken(key: GrammarToken) {
+    const grammarKey = key as DefinedGrammarToken;
+    return this.grammar[grammarKey];
+  }
+
+  /**
    * Looks up a token within language definitions and replaces a
    * rule from its list.
    *
@@ -201,12 +232,12 @@ export class HighlightCustomLanguage<
    *
    * @param {GrammarToken} key - the target token
    * @param {GrammarToken | number} aliasOrIndex - the index of your rules, if it is not a list you can pass the value `0`. It also accepts an alias in case it is a list.
-   * @param {Function} newToken - function that need to return the new token rule
+   * @param {Function} format - function that need to return the new token rule
    */
-  replaceToken(
+  replaceTokenRule(
     key: GrammarToken,
     aliasOrIndex: GrammarToken | number,
-    format: (oldToken: TokenRule) => TokenRule
+    format: (oldTokenRule: TokenRule) => TokenRule
   ) {
     const grammarKey = key as DefinedGrammarToken;
 
@@ -238,6 +269,98 @@ export class HighlightCustomLanguage<
           return tokenRule;
         }
       );
+    }
+  }
+
+  /**
+   * Looks for a token in the language definitions and removes a
+   * rule from its list.
+   *
+   * If the token is not a list (in this case, it will be a regex,
+   * which is possible in Prism.js default definitions) this function
+   * will transform it into a list since the established standard of this
+   * library is that the value of tokens it must be a list.
+   *
+   * Transforming the value into a list does not change its operation s
+   * ince its settings are passed to index `0` of the list.
+   *
+   * If there is no item left in the list, the token will be deleted!
+   *
+   * @param {GrammarToken} key - the target token
+   * @param {GrammarToken | number} aliasOrIndex - the index of token rules. It also accepts an alias in case it is a list.
+   */
+  deleteTokenRule(
+    key: GrammarToken,
+    aliasOrIndex: GrammarToken | number
+  ) {
+    const grammarKey = key as DefinedGrammarToken;
+
+    if (this.grammar[grammarKey]) {
+      const list = this.grammar[grammarKey]
+        ? Array.isArray(this.grammar[grammarKey])
+          ? this.grammar[grammarKey] ?? []
+          : this.grammar[grammarKey]
+          ? ([
+              this.grammar[grammarKey] as any,
+            ] as TokenRule[])
+          : []
+        : [];
+
+      const result = list.filter((tokenRule, index) => {
+        if (
+          typeof aliasOrIndex === "string" &&
+          Object.keys(tokenRule).includes("alias") &&
+          (tokenRule as TokenObject).alias?.includes(
+            aliasOrIndex
+          )
+        ) {
+          return false;
+        } else if (index === aliasOrIndex) {
+          return false;
+        }
+
+        return true;
+      });
+
+      if (result.length > 0) {
+        this.grammar[grammarKey] = result;
+      } else {
+        this.deleteToken(grammarKey);
+      }
+    }
+  }
+
+  /**
+   * Looks for a token in the language definitions and adds a
+   * rule to its list.
+   *
+   * If the token is not a list (in this case, it will be a regex,
+   * which is possible in Prism.js default definitions) this function
+   * will transform it into a list since the established standard of this
+   * library is that the value of tokens it must be a list.
+   *
+   * Transforming the value into a list does not change its operation s
+   * ince its settings are passed to index `0` of the list.
+   *
+   * @param {GrammarToken} key - the target token
+   * @param {TokenRule} rule - the new rule
+   */
+  addTokenRule(key: GrammarToken, rule: TokenRule) {
+    const grammarKey = key as DefinedGrammarToken;
+
+    if (this.grammar[grammarKey]) {
+      const list = this.grammar[grammarKey]
+        ? Array.isArray(this.grammar[grammarKey])
+          ? this.grammar[grammarKey] ?? []
+          : this.grammar[grammarKey]
+          ? ([
+              this.grammar[grammarKey] as any,
+            ] as TokenRule[])
+          : []
+        : [];
+
+      list.push(rule);
+      this.grammar[grammarKey] = list;
     }
   }
 

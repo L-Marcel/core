@@ -10,7 +10,7 @@ yarn add @lmarcel/highlight`;
 export const documentationHighlightBasicUsageExample = `<Highlight
   theme="oneDark"
   language="ts"
-  children={\`import path from "path";
+  code={\`import path from "path";
 console.log(path.resolve(__dirname, "test"));\`}
 />`;
 

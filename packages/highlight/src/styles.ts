@@ -3,6 +3,7 @@ import { tf } from "tailwind-factory";
 export const HighlightContainer = tf(
   "div",
   `
+  ring-current
   rounded-lg
   flex
   relative
@@ -109,6 +110,7 @@ export const HighlightNumber = tf(
 export const Content = tf(
   "div",
   `
+  w-full
   relative
   flex
 `,

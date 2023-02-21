@@ -12,9 +12,6 @@ export function getAllLanguagesInputs() {
       let languageAlias: string[] = [];
       Object.entries(data).forEach(([key, value]) => {
         switch (key) {
-          case "title":
-            prev.push(value);
-            break;
           case "alias":
             if (typeof value === "string") {
               languageAlias.push(value);
@@ -23,11 +20,6 @@ export function getAllLanguagesInputs() {
               languageAlias = value;
               prev = [...prev, ...value];
             }
-            break;
-          case "aliasTitle":
-            languageAlias.forEach((alias) => {
-              prev.push(value[alias]);
-            });
             break;
           default:
             break;

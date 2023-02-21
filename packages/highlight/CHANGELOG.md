@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.1.0
+
+### Minor Changes
+
+- Improving tab navigation, updating documentation, removing bugs with textarea and changing language input type
+
 ## 2.0.4
 
 ### Patch Changes

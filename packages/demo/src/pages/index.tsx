@@ -21,6 +21,16 @@ export default function Home() {
         code={code}
         language="javascript"
       />
+      <Highlight
+        placeholder="Put your code here..."
+        style={{
+          minWidth: 800
+        }}
+        editable={true}
+        onEdit={handleOnEdit}
+        code={code}
+        language="javascript"
+      />
     </main>
   );
 };

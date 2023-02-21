@@ -17,6 +17,7 @@ import themes from "./themes";
 import {
   ChangeEvent,
   ComponentProps,
+  FocusEvent,
   FormEventHandler,
   KeyboardEvent,
 } from "react";
@@ -137,6 +138,8 @@ export interface HighlightProps
    * Function called when editing content
    */
   onEdit?: (e: EditEvent) => void;
+  onEnterEditMode?: () => void;
+  onExitEditMode?: () => void;
 
   /**
    * Textarea placeholder.
@@ -178,6 +181,8 @@ export function Highlight({
   tabSize = 2,
   placeholder,
   onEdit,
+  onEnterEditMode,
+  onExitEditMode,
   editable = false,
   showNumbersBorder = true,
   textareaClassName,
@@ -209,13 +214,116 @@ export function Highlight({
         ]
   );
 
+  function handleOnFocusHightlight(
+    e: FocusEvent<HTMLDivElement>
+  ) {
+    e.currentTarget.role = "focused";
+
+    if (
+      !e.currentTarget.className.includes(
+        " focused-lmarcel-highlight"
+      )
+    ) {
+      e.currentTarget.className +=
+        " focused-lmarcel-highlight";
+    }
+
+    rest?.onFocus && rest?.onFocus(e);
+  }
+
+  function handleOnBlurHightlight(
+    e: FocusEvent<HTMLDivElement>
+  ) {
+    e.currentTarget.role = "";
+
+    if (
+      e.currentTarget.className.includes(
+        " focused-lmarcel-highlight"
+      )
+    ) {
+      e.currentTarget.className =
+        e.currentTarget.className.replace(
+          " focused-lmarcel-highlight",
+          ""
+        );
+      onExitEditMode && onExitEditMode();
+    }
+
+    rest?.onBlur && rest?.onBlur(e);
+  }
+
+  function handleOnKeyDownHightlight(
+    e: KeyboardEvent<HTMLDivElement>
+  ) {
+    const isFocused = e.currentTarget.role === "focused";
+    if (
+      e.key == "Enter" &&
+      editable &&
+      onEdit &&
+      isFocused
+    ) {
+      e.preventDefault();
+      const textarea =
+        e.currentTarget.getElementsByClassName(
+          "lmarcel-highlight-textarea"
+        ) as HTMLCollectionOf<HTMLTextAreaElement>;
+
+      if (textarea.length > 0) {
+        textarea[0].selectionStart = 0;
+        textarea[0].selectionEnd = 0;
+        onEnterEditMode && onEnterEditMode();
+        textarea[0].focus();
+        e.currentTarget.role = "";
+      }
+    }
+
+    rest?.onKeyDown && rest?.onKeyDown(e);
+  }
+
+  function handleOnKeyDownHightlightTextArea(
+    e: KeyboardEvent<HTMLTextAreaElement>
+  ) {
+    e.stopPropagation();
+    if (e.key === "Tab") {
+      e.preventDefault();
+      const start = e.currentTarget.selectionStart;
+      const end = e.currentTarget.selectionEnd;
+
+      e.currentTarget.value =
+        e.currentTarget.value.substring(0, start) +
+        "\t" +
+        e.currentTarget.value.substring(end);
+
+      e.currentTarget.selectionStart = start + 1;
+      e.currentTarget.selectionEnd = start + 1;
+
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      onEdit && onEdit(e);
+    } else if (e.key === "Escape") {
+      const parents = document.getElementsByClassName(
+        "focused-lmarcel-highlight"
+      ) as HTMLCollectionOf<HTMLDivElement>;
+
+      if (parents.length > 0) {
+        parents[0].role = "focused";
+        onExitEditMode && onExitEditMode();
+        parents[0].focus();
+      }
+    }
+  }
+
   return (
     <HighlightContainer
+      tabIndex={0}
+      onFocus={handleOnFocusHightlight}
+      onBlur={handleOnBlurHightlight}
+      onKeyDown={handleOnKeyDownHightlight}
       {...rest}
       className={`lmarcel-highlight${
         rest?.className ? ` ${rest.className}` : ""
       }`}
       style={{
+        color: selectedTheme?.plain?.color,
         backgroundColor:
           selectedTheme?.plain?.backgroundColor,
         ...rest.style,
@@ -238,7 +346,7 @@ export function Highlight({
             className={numbersContainerClassName}
             showBorder={showNumbersBorder}
             style={{
-              gridTemplateRows: `repeat(${numberOfLines},24px)`,
+              gridTemplateRows: `repeat(${lines.length},24px)`,
               backgroundColor:
                 selectedTheme?.plain
                   ?.numbersBackgroundColor,
@@ -265,43 +373,24 @@ export function Highlight({
         <Content>
           {editable && onEdit && (
             <Textarea
+              tabIndex={-1}
               placeholder={placeholder}
               spellCheck={false}
               draggable={false}
               value={code}
-              className={textareaClassName}
-              onKeyDown={(e) => {
-                if (e.key == "Tab") {
-                  e.preventDefault();
-                  const start =
-                    e.currentTarget.selectionStart;
-                  const end = e.currentTarget.selectionEnd;
-
-                  e.currentTarget.value =
-                    e.currentTarget.value.substring(
-                      0,
-                      start
-                    ) +
-                    "\t" +
-                    e.currentTarget.value.substring(end);
-
-                  e.currentTarget.selectionStart =
-                    e.currentTarget.selectionEnd =
-                      start + 1;
-
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
-                  onEdit(e);
-                }
-              }}
+              className={`lmarcel-highlight-textarea${
+                textareaClassName
+                  ? ` ${textareaClassName}`
+                  : ""
+              }`}
+              onFocus={onEnterEditMode}
+              onKeyDown={handleOnKeyDownHightlightTextArea}
               style={{
                 caretColor: selectedTheme?.plain?.color,
                 resize: "none",
                 tabSize,
               }}
-              onChange={
-                // eslint-disable-next-line @typescript-eslint/no-empty-function
-                onEdit
-              }
+              onChange={onEdit}
             />
           )}
           <CodeBlock

@@ -208,6 +208,6 @@ javascript.replaceTokenRule(
 ```
 
 # Roadmap
-- [] Update storybook documentation
+- [x] Update storybook documentation
 - [] Add support for plugins
 - [] Add more themes

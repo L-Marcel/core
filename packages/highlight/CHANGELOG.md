@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.1.3
+
+### Patch Changes
+
+- Updating roadmap
+
 ## 2.1.2
 
 ### Patch Changes

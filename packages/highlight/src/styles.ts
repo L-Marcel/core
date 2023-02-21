@@ -127,6 +127,7 @@ export const Textarea = tf(
   text-base
   text-transparent
   left-0
+  whitespace-nowrap
   h-[calc(100%-1rem)]
   min-h-[1.5rem]
   min-w-[calc(100%-2.5rem-0.75rem)]

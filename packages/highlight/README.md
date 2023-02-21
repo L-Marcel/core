@@ -22,6 +22,7 @@
 - Tab navigation support
 - Included styles
 - With built-in line number viewer
+- Mobile support
 - Deep integration with TypeScript
 - Plug and play! You don't need an external configuration to use it
 

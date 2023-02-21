@@ -13,16 +13,12 @@ export default function Home() {
     <main className={style.container}>
       <Highlight
         placeholder="Put your code here..."
-        style={{
-          minWidth: 800
+        onEnterEditMode={() => {
+          console.log("enter: edit mode");
         }}
-        editable={true}
-        onEdit={handleOnEdit}
-        code={code}
-        language="javascript"
-      />
-      <Highlight
-        placeholder="Put your code here..."
+        onExitEditMode={() => {
+          console.log("exit: edit mode");
+        }}
         style={{
           minWidth: 800
         }}

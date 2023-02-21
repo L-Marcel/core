@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.1.5
+
+### Patch Changes
+
+- Fixing more bugs in mobile
+
 ## 2.1.4
 
 ### Patch Changes

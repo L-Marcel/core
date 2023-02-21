@@ -110,7 +110,7 @@ export const HighlightNumber = tf(
 export const Content = tf(
   "div",
   `
-  w-full
+  w-max
   relative
   flex
 `,

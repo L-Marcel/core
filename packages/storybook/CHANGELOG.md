@@ -1,5 +1,13 @@
 # @lmarcel/book
 
+## 1.0.1
+
+### Patch Changes
+
+- Fixing more bugs in mobile
+- Updated dependencies
+  - @lmarcel/highlight@2.1.5
+
 ## 1.0.0
 
 ### Major Changes

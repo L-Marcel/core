@@ -17,12 +17,12 @@
 # Features
 - Support for [many languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page)
 - Editable content support
+- Mobile editable content support
 - Customizable language definitions
 - Customizable theming
 - Tab navigation support
 - Included styles
 - With built-in line number viewer
-- Mobile support
 - Deep integration with TypeScript
 - Plug and play! You don't need an external configuration to use it
 

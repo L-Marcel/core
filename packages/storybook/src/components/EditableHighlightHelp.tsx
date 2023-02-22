@@ -3,10 +3,12 @@ import { Heading, Text } from "./base/Text";
 export interface EditableHighlightHelpProps {
   mode: string;
   help: string;
+  plugin?: boolean;
 };
 
 export function EditableHighlightHelp({
   mode,
+  plugin = false,
   help
 }: EditableHighlightHelpProps) {
   return (
@@ -17,7 +19,7 @@ export function EditableHighlightHelp({
           marginBottom: ".25rem"
         }}
       >
-        Mode: {mode}
+        Mode: {mode}{plugin? ` / core plugin enabled`:""}
       </Text>
       <Heading 
         size="sm" 

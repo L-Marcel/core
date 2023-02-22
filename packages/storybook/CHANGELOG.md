@@ -1,5 +1,16 @@
 # @lmarcel/book
 
+## 1.1.0
+
+### Minor Changes
+
+- Adding plugins support and fixing bug with textarea
+
+### Patch Changes
+
+- Updated dependencies
+  - @lmarcel/highlight@2.2.0
+
 ## 1.0.1
 
 ### Patch Changes

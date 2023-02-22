@@ -18,7 +18,6 @@ import {
   ChangeEvent,
   ComponentProps,
   FocusEvent,
-  FormEventHandler,
   KeyboardEvent,
 } from "react";
 import {
@@ -26,9 +25,25 @@ import {
   HighlightTheme,
   HighlightThemePlain,
   HighlightThemeStyle,
+  DangerousStyleEntry,
+  StyleEntry,
 } from "./themes/custom";
-import { HighligthPlugin } from "./plugin";
-import { HighlightLanguageInput } from "../languages";
+import {
+  HighligthPlugin,
+  DivProps,
+  HighligthPluginData,
+  LineInputProps,
+  LineOutputProps,
+  SpanProps,
+  StyleObj,
+  Token,
+  TokenInputProps,
+  TokenOutputProps,
+} from "./plugins";
+import {
+  HighlightLanguageInput,
+  HighlightLanguageComponent,
+} from "../languages";
 import {
   getAllLanguagesComponents,
   getAllLanguagesInputs,
@@ -40,7 +55,7 @@ import {
   TokenRule,
   Grammar,
   HighlightCustomLanguageOptions,
-} from "./language/custom";
+} from "./languages/custom";
 import {
   DefinedGrammarToken,
   GrammarToken,
@@ -48,10 +63,12 @@ import {
 import {
   javascript,
   jsx,
-} from "./language/custom/javascript";
+} from "./languages/custom/javascript";
 import { objectToArray } from "./utils/objectToArray";
 import { isCustomLanguage } from "./utils/isCustomLanguage";
 import { loadComponents } from "./utils/loadComponents";
+import { corePlugin } from "./plugins/custom/corePlugin";
+import { runPlugins } from "./utils/runPlugins";
 
 type HighlightDefaultTheme = keyof typeof themes;
 
@@ -75,6 +92,18 @@ export type {
   Grammar,
   DefinedGrammarToken,
   GrammarToken,
+  DivProps,
+  HighligthPluginData,
+  LineInputProps,
+  LineOutputProps,
+  SpanProps,
+  StyleObj,
+  Token,
+  TokenInputProps,
+  TokenOutputProps,
+  DangerousStyleEntry,
+  StyleEntry,
+  HighlightLanguageComponent,
 };
 
 export interface HighlightProps
@@ -129,7 +158,7 @@ export interface HighlightProps
   /**
    * In work...
    */
-  plugins?: HighligthPlugin[];
+  plugins?: HighligthPlugin<any>[];
 
   /**
    * If `true` the content can be edited
@@ -167,6 +196,7 @@ export const highlightCustomLanguages = {
 
 export {
   themes,
+  HighligthPlugin,
   HighlightCustomTheme,
   getAllLanguagesInputs,
   getAllLanguagesComponents,
@@ -174,7 +204,17 @@ export {
   loadComponents,
   objectToArray,
   getComponents,
+  corePlugin,
 };
+
+export type CoreHighlightProps = Pick<
+  HighlightProps,
+  | "editable"
+  | "tabSize"
+  | "language"
+  | "showNumbers"
+  | "theme"
+>;
 
 export function Highlight({
   code,
@@ -193,9 +233,19 @@ export function Highlight({
   disableDefaultCustomLanguages = false,
   externalLanguages = [],
   numbersClassName,
-  plugins,
+  plugins = [],
   ...rest
 }: HighlightProps) {
+  const coreProps = {
+    language,
+    editable,
+    showNumbers,
+    tabSize,
+    theme,
+  };
+
+  code = runPlugins(plugins, "code", code, coreProps);
+
   const numberOfLines = code.match(/\n/g)?.length;
 
   const lines = Array.from({
@@ -204,8 +254,12 @@ export function Highlight({
     return i + 1;
   });
 
-  const selectedTheme =
-    typeof theme === "string" ? themes[theme] : theme;
+  const selectedTheme = runPlugins(
+    plugins,
+    "theme",
+    typeof theme === "string" ? themes[theme] : theme,
+    coreProps
+  );
 
   loadComponents(
     language as any,
@@ -370,7 +424,11 @@ export function Highlight({
             })}
           </HighlightNumbers>
         )}
-        <Content>
+        <Content
+          style={{
+            width: "-webkit-fill-available",
+          }}
+        >
           {editable && onEdit && (
             <Textarea
               tabIndex={-1}
@@ -400,6 +458,7 @@ export function Highlight({
             code={code}
             theme={selectedTheme}
             language={language as any}
+            coreProps={coreProps}
           />
         </Content>
       </HighlightContent>

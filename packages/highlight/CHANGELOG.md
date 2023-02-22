@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.2.0
+
+### Minor Changes
+
+- Adding plugins support and fixing bug with textarea
+
 ## 2.1.5
 
 ### Patch Changes

@@ -10,7 +10,7 @@ type Props = {
 const MyComponent: React.FC<Props> = ({ name, age }) => {
   const [count, setCount] = React.useState(0);
   const handleClick = () => setCount(count + 1);
-
+  
   return (
     <div>
       <h1>Meu componente</h1>

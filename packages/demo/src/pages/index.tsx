@@ -1,9 +1,9 @@
 import { useState } from "react";
 import style from "../styles/index.module.css";
-import { Highlight, EditEvent } from "@lmarcel/highlight";
+import { corePlugin, Highlight, EditEvent } from "@lmarcel/highlight";
 
 export default function Home() {
-  const [code, setCode] = useState(`const a = red;\nconsole.log(a);`);
+  const [code, setCode] = useState(`const a = red;\n\tconsole.log(a);\n\t\t//end`);
 
   function handleOnEdit(e: EditEvent) {
     setCode(e.currentTarget.value);
@@ -12,6 +12,9 @@ export default function Home() {
   return (
     <main className={style.container}>
       <Highlight
+        plugins={[
+          corePlugin()
+        ]}
         placeholder="Put your code here..."
         onEnterEditMode={() => {
           console.log("enter: edit mode");

@@ -6,23 +6,27 @@ import Highlight, {
 
 import { HighlightPreContainer } from "./styles";
 import { HighlightTheme } from "./themes/custom";
-import { HighligthPlugin } from "./plugin";
+import { HighligthPlugin } from "./plugins";
 import { HighlightLanguageInput } from "../languages";
+import { runPlugins } from "./utils/runPlugins";
+import { CoreHighlightProps } from ".";
 
 interface CodeBlockProps {
   code: string;
   language: HighlightLanguageInput;
   theme?: HighlightTheme;
-  plugins?: HighligthPlugin[];
+  plugins?: HighligthPlugin<any>[];
   tabSize?: number;
+  coreProps: CoreHighlightProps;
 }
 
 export function CodeBlock({
   code,
   language,
   tabSize = 2,
-  plugins,
+  plugins = [],
   theme = defaultProps.theme,
+  coreProps,
 }: CodeBlockProps) {
   return (
     <Highlight
@@ -38,6 +42,13 @@ export function CodeBlock({
         getLineProps,
         getTokenProps,
       }) => {
+        const _tokens = runPlugins(
+          plugins,
+          "codeLines",
+          tokens,
+          coreProps
+        );
+
         return (
           <HighlightPreContainer
             suppressContentEditableWarning
@@ -49,24 +60,55 @@ export function CodeBlock({
                 tabSize,
               }}
             >
-              {tokens.map((line, idx) => {
+              {_tokens.map((line, idx) => {
+                const _line = runPlugins(
+                  plugins,
+                  "codeLine",
+                  line,
+                  coreProps
+                );
+
+                const _inputLineProps = runPlugins(
+                  plugins,
+                  "lineInput",
+                  {
+                    line: _line,
+                    key: `line-${idx}`,
+                  },
+                  coreProps
+                );
+
+                const _lineProps = runPlugins(
+                  plugins,
+                  "lineOutput",
+                  getLineProps(_inputLineProps),
+                  coreProps
+                );
+
                 return (
                   // eslint-disable-next-line react/jsx-key
-                  <div
-                    {...getLineProps({
-                      line,
-                      key: `line-${idx}`,
-                    })}
-                  >
-                    {line.map((token, i) => {
+                  <div {..._lineProps}>
+                    {_line.map((token, i) => {
+                      const _inputTokenProps = runPlugins(
+                        plugins,
+                        "tokenInput",
+                        {
+                          token,
+                          key: `token-${i}`,
+                        },
+                        coreProps
+                      );
+
+                      const _lineProps = runPlugins(
+                        plugins,
+                        "tokenOutput",
+                        getTokenProps(_inputTokenProps),
+                        coreProps
+                      );
+
                       return (
                         // eslint-disable-next-line react/jsx-key
-                        <span
-                          {...getTokenProps({
-                            token,
-                            key: `token-${i}`,
-                          })}
-                        />
+                        <span {..._lineProps} />
                       );
                     })}
                   </div>

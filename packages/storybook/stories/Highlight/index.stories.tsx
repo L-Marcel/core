@@ -1,4 +1,4 @@
-import { EditEvent, Highlight, HighlightProps, getAllLanguagesInputs } from "@lmarcel/highlight";
+import { EditEvent, Highlight, HighlightProps, corePlugin, getAllLanguagesInputs } from "@lmarcel/highlight";
 import { Meta, StoryObj, ComponentStory } from "@storybook/react";
 import { EditableHighlightHelp } from "../../src/components/EditableHighlightHelp";
 import { __markup, __latex, __clike, __css , __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
@@ -104,6 +104,67 @@ Editable.argTypes = {
   }
 };
 Editable.args = {
+  placeholder: "Put your code here...",
+  full: true,
+  language: "tsx",
+  editable: true,
+  code: __tsx
+};
+
+const EditableHightlightWithPlugin: ComponentStory<typeof Highlight> = (props) => {
+  const [code, setCode] = useState(props.code);
+  const [inEditMode, setInEditMode] = useState(false);
+
+  function handleOnEdit(e: EditEvent) {
+    setCode(e.currentTarget.value);
+  };
+
+  const modes = ["static", "editable", "edit"];
+  const messages = [
+    "Editable property is disabled, you cannot edit", 
+    "Click or focus and press enter to edit", 
+    "Click outside or press esc to exit"
+  ]; 
+
+  return (
+    <main>
+      <EditableHighlightHelp
+        plugin
+        mode={props.editable? inEditMode? modes[2]:modes[1]:modes[0]}
+        help={props.editable? inEditMode? messages[2]:messages[1]:messages[0]}
+      />
+      <Highlight
+        {...props}
+        plugins={[
+          corePlugin()
+        ]}
+        onEnterEditMode={() => {
+          setInEditMode(true);
+        }}
+        onExitEditMode={() => {
+          setInEditMode(false);
+        }}
+        onEdit={handleOnEdit}
+        code={code}
+      />
+    </main>
+  );
+};
+
+export const EditableWithPlugin = EditableHightlightWithPlugin.bind({});
+EditableWithPlugin.argTypes = {
+  full: {
+    table: {
+      disable: true,
+    },
+  },
+  code: {
+    table: {
+      disable: true,
+    },
+  }
+};
+EditableWithPlugin.args = {
   placeholder: "Put your code here...",
   full: true,
   language: "tsx",

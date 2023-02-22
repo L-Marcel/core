@@ -1,4 +1,4 @@
-import { HighlightCustomLanguage } from "../language/custom";
+import { HighlightCustomLanguage } from "../languages/custom";
 
 export function isCustomLanguage<
   Value,

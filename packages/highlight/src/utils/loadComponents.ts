@@ -4,7 +4,7 @@ import Prism from "prism-react-renderer/prism";
 import { HighlightLanguageInput } from "../../languages";
 import { getComponents } from "./getComponents";
 import { defaultProps } from "prism-react-renderer";
-import { HighlightCustomLanguage } from "../language/custom";
+import { HighlightCustomLanguage } from "../languages/custom";
 import { isCustomLanguage } from "./isCustomLanguage";
 
 const defaultLoadedComponents = Object.entries(

@@ -12,7 +12,29 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ["Highlight", ["Documentation", "Edit Mode", "Theming", "Prismjs", "Available Languages", "Examples"]], 
+      order: [
+        "Highlight", 
+        [
+          "Documentation", 
+          "Edit Mode", 
+          "Theming", 
+          "Prismjs", 
+          "Available Languages", 
+          "Plugins",
+          "For Authors",
+          [
+            "Warning",
+            "Themes", 
+            "Languages", 
+            "Plugins"
+          ],
+          "Examples", 
+          [
+            "Editable",
+            "Editable With Plugin",
+          ],
+        ]
+      ], 
     },
   },
   layout: 'padded',

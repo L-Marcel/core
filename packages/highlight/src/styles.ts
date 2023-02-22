@@ -111,6 +111,7 @@ export const Content = tf(
   "div",
   `
   w-max
+  min-w-max
   relative
   flex
 `,

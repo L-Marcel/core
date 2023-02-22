@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.2.1
+
+### Patch Changes
+
+- Removing bug in scroll again
+
 ## 2.2.0
 
 ### Minor Changes

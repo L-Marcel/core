@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.2.2
+
+### Patch Changes
+
+- Updating themes and tokens
+
 ## 2.2.1
 
 ### Patch Changes

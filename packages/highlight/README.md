@@ -102,10 +102,20 @@ I left two functions that can be passed for this purpose: __`onEnterEditMode`__ 
 You can define pre-existing or custom themes for the component.
 
 ## Available themes
-I left some predefined themes, I think I'll add more soon, but for now it's just these:
+I left some predefined themes, some with more extended support for some languages.
 
+Extensive themes (I made several changes):
 - __`oneDark`__
+- __`oneLight`__
+- __`laserwave`__
 - __`dracula`__
+
+Updated themes (I made small changes):
+- __`vsDark`__
+- __`vsLight`__
+
+Old themes (not changed):
+- __`byverduDracula`__
 - __`duotoneDark`__
 - __`duotoneLight`__
 - __`github`__
@@ -117,8 +127,6 @@ I left some predefined themes, I think I'll add more soon, but for now it's just
 - __`shadesOfPurple`__
 - __`synthwave84`__
 - __`ultramin`__
-- __`vsDark`__
-- __`vsLight`__
 
 ## Custom themes
 You can also edit existing themes in a very simple way using __`HighlightCustomTheme`__. Or even create your own themes.
@@ -290,6 +298,6 @@ See the [codes](https://core-l-marcel.vercel.app/?path=/story/highlight-for-auth
 I also left a lot of helpful comments on the properties I typed within the code. If you are going to use TypeScript you will see occasionally. I apologize if this part is not very well documented.
 
 # Roadmap
-- [x] Update storybook documentation
-- [x] Add support for plugins
-- [] Add more themes
+- [] Improve core plugin
+  - Clickable links
+- [] Identify all base tokens

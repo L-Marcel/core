@@ -7,7 +7,7 @@ export const definedTokens = [
   "boolean",
   "property",
   "function",
-  "mayble-class-name",
+  "maybe-class-name",
   "method",
   "function-variable",
   "variable",
@@ -50,6 +50,8 @@ export const definedTokens = [
   "hexcode",
   "unit",
   "macro",
+  "symbol",
+  "regex",
   "directive-hash",
 ] as const;
 

@@ -50,10 +50,6 @@ export const HighlightPreContainer = tf(
   py-2
   z-10
   
-  code, kdb, samp, pre {
-    font-code
-  }
-
   .token-line {
     pr-10
     pl-3

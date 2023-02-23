@@ -29,8 +29,11 @@ export default {
   argTypes: {
     theme: {
       options: [
+        "laserwave",
         "oneDark",
+        "oneLight",
         "dracula",
+        "byverduDracula",
         "duotoneDark",
         "duotoneLight",
         "github",

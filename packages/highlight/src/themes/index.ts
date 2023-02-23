@@ -14,7 +14,11 @@ import vsDark from "prism-react-renderer/themes/vsDark";
 import vsLight from "prism-react-renderer/themes/vsLight";
 import { HighlightTheme } from "./custom";
 import { getThemeAdditionalColors } from "../utils/getThemeAdditionalColors";
-import oneDark from "./custom/oneDark/dark";
+import oneDark from "./custom/one/dark";
+import oneLight from "./custom/one/light";
+import laserwave from "./custom/laserwave";
+import byverduDracula from "./custom/dracula";
+import { getThemeAdditionalStyles } from "../utils/getThemeAdditionalStyles";
 export interface DefaultThemes {
   dracula: HighlightTheme;
   duotoneDark: HighlightTheme;
@@ -55,12 +59,14 @@ const newdefaultThemes = Object.entries(
   const _key = key as keyof DefaultThemes;
 
   const someColorsOfPlain = getThemeAdditionalColors(_key);
+  const someStyles = getThemeAdditionalStyles(_key);
   prev[_key] = {
-    ...theme,
     plain: {
       ...theme?.plain,
       ...someColorsOfPlain,
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    styles: [...(theme?.styles as any[]), ...someStyles],
   } as HighlightTheme;
 
   return prev;
@@ -68,7 +74,10 @@ const newdefaultThemes = Object.entries(
 
 const themes = {
   ...newdefaultThemes,
+  byverduDracula,
   oneDark,
+  oneLight,
+  laserwave,
 };
 
 export default themes;

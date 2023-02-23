@@ -3,8 +3,8 @@ import { HighlightCustomTheme } from "..";
 //based on: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-one-dark.css
 const oneDark = new HighlightCustomTheme(
   {
-    color: "hsl(220, 14%, 71%)",
-    numbersColor: "#71717A",
+    color: "hsl(217, 20%, 79%)",
+    numbersColor: "hsl(219, 10%, 65%)",
     backgroundColor: "hsl(220, 13%, 18%)",
     numbersBackgroundColor: "hsl(218, 14%, 15%)",
     numbersBorderColor: "#9d25ba",
@@ -89,12 +89,7 @@ const oneDark = new HighlightCustomTheme(
       },
     },
     {
-      types: [
-        "variable",
-        "operator",
-        "function",
-        "mayble-class-name",
-      ],
+      types: ["variable", "operator", "function"],
       style: {
         color: "hsl(207, 82%, 66%)",
       },
@@ -103,6 +98,12 @@ const oneDark = new HighlightCustomTheme(
       types: ["url"],
       style: {
         color: "hsl(187, 47%, 55%)",
+      },
+    },
+    {
+      types: ["css"],
+      style: {
+        color: "hsl(220, 14%, 71%)",
       },
     },
     {

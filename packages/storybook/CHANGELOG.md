@@ -1,5 +1,13 @@
 # @lmarcel/book
 
+## 1.1.1
+
+### Patch Changes
+
+- Updating themes and tokens
+- Updated dependencies
+  - @lmarcel/highlight@2.2.2
+
 ## 1.1.0
 
 ### Minor Changes

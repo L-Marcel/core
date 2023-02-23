@@ -58,6 +58,7 @@ export function CodeBlock({
             <code
               style={{
                 tabSize,
+                fontFamily: "inherit",
               }}
             >
               {_tokens.map((line, idx) => {

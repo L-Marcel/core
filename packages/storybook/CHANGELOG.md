@@ -1,5 +1,13 @@
 # @lmarcel/book
 
+## 1.1.2
+
+### Patch Changes
+
+- Fixing language dependencies bug and adding many logs
+- Updated dependencies
+  - @lmarcel/highlight@2.3.0
+
 ## 1.1.1
 
 ### Patch Changes

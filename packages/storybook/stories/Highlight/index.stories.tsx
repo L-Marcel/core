@@ -1,7 +1,7 @@
 import { EditEvent, Highlight, HighlightProps, corePlugin, getAllLanguagesInputs } from "@lmarcel/highlight";
 import { Meta, StoryObj, ComponentStory } from "@storybook/react";
 import { EditableHighlightHelp } from "../../src/components/EditableHighlightHelp";
-import { __markup, __latex, __clike, __css , __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
+import { __markup, __latex, __clike, __css , __ruby, __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
 import { useState } from "react";
 
 export default {
@@ -239,6 +239,13 @@ export const markup: StoryObj<HighlightProps> = {
   args: {
     language: "html",
     code: __markup
+  }
+};
+
+export const ruby: StoryObj<HighlightProps> = {
+  args: {
+    language: "ruby",
+    code: __ruby
   }
 };
 

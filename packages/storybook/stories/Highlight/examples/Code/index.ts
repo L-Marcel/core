@@ -468,3 +468,8 @@ export const __yaml = `applications:
   buildpack: python_buildpack`;
 
 export const __latex = `x = \\frac{5}{4}`;
+
+export const __ruby = `def sum_eq_n?(arr, n)
+  return true if arr.empty? && n == 0
+  arr.product(arr).reject { |a,b| a == b }.any? { |a,b| a + b == n }
+end`;

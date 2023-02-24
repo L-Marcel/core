@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Prism from "prism-react-renderer/prism";
+import Prism from "prismjs";
+import ReactRendererPrism from "prism-react-renderer/prism";
 import { HighlightLanguageInput } from "../../languages";
 import { getComponents } from "./getComponents";
 import { defaultProps } from "prism-react-renderer";
@@ -13,6 +14,29 @@ const defaultLoadedComponents = Object.entries(
   return defaultLanguage;
 });
 
+const components = getComponents();
+
+export function loadDependencies(language: string) {
+  const languages: {
+    require?: string[] | string;
+  }[] = components.languages as any;
+
+  const component = languages[language as any];
+
+  if (
+    component.require &&
+    Array.isArray(component.require)
+  ) {
+    component.require.forEach((dep) => {
+      loadDependencies(dep);
+      require(`prismjs/components/prism-${dep}`);
+    });
+  } else if (component.require) {
+    loadDependencies(component.require);
+    require(`prismjs/components/prism-${component.require}`);
+  }
+}
+
 function loadComponentIfLanguagesIsEqual(
   language: string,
   alias: string,
@@ -24,12 +48,17 @@ function loadComponentIfLanguagesIsEqual(
     !defaultLoadedComponents.includes(language) &&
     !custom
   ) {
+    loadDependencies(language);
     require(`prismjs/components/prism-${language}`);
+    ReactRendererPrism.languages[language] =
+      Prism.languages[language];
     return true;
   } else if (alias === compareTo && custom) {
     custom.load();
     return true;
   } else if (alias === compareTo) {
+    Prism.languages[language] =
+      ReactRendererPrism.languages[language];
     return true;
   }
 

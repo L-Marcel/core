@@ -18,6 +18,7 @@
 
 # Features
 - Support for [many languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page)
+- Loads the dependencies of each language alone
 - Editable content support
 - Mobile editable content support
 - Customizable language definitions
@@ -27,6 +28,8 @@
 - With built-in line number viewer
 - Deep integration with TypeScript
 - Plug and play! You don't need an external configuration to use it
+
+> The bug when loading some languages ​​has been resolved. Unfortunately I have no way to check the status of each language one by one. What I'm doing is automating this as much as possible.
 
 # Installation
 To install you need to run in your project:
@@ -296,8 +299,3 @@ For those who are interested, I left a page on storybool containing some example
 See the [codes](https://core-l-marcel.vercel.app/?path=/story/highlight-for-authors-warning--page).
 
 I also left a lot of helpful comments on the properties I typed within the code. If you are going to use TypeScript you will see occasionally. I apologize if this part is not very well documented.
-
-# Roadmap
-- [] Improve core plugin
-  - Clickable links
-- [] Identify all base tokens

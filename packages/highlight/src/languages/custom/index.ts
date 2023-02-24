@@ -6,44 +6,19 @@ import {
   GrammarToken,
 } from "../../themes/tokens";
 import { getComponents } from "../../utils/getComponents";
+import { loadDependencies } from "../../utils/loadComponents";
+import {
+  Grammar,
+  HighlightTokens,
+  TokenObject,
+  TokenRule,
+} from "../../../tokens";
 
-export type TokenObject = {
-  pattern: RegExp;
-
-  /**
-   * If `true`, then the first capturing group of `pattern` will (effectively) behave as a lookbehind
-   * group meaning that the captured text will not be part of the matched text of the new token.
-   */
-  lookbehind?: boolean | undefined;
-
-  /**
-   * Whether the token is greedy.
-   *
-   * @default false
-   */
-  greedy?: boolean | undefined;
-
-  /**
-   * An optional alias or list of aliases.
-   */
-  alias?: string | string[] | undefined;
-
-  /**
-   * The nested tokens of this token.
-   *
-   * This can be used for recursive language definitions.
-   *
-   * Note that this can cause infinite recursion.
-   */
-  inside?: Grammar | undefined;
-};
-
-export type TokenRule = RegExp | TokenObject;
-
-export type Grammar = {
-  [Key in DefinedGrammarToken]?: TokenRule[];
-} & {
-  [key: string]: TokenRule[];
+export type {
+  Grammar,
+  HighlightTokens,
+  TokenObject,
+  TokenRule,
 };
 
 export type HighlightCustomLanguageOptions<
@@ -118,6 +93,7 @@ export class HighlightCustomLanguage<
     this.name = languageName;
 
     if (typeof grammar === "string") {
+      loadDependencies(grammar);
       this.grammar = Prism.languages.extend(
         grammar,
         {}

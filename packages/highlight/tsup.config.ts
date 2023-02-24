@@ -10,5 +10,6 @@ export default defineConfig({
   entry: {
     index: "src/index.tsx",
     languages: "src/private/languages.ts",
+    tokens: "src/private/tokens.ts",
   },
 });

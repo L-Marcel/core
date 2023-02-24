@@ -1,6 +1,6 @@
 {
   "name": "@lmarcel/highlight",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "license": "MIT",
   "main": "dist/index.js",
   "description": "Editable highlight component for react with support for many languages ​​and custom themes.",
@@ -13,7 +13,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "dev": "tsup --watch",
-    "prebuild": "node dist/languages.js",
+    "prebuild": "node dist/languages.js && node dist/tokens.js",
     "build": "tsup"
   },
   "homepage": "https://core-l-marcel.vercel.app/",

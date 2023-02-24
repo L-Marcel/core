@@ -1,10 +1,16 @@
 # @lmarcel/highlight
 
+## 2.3.1
+
+### Patch Changes
+
+- Fixing error in changelog
+
 ## 2.3.0
 
 ### Minor Changes
 
-- Fixing language dependencies bug and adding many logs
+- Fixing language dependencies bug and adding many tokens
 
 ## 2.2.2
 

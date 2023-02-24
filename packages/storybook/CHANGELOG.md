@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- Fixing language dependencies bug and adding many logs
+- Fixing language dependencies bug and adding many tokens
 - Updated dependencies
   - @lmarcel/highlight@2.3.0
 

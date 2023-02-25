@@ -1,5 +1,17 @@
 # @lmarcel/highlight
 
+## 2.4.5
+
+### Patch Changes
+
+- Updating the cover, sorry for my impatience
+
+## 2.4.4
+
+### Patch Changes
+
+- Changing cover again
+
 ## 2.4.3
 
 ### Patch Changes

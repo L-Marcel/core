@@ -1,6 +1,6 @@
 {
   "name": "@lmarcel/book",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "scripts": {
     "dev": "start-storybook -p 6006",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
-    "@lmarcel/highlight": "workspace:^2.4.0",
+    "@lmarcel/highlight": "workspace:^2.4.5",
     "@next/font": "13.1.6",
     "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-actions": "^6.5.15",

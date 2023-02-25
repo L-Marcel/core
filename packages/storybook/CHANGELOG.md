@@ -1,5 +1,13 @@
 # @lmarcel/book
 
+## 2.0.1
+
+### Patch Changes
+
+- Updating the title, sorry for my impatience
+- Updated dependencies
+  - @lmarcel/highlight@2.4.5
+
 ## 2.0.0
 
 ### Major Changes

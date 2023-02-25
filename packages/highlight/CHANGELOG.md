@@ -1,5 +1,23 @@
 # @lmarcel/highlight
 
+## 2.4.3
+
+### Patch Changes
+
+- Updating cover
+
+## 2.4.2
+
+### Patch Changes
+
+- Updating domain
+
+## 2.4.1
+
+### Patch Changes
+
+- Removing public folder from build
+
 ## 2.4.0
 
 ### Minor Changes

@@ -1,4 +1,4 @@
-[![highlight](./public/cover.png)](https://github.com/l-marcel/core)
+[![highlight](./public/cover.png)](https://github.com/L-Marcel/core/raw/main/packages/highlight/public/cover.png)
 
 Editable highlight component for react with support for many languages ​​and custom themes.
 

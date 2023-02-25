@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CoreHighlightProps } from "..";
 import {
-  HighligthPlugin,
-  HighligthPluginData,
+  HighlightPlugin,
+  HighlightPluginData,
 } from "../plugins";
 
 type NotRequiredFunction =
@@ -14,11 +14,11 @@ type PluginFunctionParameters<
 > = T extends (...args: infer P) => any ? P[1] : undefined;
 
 export function runPlugins<
-  Call extends keyof HighligthPluginData<any>,
-  Value extends HighligthPluginData<any>[Call],
+  Call extends keyof HighlightPluginData<any>,
+  Value extends HighlightPluginData<any>[Call],
   Data extends PluginFunctionParameters<Value>
 >(
-  plugins: HighligthPlugin<any>[],
+  plugins: HighlightPlugin<any>[],
   call: Call,
   input: Data,
   highlightProps: CoreHighlightProps

@@ -8,7 +8,7 @@ const byverduDracula = new HighlightCustomTheme(
     numbersColor: "#a5a5aa",
     numbersBorderColor: "#a47cde",
     numbersBackgroundColor: "#20212b",
-    srollbarThumbColor: "#ad88e6",
+    scrollbarThumbColor: "#ad88e6",
     scrollbarTrackColor: "#191a22",
   },
   [

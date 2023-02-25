@@ -11,8 +11,8 @@
     "set:publish": "changeset publish"
   },
   "devDependencies": {
-    "changeset": "^0.2.6",
     "tsup": "^6.5.0",
-    "turbo": "^1.7.0"
+    "turbo": "^1.7.0",
+    "@changesets/cli": "^2.26.0"
   }
 }

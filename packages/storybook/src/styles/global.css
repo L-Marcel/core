@@ -24,6 +24,10 @@
   #docs-root > div > div h2,
   #docs-root > div > div h3 {
     @apply
+      pb-0
+      border-b-0
+      font-inter
+      font-bold
       mt-6
       mb-1;
   }
@@ -47,8 +51,11 @@
 
   #docs-root > div > div > p {
     @apply
-      text-lg
-      mt-2;
+      mb-3
+      font-normal
+      font-inter
+      text-base
+      mt-3;
   }
   
   #docs-root > div > div > *:first-child {
@@ -58,6 +65,15 @@
 
   #docs-root strong {
     @apply
+      font-medium
+    text-[#1ea7fd];
+  }
+
+  #docs-root h1 > strong,
+  #docs-root h2 > strong,
+  #docs-root h3 > strong {
+    @apply
+      font-bold
     text-[#1ea7fd];
   }
 
@@ -73,22 +89,39 @@
 
   #docs-root ul {
     @apply
+      pl-[40px]
+      mb-0
+      font-normal
       font-inter
       flex
       flex-col
-      gap-4
+      gap-3
       mt-0;
   }
 
   #docs-root li {
     @apply
+      font-normal
       font-inter
+      m-0
+      text-base
+      leading-normal
       first:pt-3;
+  }
+
+  #docs-root p + ul > li {
+    @apply
+      first:pt-0;
   }
 
   #docs-root a {
     @apply
-      text-[#1ea7fd];
+      font-normal
+      font-inter
+      text-[#1ea7fd]
+      underline
+      underline-offset-4
+      hover:text-[#389cda];
   }
 
   #docs-root blockquote {

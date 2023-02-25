@@ -8,7 +8,7 @@ const laserwave = new HighlightCustomTheme(
     numbersColor: "#ebebeb",
     numbersBackgroundColor: "#211b27",
     numbersBorderColor: "#39adbd",
-    srollbarThumbColor: "#40b4c4",
+    scrollbarThumbColor: "#40b4c4",
     scrollbarTrackColor: "#1e1824",
   },
   [

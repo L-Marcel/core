@@ -10,7 +10,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#86868b",
         numbersBorderColor: "#a47cde",
         numbersBackgroundColor: "#20212b",
-        srollbarThumbColor: "#ad88e6",
+        scrollbarThumbColor: "#ad88e6",
         scrollbarTrackColor: "#191a22",
       };
     case "duotoneDark":
@@ -18,7 +18,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#86868b",
         numbersBorderColor: "#fac48e",
         numbersBackgroundColor: "#201d29",
-        srollbarThumbColor: "#f8ca9d",
+        scrollbarThumbColor: "#f8ca9d",
         scrollbarTrackColor: "#1b1824",
       };
     case "duotoneLight":
@@ -26,7 +26,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#4e4e58",
         numbersBorderColor: "#063289",
         numbersBackgroundColor: "#f0ebe4",
-        srollbarThumbColor: "#0a317e",
+        scrollbarThumbColor: "#0a317e",
         scrollbarTrackColor: "#e0dbd3",
       };
     case "github":
@@ -34,7 +34,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#4e4e58",
         numbersBorderColor: "#00008f",
         numbersBackgroundColor: "#ebebeb",
-        srollbarThumbColor: "#03037e",
+        scrollbarThumbColor: "#03037e",
         scrollbarTrackColor: "#d8d3cc",
       };
     case "nightOwl":
@@ -42,7 +42,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#d4f5ef",
         numbersBorderColor: "#7fdbca",
         numbersBackgroundColor: "#01111f",
-        srollbarThumbColor: "#6ecfbe",
+        scrollbarThumbColor: "#6ecfbe",
         scrollbarTrackColor: "#010c16",
       };
     case "nightOwlLight":
@@ -50,7 +50,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#3a4745",
         numbersBorderColor: "#0c969b",
         numbersBackgroundColor: "#f1f1f1",
-        srollbarThumbColor: "#149ea3",
+        scrollbarThumbColor: "#149ea3",
         scrollbarTrackColor: "#e9e9e9",
       };
     case "oceanicNext":
@@ -58,7 +58,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#d3bbd3",
         numbersBorderColor: "#b098b0",
         numbersBackgroundColor: "#21252e",
-        srollbarThumbColor: "#a38ca3",
+        scrollbarThumbColor: "#a38ca3",
         scrollbarTrackColor: "#1b1e25",
       };
     case "palenight":
@@ -66,7 +66,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#b8bfbd",
         numbersBorderColor: "#b8bfbd",
         numbersBackgroundColor: "#202333",
-        srollbarThumbColor: "#a6afac",
+        scrollbarThumbColor: "#a6afac",
         scrollbarTrackColor: "#1a1d2b",
       };
     case "okaidia":
@@ -74,7 +74,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#8c8c92",
         numbersBorderColor: "#4fc2df",
         numbersBackgroundColor: "#1c1d18",
-        srollbarThumbColor: "#44b1cc",
+        scrollbarThumbColor: "#44b1cc",
         scrollbarTrackColor: "#171812",
       };
     case "shadesOfPurple":
@@ -82,7 +82,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#ffac3e",
         numbersBorderColor: "#fc9819",
         numbersBackgroundColor: "#252349",
-        srollbarThumbColor: "#eb8f16",
+        scrollbarThumbColor: "#eb8f16",
         scrollbarTrackColor: "#1d1b3f",
       };
     case "synthwave84":
@@ -90,7 +90,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#d4ccc0",
         numbersBorderColor: "#d4ccc0",
         numbersBackgroundColor: "#251c33",
-        srollbarThumbColor: "#c9c1b6",
+        scrollbarThumbColor: "#c9c1b6",
         scrollbarTrackColor: "#181636",
       };
     case "ultramin":
@@ -98,7 +98,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#343338",
         numbersBorderColor: "#747377",
         numbersBackgroundColor: "#fafafa",
-        srollbarThumbColor: "#6d6c72",
+        scrollbarThumbColor: "#6d6c72",
         scrollbarTrackColor: "#e9e9e9",
       };
     case "vsDark":
@@ -106,7 +106,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#71717A",
         numbersBorderColor: "#5095ca",
         numbersBackgroundColor: "#161616",
-        srollbarThumbColor: "#438ac0",
+        scrollbarThumbColor: "#438ac0",
         scrollbarTrackColor: "#131212",
       };
     case "vsLight":
@@ -114,7 +114,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#494957",
         numbersBorderColor: "#5290ff",
         numbersBackgroundColor: "#f7f7f7",
-        srollbarThumbColor: "#4986f0",
+        scrollbarThumbColor: "#4986f0",
         scrollbarTrackColor: "#eeebeb",
       };
     default:
@@ -122,7 +122,7 @@ export function getThemeAdditionalColors(
         numbersColor: "#71717A",
         numbersBackgroundColor: "hsl(218, 14%, 15%)",
         numbersBorderColor: "#9d25ba",
-        srollbarThumbColor: "#ac38c9",
+        scrollbarThumbColor: "#ac38c9",
         scrollbarTrackColor: "hsl(218, 15%, 11%)",
       };
   }

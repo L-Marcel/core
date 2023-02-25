@@ -4,7 +4,7 @@ import '../src/styles/global.css';
 
 export const parameters = {
   docs: {
-    theme: themes.dark,
+    theme: themes.dark
   },
   actions: { 
     argTypesRegex: '^on[A-Z].*' 

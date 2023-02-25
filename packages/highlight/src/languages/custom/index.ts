@@ -204,7 +204,7 @@ export class HighlightCustomLanguage<
    * library is that the value of tokens it must be a list.
    *
    * Transforming the value into a list does not change its operation s
-   * ince its settings are passed to index `0` of the list.
+   * since its settings are passed to index `0` of the list.
    *
    * @param {GrammarToken} key - the target token
    * @param {GrammarToken | number} aliasOrIndex - the index of your rules, if it is not a list you can pass the value `0`. It also accepts an alias in case it is a list.
@@ -258,7 +258,7 @@ export class HighlightCustomLanguage<
    * library is that the value of tokens it must be a list.
    *
    * Transforming the value into a list does not change its operation s
-   * ince its settings are passed to index `0` of the list.
+   * since its settings are passed to index `0` of the list.
    *
    * If there is no item left in the list, the token will be deleted!
    *
@@ -316,7 +316,7 @@ export class HighlightCustomLanguage<
    * library is that the value of tokens it must be a list.
    *
    * Transforming the value into a list does not change its operation s
-   * ince its settings are passed to index `0` of the list.
+   * since its settings are passed to index `0` of the list.
    *
    * @param {GrammarToken} key - the target token
    * @param {TokenRule} rule - the new rule

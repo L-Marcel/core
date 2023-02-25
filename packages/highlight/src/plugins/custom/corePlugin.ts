@@ -1,4 +1,4 @@
-import { HighligthPlugin, Token } from "..";
+import { HighlightPlugin, Token } from "..";
 import { DangerousStyleEntry } from "../../themes/custom/index";
 
 export type CorePluginSettings = {
@@ -39,7 +39,7 @@ function tokensStartWithTabulation(
 }
 
 export const corePlugin =
-  HighligthPlugin.create<CorePluginSettings>(
+  HighlightPlugin.create<CorePluginSettings>(
     {
       codeLine: (settings, tokens, core) => {
         const spaces = core.tabSize ?? 2;

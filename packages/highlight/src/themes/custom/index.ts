@@ -49,7 +49,7 @@ export type HighlightThemePlain = PrismTheme["plain"] & {
   numbersColor?: string;
   numbersBackgroundColor?: string;
   numbersBorderColor?: string;
-  srollbarThumbColor?: string;
+  scrollbarThumbColor?: string;
   scrollbarTrackColor?: string;
 };
 

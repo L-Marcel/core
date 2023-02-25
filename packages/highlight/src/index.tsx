@@ -29,9 +29,9 @@ import {
   StyleEntry,
 } from "./themes/custom";
 import {
-  HighligthPlugin,
+  HighlightPlugin,
   DivProps,
-  HighligthPluginData,
+  HighlightPluginData,
   LineInputProps,
   LineOutputProps,
   SpanProps,
@@ -93,7 +93,7 @@ export type {
   DefinedGrammarToken,
   GrammarToken,
   DivProps,
-  HighligthPluginData,
+  HighlightPluginData,
   LineInputProps,
   LineOutputProps,
   SpanProps,
@@ -158,7 +158,7 @@ export interface HighlightProps
   /**
    * In work...
    */
-  plugins?: HighligthPlugin<any>[];
+  plugins?: HighlightPlugin<any>[];
 
   /**
    * If `true` the content can be edited
@@ -196,7 +196,7 @@ export const highlightCustomLanguages = {
 
 export {
   themes,
-  HighligthPlugin,
+  HighlightPlugin,
   HighlightCustomTheme,
   getAllLanguagesInputs,
   getAllLanguagesComponents,
@@ -271,7 +271,7 @@ export function Highlight({
         ]
   );
 
-  function handleOnFocusHightlight(
+  function handleOnFocusHighlight(
     e: FocusEvent<HTMLDivElement>
   ) {
     e.currentTarget.role = "focused";
@@ -288,7 +288,7 @@ export function Highlight({
     rest?.onFocus && rest?.onFocus(e);
   }
 
-  function handleOnBlurHightlight(
+  function handleOnBlurHighlight(
     e: FocusEvent<HTMLDivElement>
   ) {
     e.currentTarget.role = "";
@@ -308,7 +308,7 @@ export function Highlight({
     rest?.onBlur && rest?.onBlur(e);
   }
 
-  function handleOnKeyDownHightlight(
+  function handleOnKeyDownHighlight(
     e: KeyboardEvent<HTMLDivElement>
   ) {
     const isFocused = e.currentTarget.role === "focused";
@@ -335,7 +335,7 @@ export function Highlight({
     rest?.onKeyDown && rest?.onKeyDown(e);
   }
 
-  function handleOnKeyDownHightlightTextArea(
+  function handleOnKeyDownHighlightTextArea(
     e: KeyboardEvent<HTMLTextAreaElement>
   ) {
     e.stopPropagation();
@@ -369,9 +369,9 @@ export function Highlight({
   return (
     <HighlightContainer
       tabIndex={0}
-      onFocus={handleOnFocusHightlight}
-      onBlur={handleOnBlurHightlight}
-      onKeyDown={handleOnKeyDownHightlight}
+      onFocus={handleOnFocusHighlight}
+      onBlur={handleOnBlurHighlight}
+      onKeyDown={handleOnKeyDownHighlight}
       {...rest}
       className={`lmarcel-highlight${
         rest?.className ? ` ${rest.className}` : ""
@@ -387,7 +387,7 @@ export function Highlight({
         style={
           {
             "--scrollbar-thumb":
-              selectedTheme?.plain?.srollbarThumbColor,
+              selectedTheme?.plain?.scrollbarThumbColor,
             "--scrollbar-track":
               selectedTheme?.plain?.scrollbarTrackColor,
           } as React.CSSProperties & {
@@ -443,7 +443,7 @@ export function Highlight({
               }`}
               onFocus={onEnterEditMode}
               onBlur={onExitEditMode}
-              onKeyDown={handleOnKeyDownHightlightTextArea}
+              onKeyDown={handleOnKeyDownHighlightTextArea}
               style={{
                 caretColor: selectedTheme?.plain?.color,
                 resize: "none",

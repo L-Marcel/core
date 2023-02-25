@@ -111,7 +111,7 @@ export function Code(/* ... */) {
 }`;
 
 export const corePluginCode = `//packages/highlight/src/plugins/custom/corePlugin.ts
-export const corePlugin = HighligthPlugin.create<CorePluginSettings>(
+export const corePlugin = HighlightPlugin.create<CorePluginSettings>(
   {
     codeLine: (settings, tokens, core) => {
       const spaces = core.tabSize ?? 2;
@@ -147,7 +147,7 @@ export const corePlugin = HighligthPlugin.create<CorePluginSettings>(
   }
 );`;
 
-export const codeExampleCorePlugin = `import { HighligthPlugin, Token } from "..";
+export const codeExampleCorePlugin = `import { HighlightPlugin, Token } from "..";
 import { DangerousStyleEntry } from "../../themes/custom/index";
 
 export type CorePluginSettings = {
@@ -188,7 +188,7 @@ function tokensStartWithTabulation(
 }
 
 export const corePlugin =
-  HighligthPlugin.create<CorePluginSettings>(
+  HighlightPlugin.create<CorePluginSettings>(
     {
       codeLine: (settings, tokens, core) => {
         const spaces = core.tabSize ?? 2;
@@ -360,7 +360,7 @@ const oneDark = new HighlightCustomTheme(
     backgroundColor: "hsl(220, 13%, 18%)",
     numbersBackgroundColor: "hsl(218, 14%, 15%)",
     numbersBorderColor: "#9d25ba",
-    srollbarThumbColor: "#ac38c9",
+    scrollbarThumbColor: "#ac38c9",
     scrollbarTrackColor: "hsl(218, 15%, 11%)",
   },
   [
@@ -687,7 +687,7 @@ const oneLight = new HighlightCustomTheme(
     backgroundColor: "hsl(230, 1%, 98%)",
     numbersBackgroundColor: "hsl(0, 0%, 94%)",
     numbersBorderColor: "#9d25ba",
-    srollbarThumbColor: "#ac38c9",
+    scrollbarThumbColor: "#ac38c9",
     scrollbarTrackColor: "hsl(0, 0%, 88%)",
   },
   [
@@ -973,7 +973,7 @@ const laserwave = new HighlightCustomTheme(
     numbersColor: "#ebebeb",
     numbersBackgroundColor: "#211b27",
     numbersBorderColor: "#39adbd",
-    srollbarThumbColor: "#40b4c4",
+    scrollbarThumbColor: "#40b4c4",
     scrollbarTrackColor: "#1e1824",
   },
   [

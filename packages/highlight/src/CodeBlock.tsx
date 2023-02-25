@@ -6,7 +6,7 @@ import Highlight, {
 
 import { HighlightPreContainer } from "./styles";
 import { HighlightTheme } from "./themes/custom";
-import { HighligthPlugin } from "./plugins";
+import { HighlightPlugin } from "./plugins";
 import { HighlightLanguageInput } from "../languages";
 import { runPlugins } from "./utils/runPlugins";
 import { CoreHighlightProps } from ".";
@@ -15,7 +15,7 @@ interface CodeBlockProps {
   code: string;
   language: HighlightLanguageInput;
   theme?: HighlightTheme;
-  plugins?: HighligthPlugin<any>[];
+  plugins?: HighlightPlugin<any>[];
   tabSize?: number;
   coreProps: CoreHighlightProps;
 }

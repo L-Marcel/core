@@ -1,6 +1,6 @@
 {
   "name": "@lmarcel/book",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "start-storybook -p 6006",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
-    "@lmarcel/highlight": "workspace:^2.3.0",
+    "@lmarcel/highlight": "workspace:^2.4.0",
     "@next/font": "13.1.6",
     "@storybook/addon-a11y": "^6.5.15",
     "@storybook/addon-actions": "^6.5.15",
@@ -35,7 +35,7 @@
     "webpack": ">=2.0.0"
   },
   "devDependencies": {
-    "@lmarcel/ts-config": "*",
+    "@lmarcel/ts-config": "^1.0.0",
     "@storybook/mdx2-csf": "^0.0.4",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",

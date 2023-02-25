@@ -8,7 +8,7 @@ const oneLight = new HighlightCustomTheme(
     backgroundColor: "hsl(230, 1%, 98%)",
     numbersBackgroundColor: "hsl(0, 0%, 94%)",
     numbersBorderColor: "#9d25ba",
-    srollbarThumbColor: "#ac38c9",
+    scrollbarThumbColor: "#ac38c9",
     scrollbarTrackColor: "hsl(0, 0%, 88%)",
   },
   [

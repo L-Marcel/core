@@ -1,3 +1,7 @@
+[![highlight](./public/cover.png)](https://github.com/l-marcel/core)
+
+Editable highlight component for react with support for many languages ​​and custom themes.
+
 # Summary 
 - [Features](#features)
 - [Installation](#installation)
@@ -29,7 +33,7 @@
 - Deep integration with TypeScript
 - Plug and play! You don't need an external configuration to use it
 
-> The bug when loading some languages ​​has been resolved. Unfortunately I have no way to check the status of each language one by one. What I'm doing is automating this as much as possible.
+> The bug when loading some languages ​​has been resolved. Unfortunately I have no way to check the status of each language one by one.
 
 # Installation
 To install you need to run in your project:
@@ -250,7 +254,7 @@ The plugin must always be passed as a function, because it can receive specific 
 Here is an example of the __`structure`__ of a plugin:
 ```ts
 //packages/highlight/src/plugins/custom/corePlugin.ts
-export const corePlugin = HighligthPlugin.create<CorePluginSettings>(
+export const corePlugin = HighlightPlugin.create<CorePluginSettings>(
   {
     codeLine: (settings, tokens, core) => {
       const spaces = core.tabSize ?? 2;
@@ -294,7 +298,7 @@ Does not support __`async`__ functions!
 I left a [demo](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--editable-with-plugin) of this plugin. I made something very simple, so take it easy if you find fault!
 
 # For authors
-For those who are interested, I left a page on storybool containing some examples of how it is possible to create plugins, language definitions and themes.
+For those who are interested, I left a page on storybook containing some examples of how it is possible to create plugins, language definitions and themes.
 
 See the [codes](https://core-l-marcel.vercel.app/?path=/story/highlight-for-authors-warning--page).
 

@@ -71,7 +71,7 @@ export type TokenOutputProps = SpanProps & {
   readonly children: string;
 };
 
-export type HighligthPluginData<Settings> = {
+export type HighlightPluginData<Settings> = {
   /**
    * Use this function to change the theme in use.
    *
@@ -162,17 +162,17 @@ export type HighligthPluginData<Settings> = {
   ) => LineInputProps;
 
   /**
-   * Use this function to change the line ouput.
+   * Use this function to change the line output.
    *
-   * The `line ouput` is nothing more than the properties that will be passed
+   * The `line output` is nothing more than the properties that will be passed
    * inside the `div` rendered for each line after be
    * processed by the `prism-react-renderer` function.
    *
    * @param settings - plugin's settings
-   * @param props - line ouput props
+   * @param props - line output props
    * @param highlightProps - main highlight properties
    *
-   * @returns formatted line ouput
+   * @returns formatted line output
    */
   lineOutput?: (
     settings: Settings,
@@ -211,12 +211,12 @@ export type HighligthPluginData<Settings> = {
   ) => Token[];
 };
 
-export class HighligthPlugin<Settings> {
+export class HighlightPlugin<Settings> {
   /**
    * This function is private, use the static `create` method instead.
    */
   private constructor(
-    public plugin: HighligthPluginData<Settings>,
+    public plugin: HighlightPluginData<Settings>,
     public settings: Settings
   ) {}
 
@@ -231,7 +231,7 @@ export class HighligthPlugin<Settings> {
    * @returns plugin instance
    */
   static create<Settings>(
-    plugin: HighligthPluginData<Settings>,
+    plugin: HighlightPluginData<Settings>,
     defaultSettings: Settings
   ) {
     return (settings: Settings = defaultSettings) => {
@@ -240,7 +240,7 @@ export class HighligthPlugin<Settings> {
         ...settings,
       };
 
-      return new HighligthPlugin<Settings>(
+      return new HighlightPlugin<Settings>(
         plugin,
         finalSettings
       );

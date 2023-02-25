@@ -1,5 +1,16 @@
 # @lmarcel/book
 
+## 2.0.0
+
+### Major Changes
+
+- Text review and new metadata in storybook
+
+### Patch Changes
+
+- Updated dependencies
+  - @lmarcel/highlight@2.4.0
+
 ## 1.1.2
 
 ### Patch Changes

@@ -32,12 +32,6 @@ module.exports = {
       include: path.resolve(__dirname, "../"),
     });
 
-    const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-    config.plugins.push(
-      new HtmlWebpackPlugin({ title: '@lmarcel / core' }),
-    )
-
     return config;
   }
 }

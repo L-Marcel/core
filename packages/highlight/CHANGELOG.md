@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.4.6
+
+### Patch Changes
+
+- Fixing readme cover
+
 ## 2.4.5
 
 ### Patch Changes

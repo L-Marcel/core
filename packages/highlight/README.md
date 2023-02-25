@@ -1,5 +1,3 @@
-[![highlight](https://raw.githubusercontent.com/L-Marcel/core/main/packages/highlight/public/cover.png)](https://github.com/L-Marcel/core)
-
 Editable highlight component for react with support for many languages ​​and custom themes.
 
 # Summary 

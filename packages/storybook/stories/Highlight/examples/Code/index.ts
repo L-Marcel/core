@@ -473,3 +473,11 @@ export const __ruby = `def sum_eq_n?(arr, n)
   return true if arr.empty? && n == 0
   arr.product(arr).reject { |a,b| a == b }.any? { |a,b| a + b == n }
 end`;
+
+export const __myBanner = `title my banner
+subtitle this is an example of a custom language
+end themes work, but tokens must be defined!
+
+//title -> banner's title
+//subtitle -> banner's subtitle
+//end -> end of the banner`;

@@ -1,5 +1,16 @@
 # @lmarcel/book
 
+## 2.1.0
+
+### Minor Changes
+
+- Adding support for creating language definitions if they do not exists and improving types
+
+### Patch Changes
+
+- Updated dependencies
+  - @lmarcel/highlight@2.6.0
+
 ## 2.0.1
 
 ### Patch Changes

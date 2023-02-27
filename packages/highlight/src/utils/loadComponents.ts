@@ -52,6 +52,7 @@ function loadComponentIfLanguagesIsEqual(
     require(`prismjs/components/prism-${language}`);
     ReactRendererPrism.languages[language] =
       Prism.languages[language];
+      
     return true;
   } else if (alias === compareTo && custom) {
     custom.load();

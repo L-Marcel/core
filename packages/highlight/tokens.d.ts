@@ -1,3 +1,6 @@
+/**
+ * Key "constructor" omitted.
+ */
 export type HighlightTokens = [
   "char",
   "cdata",
@@ -490,7 +493,6 @@ export type HighlightTokens = [
   "lambda-parameter",
   "razor-comment",
   "delegate-operator",
-  "constructor",
   "char-class",
   "special-escape",
   "char-set",
@@ -645,11 +647,11 @@ export type TokenObject = {
 
 export type TokenRule = RegExp | TokenObject;
 
+/**
+ * Key "constructor" omitted.
+ */
 export type Grammar = {
-  [Key in DefinedGrammarToken]?: TokenRule[];
-};  
-
-export type Grammar = {
+  [anotherToken: string]: TokenRule[];
   char?: TokenRule[]
 	cdata?: TokenRule[]
 	doctype?: TokenRule[]
@@ -1141,7 +1143,6 @@ export type Grammar = {
 	"lambda-parameter"?: TokenRule[];
 	"razor-comment"?: TokenRule[];
 	"delegate-operator"?: TokenRule[];
-	constructor?: TokenRule[]
 	"char-class"?: TokenRule[];
 	"special-escape"?: TokenRule[];
 	"char-set"?: TokenRule[];
@@ -1261,5 +1262,4 @@ export type Grammar = {
 	axis?: TokenRule[]
 	"xquery-element"?: TokenRule[];
 	"xquery-attribute"?: TokenRule[];
-  [anotherToken: string]: TokenRule[];
 };

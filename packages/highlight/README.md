@@ -1,5 +1,7 @@
 Editable highlight component for react with support for many languages ​​and custom themes.
 
+> It is now possible to create the definition of languages ​​that do not exist! That's right, you can make your own! See the [demonstration](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--custom-unique-language).
+
 # Summary 
 - [Features](#features)
 - [Installation](#installation)
@@ -23,15 +25,13 @@ Editable highlight component for react with support for many languages ​​and
 - Loads the dependencies of each language alone
 - Editable content support
 - Mobile editable content support
-- Customizable language definitions
+- Customizable existing or created language definitions
 - Customizable theming
 - Tab navigation support
 - Included styles
 - With built-in line number viewer
 - Deep integration with TypeScript
 - Plug and play! You don't need an external configuration to use it
-
-> The bug when loading some languages ​​has been resolved. Unfortunately I have no way to check the status of each language one by one.
 
 # Installation
 To install you need to run in your project:
@@ -158,8 +158,29 @@ This library uses __`Prism.js`__ to generate the tokens for each language compon
 This library currently supports ALL __`Prism.js`__ languages __`​​dynamically`__. Because it was too big and not feasible to do manually, I migrated this list to [storybook](https://core-l-marcel.vercel.app/) in [available languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page).
 
 ## Custom languages definitions
-It is possible, but quite complex, to edit language definitions using the library, but this is only available for the __available languages__ (it inevitably requires extensive knowledge of regex):
+It is possible, but quite complex, to edit language definitions using the library. You can make your own (it inevitably requires extensive knowledge of regex, see the [demonstration](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--custom-unique-language)):
 ```ts
+//my custom language definitions
+const banner = new HighlightCustomLanguage(
+  "myBanner",
+  [],
+  {
+    grammar: {
+      "banners": [{
+        pattern: /\btitle\b/g,
+        alias: "banner-title"
+      }, {
+        pattern: /\bsubtitle\b/g,
+        alias: "banner-subtitle"
+      }, {
+        pattern: /\bend\b/g,
+        alias: "banner-end"
+      }]
+    },
+  }
+);
+
+//my javascript language definitions
 const javascript = new HighlightCustomLanguage(
   "javascript",
   [],
@@ -181,7 +202,7 @@ javascript.replaceTokenRule(
   }
 );
 
-export { javascript };
+export { javascript, banner };
 ```
 
 The definitions are available in the __`grammar`__ property of the new language __`instance`__.

@@ -51,7 +51,28 @@ export const storybookTheme = HighlightCustomTheme.extends(themes.oneDark, {
   numbersColor: "#cfcfcf"
 });`;
 
-export const languageDefinitions = `const javascript = new HighlightCustomLanguage(
+export const languageDefinitions = `//my custom language definitions
+const banner = new HighlightCustomLanguage(
+  "myBanner",
+  [],
+  {
+    grammar: {
+      "banners": [{
+        pattern: /\\btitle\\b/g,
+        alias: "banner-title"
+      }, {
+        pattern: /\\bsubtitle\\b/g,
+        alias: "banner-subtitle"
+      }, {
+        pattern: /\\bend\\b/g,
+        alias: "banner-end"
+      }]
+    },
+  }
+);
+
+//my javascript language definitions
+const javascript = new HighlightCustomLanguage(
   "javascript",
   [],
   {
@@ -1080,3 +1101,26 @@ const laserwave = new HighlightCustomTheme(
 );
 
 export default laserwave;`;
+
+export const myBannerDefinitionCode = `import { HighlightCustomLanguage } from "..";
+
+const banner = new HighlightCustomLanguage(
+  "myBanner",
+  [],
+  {
+    grammar: {
+      "banners": [{
+        pattern: /\\btitle\\b/g,
+        alias: "banner-title"
+      }, {
+        pattern: /\\bsubtitle\\b/g,
+        alias: "banner-subtitle"
+      }, {
+        pattern: /\\bend\\b/g,
+        alias: "banner-end"
+      }]
+    },
+  }
+);
+
+export { banner };`;

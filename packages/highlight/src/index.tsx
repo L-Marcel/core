@@ -69,6 +69,7 @@ import { isCustomLanguage } from "./utils/isCustomLanguage";
 import { loadComponents } from "./utils/loadComponents";
 import { corePlugin } from "./plugins/custom/corePlugin";
 import { runPlugins } from "./utils/runPlugins";
+import { banner } from "./languages/custom/banner";
 
 type HighlightDefaultTheme = keyof typeof themes;
 
@@ -136,8 +137,11 @@ export interface HighlightProps
   /**
    * language used on render the code.
    * Can be the language's `aliases` or `titles`.
+   * 
+   * Defined as a `string` to accept unregistered languages.
+   * Useful type: `HighlightLanguageInput`
    */
-  language: HighlightLanguageInput;
+  language: HighlightLanguageInput | string;
 
   /**
    * Custom languages that can be used to render the code.
@@ -192,6 +196,7 @@ export interface HighlightProps
 export const highlightCustomLanguages = {
   javascript,
   jsx,
+  myBanner: banner
 };
 
 export {

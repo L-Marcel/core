@@ -101,6 +101,20 @@ export function getThemeAdditionalStyles(
             fontStyle: "italic",
           },
         },
+        {
+          types: ["banners"],
+          languages: ["myBanner"], 
+          style: {
+            color: "hsl(286, 60%, 67%)"
+          }
+        },
+        {
+          types: ["banner-end"],
+          languages: ["myBanner"], 
+          style: {
+            color: "hsl(133, 45%, 53%)"
+          }
+        }
       ];
     case "vsDark":
       return [
@@ -138,6 +152,20 @@ export function getThemeAdditionalStyles(
             color: "rgb(220, 220, 170)",
           },
         },
+        {
+          types: ["banners"],
+          languages: ["myBanner"], 
+          style: {
+            color: "hsl(286, 60%, 67%)"
+          }
+        },
+        {
+          types: ["banner-end"],
+          languages: ["myBanner"], 
+          style: {
+            color: "hsl(133, 45%, 53%)"
+          }
+        }
       ];
     case "vsLight":
       return [
@@ -175,6 +203,20 @@ export function getThemeAdditionalStyles(
             color: "rgb(207, 124, 7)",
           },
         },
+        {
+          types: ["banners"],
+          languages: ["myBanner"], 
+          style: {
+            color: "hsl(286, 60%, 67%)"
+          }
+        },
+        {
+          types: ["banner-end"],
+          languages: ["myBanner"], 
+          style: {
+            color: "hsl(133, 45%, 53%)"
+          }
+        }
       ];
     default:
       return [];

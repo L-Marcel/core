@@ -1,0 +1,18 @@
+import { Meta } from "@storybook/addon-docs";
+import { Highlight } from "@lmarcel/highlight";
+import { myBannerDefinitionCode } from "../../constant/documentation/highlight";
+import { storybookTheme } from "../../constant/theme/highlight";
+
+<Meta title="Highlight/For Authors/Languages/My Banner"/>
+
+# My banner definition / __Code__
+Version: __2.6.0__
+<Highlight
+  theme={storybookTheme}
+  language="ts"
+  full={true}
+  style={{
+    marginBottom: "1rem"
+  }}
+  code={myBannerDefinitionCode}
+/>

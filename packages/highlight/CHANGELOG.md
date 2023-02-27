@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.6.0
+
+### Minor Changes
+
+- Adding support for creating language definitions if they do not exists and improving types
+
 ## 2.5.1
 
 ### Patch Changes

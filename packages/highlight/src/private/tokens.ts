@@ -131,8 +131,11 @@ const finalTokensList = [...uniqueTokens];
 
 fs.writeFile(
   "tokens.d.ts",
-  `export type HighlightTokens = ${JSON.stringify(
-    finalTokensList,
+  `/**
+ * Key "constructor" omitted.
+ */
+export type HighlightTokens = ${JSON.stringify(
+    finalTokensList.filter(token => token !== "constructor"),
     null,
     2
   )}[number];
@@ -170,19 +173,18 @@ export type TokenObject = {
 
 export type TokenRule = RegExp | TokenObject;
 
+/**
+ * Key "constructor" omitted.
+ */
 export type Grammar = {
-  [Key in DefinedGrammarToken]?: TokenRule[];
-};  
-
-export type Grammar = {
+  [anotherToken: string]: TokenRule[];
   ${finalTokensList
-    .map((token) => {
+    .filter(token => token !== "constructor").map((token) => {
       return token.includes("-")
         ? `"${token}"?: TokenRule[];`
         : `${token}?: TokenRule[]`;
     })
     .join("\n\t")}
-  [anotherToken: string]: TokenRule[];
 };
 `,
   (err) => {

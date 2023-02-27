@@ -1,6 +1,6 @@
 import { useState } from "react";
 import style from "../styles/index.module.css";
-import { corePlugin, Highlight, EditEvent } from "@lmarcel/highlight";
+import { corePlugin, Highlight, EditEvent, highlightCustomLanguages } from "@lmarcel/highlight";
 
 export default function Home() {
   const [code, setCode] = useState(`const a = red;\n\tconsole.log(a);\n\t\t//end`);
@@ -27,8 +27,8 @@ export default function Home() {
         }}
         editable={true}
         onEdit={handleOnEdit}
+        language="myBanner"
         code={code}
-        language="javascript"
       />
     </main>
   );

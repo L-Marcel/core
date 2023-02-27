@@ -111,6 +111,20 @@ const laserwave = new HighlightCustomTheme(
         color: "#ffffff",
       },
     },
+    {
+      types: ["banners"],
+      languages: ["myBanner"], 
+      style: {
+        color: "hsl(286, 60%, 67%)"
+      }
+    },
+    {
+      types: ["banner-end"],
+      languages: ["myBanner"], 
+      style: {
+        color: "hsl(133, 45%, 53%)"
+      }
+    }
   ]
 );
 

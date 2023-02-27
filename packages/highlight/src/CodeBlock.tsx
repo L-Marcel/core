@@ -55,7 +55,7 @@ export function CodeBlock({
             className={className}
             style={style}
           >
-            <code
+            <div
               style={{
                 tabSize,
                 fontFamily: "inherit",
@@ -115,7 +115,7 @@ export function CodeBlock({
                   </div>
                 );
               })}
-            </code>
+            </div>
           </HighlightPreContainer>
         );
       }}

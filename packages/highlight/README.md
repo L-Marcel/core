@@ -1,5 +1,7 @@
 Editable highlight component for react with support for many languages ​​and custom themes.
 
+> Rehydration error fixed! It's hard to find errors without issues...
+
 # Summary 
 - [Features](#features)
 - [Installation](#installation)

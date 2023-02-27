@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.5.0
+
+### Minor Changes
+
+- Fixing rehydration error
+
 ## 2.4.7
 
 ### Patch Changes

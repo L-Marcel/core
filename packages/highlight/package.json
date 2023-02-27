@@ -1,6 +1,6 @@
 {
   "name": "@lmarcel/highlight",
-  "version": "2.4.7",
+  "version": "2.5.0",
   "license": "MIT",
   "main": "dist/index.js",
   "description": "Editable highlight component for react with support for many languages ​​and custom themes.",

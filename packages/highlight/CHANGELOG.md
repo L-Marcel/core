@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.5.1
+
+### Patch Changes
+
+- Updating readme
+
 ## 2.5.0
 
 ### Minor Changes

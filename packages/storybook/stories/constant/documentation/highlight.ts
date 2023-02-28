@@ -51,10 +51,13 @@ export const storybookTheme = HighlightCustomTheme.extends(themes.oneDark, {
   numbersColor: "#cfcfcf"
 });`;
 
-export const languageDefinitions = `//my custom language definitions
+export const languageDefinitions = `//imports
+import { Highlight, HighlightCustomLanguage } from "@lmarcel/highlight";
+
+//my custom language definitions
 const banner = new HighlightCustomLanguage(
   "myBanner",
-  [],
+  ["banner"],
   {
     grammar: {
       "banners": [{
@@ -92,7 +95,12 @@ javascript.replaceTokenRule(
   }
 );
 
-export { javascript };`;
+//component
+<Highlight
+  externalLanguages={[banner, javascript]}
+  language="banner"
+  code={code}
+/>`;
 
 export const customLanguage = `const javascript = new HighlightCustomLanguage(
   "javascript",
@@ -1102,11 +1110,11 @@ const laserwave = new HighlightCustomTheme(
 
 export default laserwave;`;
 
-export const myBannerDefinitionCode = `import { HighlightCustomLanguage } from "..";
+export const myBannerDefinitionCode = `import { HighlightCustomLanguage } from "@lmarcel/highlight";
 
 const banner = new HighlightCustomLanguage(
   "myBanner",
-  [],
+  ["banner"],
   {
     grammar: {
       "banners": [{

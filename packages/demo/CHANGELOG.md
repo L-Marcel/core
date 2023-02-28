@@ -1,5 +1,13 @@
 # demo
 
+## 0.1.3
+
+### Patch Changes
+
+- Finishing main features, updating imports, language definitions and the documentation
+- Updated dependencies
+  - @lmarcel/highlight@2.7.0
+
 ## 0.1.2
 
 ### Patch Changes

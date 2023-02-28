@@ -69,7 +69,6 @@ import { isCustomLanguage } from "./utils/isCustomLanguage";
 import { loadComponents } from "./utils/loadComponents";
 import { corePlugin } from "./plugins/custom/corePlugin";
 import { runPlugins } from "./utils/runPlugins";
-import { banner } from "./languages/custom/banner";
 
 type HighlightDefaultTheme = keyof typeof themes;
 
@@ -195,14 +194,14 @@ export interface HighlightProps
 
 export const highlightCustomLanguages = {
   javascript,
-  jsx,
-  myBanner: banner
+  jsx
 };
 
 export {
   themes,
   HighlightPlugin,
   HighlightCustomTheme,
+  HighlightCustomLanguage,
   getAllLanguagesInputs,
   getAllLanguagesComponents,
   isCustomLanguage,

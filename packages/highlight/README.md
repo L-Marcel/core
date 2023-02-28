@@ -1,6 +1,6 @@
 Editable highlight component for react with support for many languages ​​and custom themes.
 
-> It is now possible to create the definition of languages ​​that do not exist! That's right, you can make your own! See the [demonstration](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--custom-unique-language).
+> It is now possible to create the definition of languages ​​that do not exist! That's right, you can make your own! See the [demonstration](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--custom-unique-language). Imports, language definitions and the documentation have also been updated. All the changes I wanted have already been made, any problems, please create an issue.
 
 # Summary 
 - [Features](#features)
@@ -159,11 +159,14 @@ This library currently supports ALL __`Prism.js`__ languages __`​​dynamicall
 
 ## Custom languages definitions
 It is possible, but quite complex, to edit language definitions using the library. You can make your own (it inevitably requires extensive knowledge of regex, see the [demonstration](https://core-l-marcel.vercel.app/?path=/story/highlight-examples--custom-unique-language)):
-```ts
+```tsx
+//imports
+import { Highlight, HighlightCustomLanguage } from "@lmarcel/highlight";
+
 //my custom language definitions
 const banner = new HighlightCustomLanguage(
   "myBanner",
-  [],
+  ["banner"],
   {
     grammar: {
       "banners": [{
@@ -203,6 +206,13 @@ javascript.replaceTokenRule(
 );
 
 export { javascript, banner };
+
+//component
+<Highlight
+  externalLanguages={[banner, javascript]}
+  language="banner"
+  code={code}
+/>
 ```
 
 The definitions are available in the __`grammar`__ property of the new language __`instance`__.

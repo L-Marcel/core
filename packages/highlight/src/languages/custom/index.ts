@@ -348,8 +348,18 @@ export class HighlightCustomLanguage<
 
     if (typeof global !== "undefined") {
       global.Prism.languages[this.name] = this.grammar;
+
+      for(const a in this.alias) {
+        const alias = this.alias[a];
+        global.Prism.languages[alias] = this.grammar;
+      };
     } else {
       window.Prism.languages[this.name] = this.grammar;
+
+      for(const a in this.alias) {
+        const alias = this.alias[a];
+        window.Prism.languages[alias] = this.grammar;
+      };
     }
   }
 }

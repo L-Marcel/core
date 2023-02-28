@@ -1,14 +1,34 @@
-import { EditEvent, Highlight, HighlightProps, corePlugin, getAllLanguagesInputs } from "@lmarcel/highlight";
+import { EditEvent, Highlight, HighlightProps, corePlugin, getAllLanguagesInputs, HighlightCustomLanguage } from "@lmarcel/highlight";
 import { Meta, StoryObj, ComponentStory } from "@storybook/react";
 import { EditableHighlightHelp } from "../../src/components/EditableHighlightHelp";
 import { __markup, __latex, __clike, __myBanner, __css , __ruby, __bash, __c, __cpp, __diff, __git, __go, __graphql, __handlebars, __javascript, __json, __jsx, __less, __makeFile, __markdown, __objectivec, __ocaml, __python, __reason, __sass, __scss, __sql, __stylus, __tsx, __typescript, __yaml } from "./examples/Code";
 import { useState } from "react";
+
+const banner = new HighlightCustomLanguage(
+  "myBanner",
+  ["banner"],
+  {
+    grammar: {
+      "banners": [{
+        pattern: /\btitle\b/g,
+        alias: "banner-title"
+      }, {
+        pattern: /\bsubtitle\b/g,
+        alias: "banner-subtitle"
+      }, {
+        pattern: /\bend\b/g,
+        alias: "banner-end"
+      }]
+    },
+  }
+);
 
 export default {
   title: "Highlight/Examples",
   component: Highlight,
   args: {
     full: false,
+    externalLanguages: [banner],
     theme: "oneDark",
     language: "tsx",
     code: `export function Highlight({ 
@@ -51,7 +71,7 @@ export default {
       control: { type: 'select' },
     },
     language: {
-      options: getAllLanguagesInputs(),
+      options: [...getAllLanguagesInputs(), "banner"],
       control: { type: 'select' },
     }
   }

@@ -1,5 +1,16 @@
 # @lmarcel/book
 
+## 3.0.0
+
+### Major Changes
+
+- Finishing main features, updating imports, language definitions and the documentation
+
+### Patch Changes
+
+- Updated dependencies
+  - @lmarcel/highlight@2.7.0
+
 ## 2.1.0
 
 ### Minor Changes

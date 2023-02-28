@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.7.0
+
+### Minor Changes
+
+- Finishing main features, updating imports, language definitions and the documentation
+
 ## 2.6.0
 
 ### Minor Changes

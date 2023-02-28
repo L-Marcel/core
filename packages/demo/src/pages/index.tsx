@@ -1,9 +1,28 @@
 import { useState } from "react";
 import style from "../styles/index.module.css";
-import { corePlugin, Highlight, EditEvent, highlightCustomLanguages } from "@lmarcel/highlight";
+import { corePlugin, Highlight, EditEvent, HighlightCustomLanguage } from "@lmarcel/highlight";
 
 export default function Home() {
   const [code, setCode] = useState(`const a = red;\n\tconsole.log(a);\n\t\t//end`);
+
+  const banner = new HighlightCustomLanguage(
+    "myBanner",
+    ["banner"],
+    {
+      grammar: {
+        "banners": [{
+          pattern: /\btitle\b/g,
+          alias: "banner-title"
+        }, {
+          pattern: /\bsubtitle\b/g,
+          alias: "banner-subtitle"
+        }, {
+          pattern: /\bend\b/g,
+          alias: "banner-end"
+        }]
+      },
+    }
+  );
 
   function handleOnEdit(e: EditEvent) {
     setCode(e.currentTarget.value);
@@ -26,8 +45,9 @@ export default function Home() {
           minWidth: 800
         }}
         editable={true}
+        externalLanguages={[banner]}
         onEdit={handleOnEdit}
-        language="myBanner"
+        language="banner"
         code={code}
       />
     </main>

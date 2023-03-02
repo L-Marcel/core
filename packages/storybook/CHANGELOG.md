@@ -1,5 +1,13 @@
 # @lmarcel/book
 
+## 3.0.1
+
+### Patch Changes
+
+- Adding recommendation for authors
+- Updated dependencies
+  - @lmarcel/highlight@2.7.1
+
 ## 3.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @lmarcel/highlight
 
+## 2.7.1
+
+### Patch Changes
+
+- Adding recommendation for authors
+
 ## 2.7.0
 
 ### Minor Changes

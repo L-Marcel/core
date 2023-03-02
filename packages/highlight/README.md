@@ -18,7 +18,7 @@ Editable highlight component for react with support for many languages ​​and
   - [Custom languages definitions](#custom-languages-definitions)
 - [Plugins](#plugins)
 - [For authors](#for-authors)
-- [Roadmap](#roadmap)
+  - [Recommendation](#recommendation)
 
 # Features
 - Support for [many languages](https://core-l-marcel.vercel.app/?path=/story/highlight-available-languages--page)
@@ -332,3 +332,6 @@ For those who are interested, I left a page on storybook containing some example
 See the [codes](https://core-l-marcel.vercel.app/?path=/story/highlight-for-authors-warning--page).
 
 I also left a lot of helpful comments on the properties I typed within the code. If you are going to use TypeScript you will see occasionally. I apologize if this part is not very well documented.
+
+## Recommendation
+A library that can be very useful for building complex regex is [magic regex](https://www.npmjs.com/package/magic-regexp). It is a new library with a lot of potential.
